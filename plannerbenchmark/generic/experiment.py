@@ -157,14 +157,14 @@ class Experiment(object):
             return gym.make(self.envName(), render=render, dt=self.dt())
 
     def addScene(self, env):
+        env.add_walls(dim=np.array([0.2, 9.2, 0.5]), poses_2d=[[-4.5, 2.5, 0], [4.5, 2.5, 0], [0, -2, np.pi/2], [0, 7, np.pi/2]])
         for obst in self._obstacles:
             env.add_obstacle(obst)
         try:
             env.add_goal(self.goal())
         except Exception as e:
             print(e)
-        env.set_walls(limits= [[-5, -5], [5, 5]])
-        lidar = Lidar(4, nb_rays=24)
+        lidar = Lidar(4, nb_rays=24, raw_data=False)
         env.add_sensor(lidar)
 
     def shuffleInitConfiguration(self):
