@@ -156,7 +156,7 @@ class SensorFabricPlanner(Planner):
                 self._runtime_arguments[f'xdot_ref_dynamic_obst_{i}_{j}_leaf'] = args[1 + 3*i + 2]
                 self._runtime_arguments[f'xddot_ref_dynamic_obst_{i}_{j}_leaf'] = args[1 + 3*i + 3]
         if len(args) > 2:
-            ob_lidar = args[2].reshape(self._config.number_lidar_rays, 2) + args[0]
+            ob_lidar = args[2].reshape(self._config.number_lidar_rays, 2) + args[0][0:2]
         else:
             ob_lidar = [[100, 100], ] * self._config.number_lidar_rays
         for j in range(self._number_static_obstacles):
@@ -166,5 +166,5 @@ class SensorFabricPlanner(Planner):
     def computeAction(self, *args):
         self.adapt_runtime_arguments(args)
         action = np.zeros(3)
-        action[0:2] = self._planner.compute_action(**self._runtime_arguments)
+        action = self._planner.compute_action(**self._runtime_arguments)
         return action

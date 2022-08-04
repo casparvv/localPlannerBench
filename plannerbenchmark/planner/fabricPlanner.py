@@ -160,5 +160,5 @@ class FabricPlanner(Planner):
     def computeAction(self, *args):
         self.adapt_runtime_arguments(args)
         action = np.zeros(3)
-        action[0:2] = self._planner.compute_action(**self._runtime_arguments)
+        action = self._planner.compute_action(**self._runtime_arguments)
         return action

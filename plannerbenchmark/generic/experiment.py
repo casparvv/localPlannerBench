@@ -203,7 +203,7 @@ class Experiment(object):
     def checkFeasibility(self, checkGoalReachible):
         for o in self.obstacles():
             for i in range(1, self.n() + 1):
-                fk = self.fk(self.initState()[0][0:2], i, positionOnly=True)
+                fk = self.fk(self.initState()[0], i, positionOnly=True)
                 if self.robotType() == 'boxer':
                     fk = fk[0:2]
                 dist_initState = np.linalg.norm(np.array(o.position()) - fk)
