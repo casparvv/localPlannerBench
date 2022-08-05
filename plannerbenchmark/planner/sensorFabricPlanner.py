@@ -30,7 +30,7 @@ class SensorFabricConfig(PlannerConfig):
     m_arm: float = 1.0
     m_rot: float = 1.0
     number_lidar_rays: int = 24
-    radius_ray_obstacles: float = 0.3
+    radius_ray_obstacles: float = 0.05
 
 
 class SensorFabricPlanner(Planner):
@@ -46,7 +46,7 @@ class SensorFabricPlanner(Planner):
             "-sym('obst_geo_lam') / (x ** sym('obst_geo_exp')) * xdot ** 2"
         )
         collision_finsler: str = (
-            "0.1/(x**1) * (1 - ca.heaviside(xdot)) * xdot**2"
+            "0.5/(x**1) * (1 - ca.heaviside(xdot)) * xdot**2"
         )
         limit_geometry: str = (
             "-0.1 / (x ** 1) * xdot ** 2"
@@ -134,12 +134,11 @@ class SensorFabricPlanner(Planner):
             self._self_collision_dict,
             self._goal,
             #limits=self._limits,
-            number_obstacles=self._number_static_obstacles,
+            number_obstacles=self._config.number_lidar_rays,
             number_dynamic_obstacles=0,
         )
         self._planner.concretize()
         self.initialize_runtime_arguments()
-
 
     def adapt_runtime_arguments(self, args):
         self._runtime_arguments['q'] = args[0]
@@ -159,14 +158,13 @@ class SensorFabricPlanner(Planner):
             ob_lidar = args[2].reshape(self._config.number_lidar_rays, 2) + args[0][0:2]
             ob_lidar = np.append(ob_lidar, np.zeros((self._config.number_lidar_rays, 1)), axis=1)
         else:
-            ob_lidar = [[100, 100, 100], ] * self._config.number_lidar_rays
-        for j in range(self._number_static_obstacles):
+            ob_lidar = [[100, 100, 100],] * self._config.number_lidar_rays
+        for j in range(self._config.number_lidar_rays):
             self._runtime_arguments[f'radius_obst_{j}'] = np.array([self._config.radius_ray_obstacles])
             self._runtime_arguments[f'x_obst_{j}'] = ob_lidar[j]
 
     def computeAction(self, *args):
         self.adapt_runtime_arguments(args)
         action = np.zeros(3)
-        action = self._planner.compute_action(**self._runtime_arguments)
-        print(f"action: {action}")
+        action = np.clip(self._planner.compute_action(**self._runtime_arguments), -2.174, 2.174)
         return action

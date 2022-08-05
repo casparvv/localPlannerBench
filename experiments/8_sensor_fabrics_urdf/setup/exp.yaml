@@ -7,8 +7,8 @@ n: 3
 goal:
   subgoal0:
     prime: True
-    m: 2 
-    w: 0
+    m: 2
+    w: 1.0
     indices:
       - 0
       - 1
@@ -27,8 +27,8 @@ goal:
     epsilon: 0.1
 initState:
   q0:
-    - 2.0
-    - 2.0
+    - 0.0
+    - 0.0
     - 0.0
   q0dot:
     - 0.0
@@ -36,14 +36,14 @@ initState:
     - 0.0
 limits:
   low:
-    - 2.0
-    - 2.0
+    - -4.0
+    - -0.2
     - 0.0
   high:
-    - 2.0
-    - 2.0
+    - 4.0
+    - 0.2
     - 0.0
-r_body: 0.01
+r_body: 0.2
 randomObstacles:
   number: 8
 obstacles:
