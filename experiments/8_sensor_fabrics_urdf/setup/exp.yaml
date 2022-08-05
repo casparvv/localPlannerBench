@@ -7,32 +7,28 @@ n: 3
 goal:
   subgoal0:
     prime: True
-    m: 3
+    m: 2 
     w: 0
     indices:
       - 0
       - 1
-      - 2
     parent_link: 0
     child_link: 1
     desired_position:
       - 3.0
       - 2.0
-      - 0.0
     low:
       - -4.0
       - 5.0
-      - 0.0
     high: 
       - 4.0
       - 7.0
-      - 0.0
     type: staticSubGoal
     epsilon: 0.1
 initState:
   q0:
-    - 0.0
-    - 0.0
+    - 2.0
+    - 2.0
     - 0.0
   q0dot:
     - 0.0
@@ -40,16 +36,16 @@ initState:
     - 0.0
 limits:
   low:
-    - -4.0
-    - -1.0
+    - 2.0
+    - 2.0
     - 0.0
   high:
-    - 4.0
-    - -1.0
+    - 2.0
+    - 2.0
     - 0.0
 r_body: 0.01
 randomObstacles:
-  number: 12
+  number: 8
 obstacles:
   obst0:
     type: sphereObstacle

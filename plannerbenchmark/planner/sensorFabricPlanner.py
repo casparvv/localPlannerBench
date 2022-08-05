@@ -133,7 +133,7 @@ class SensorFabricPlanner(Planner):
             self._collision_links,
             self._self_collision_dict,
             self._goal,
-            limits=self._limits,
+            #limits=self._limits,
             number_obstacles=self._number_static_obstacles,
             number_dynamic_obstacles=0,
         )
@@ -157,8 +157,9 @@ class SensorFabricPlanner(Planner):
                 self._runtime_arguments[f'xddot_ref_dynamic_obst_{i}_{j}_leaf'] = args[1 + 3*i + 3]
         if len(args) > 2:
             ob_lidar = args[2].reshape(self._config.number_lidar_rays, 2) + args[0][0:2]
+            ob_lidar = np.append(ob_lidar, np.zeros((self._config.number_lidar_rays, 1)), axis=1)
         else:
-            ob_lidar = [[100, 100], ] * self._config.number_lidar_rays
+            ob_lidar = [[100, 100, 100], ] * self._config.number_lidar_rays
         for j in range(self._number_static_obstacles):
             self._runtime_arguments[f'radius_obst_{j}'] = np.array([self._config.radius_ray_obstacles])
             self._runtime_arguments[f'x_obst_{j}'] = ob_lidar[j]
@@ -167,4 +168,5 @@ class SensorFabricPlanner(Planner):
         self.adapt_runtime_arguments(args)
         action = np.zeros(3)
         action = self._planner.compute_action(**self._runtime_arguments)
+        print(f"action: {action}")
         return action
