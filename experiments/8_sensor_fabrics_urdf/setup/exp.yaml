@@ -1,4 +1,4 @@
-T: 200
+T: 500
 dynamic: False
 dt: 0.05
 env: pointRobotUrdf-acc-v0
@@ -36,16 +36,16 @@ initState:
     - 0.0
 limits:
   low:
-    - -4.0
-    - -0.2
-    - 0.0
+    - -10.0
+    - -10.0
+    - -10.0
   high:
-    - 4.0
-    - 0.2
-    - 0.0
+    - 10.0
+    - 10.0
+    - 10.0
 r_body: 0.2
 randomObstacles:
-  number: 8
+  number: 10
 obstacles:
   obst0:
     type: sphereObstacle

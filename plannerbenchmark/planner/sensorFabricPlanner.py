@@ -46,7 +46,7 @@ class SensorFabricPlanner(Planner):
             "-sym('obst_geo_lam') / (x ** sym('obst_geo_exp')) * xdot ** 2"
         )
         collision_finsler: str = (
-            "0.5/(x**1) * (1 - ca.heaviside(xdot)) * xdot**2"
+            f"(10.0/{self._config.number_lidar_rays})/(x**1) * (1 - ca.heaviside(xdot)) * xdot**2"
         )
         limit_geometry: str = (
             "-0.1 / (x ** 1) * xdot ** 2"
@@ -133,7 +133,7 @@ class SensorFabricPlanner(Planner):
             self._collision_links,
             self._self_collision_dict,
             self._goal,
-            #limits=self._limits,
+            limits=self._limits,
             number_obstacles=self._config.number_lidar_rays,
             number_dynamic_obstacles=0,
         )

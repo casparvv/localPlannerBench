@@ -67,7 +67,7 @@ class Runner(object):
         self._parser.set_defaults(ros=False)
         self._parser.set_defaults(random_goal=True)
         self._parser.set_defaults(random_obst=True)
-        self._parser.set_defaults(random_init=True)
+        self._parser.set_defaults(random_init=False)
         self._parser.set_defaults(verbose=True)
         self._parser.set_defaults(render=False)
         self._parser.set_defaults(compare=False)
