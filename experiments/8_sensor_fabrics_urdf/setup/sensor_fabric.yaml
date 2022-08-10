@@ -22,5 +22,5 @@ damper:
    - 0.1
    - 6.5
 dynamic: False
-number_lidar_rays: 13
+number_lidar_rays: 8
 
