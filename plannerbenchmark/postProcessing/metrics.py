@@ -70,7 +70,8 @@ class TimeToReachGoalMetric(Metric):
     def computeMetric(self, data):
         m = self._params["m"]
         fks = np.stack([data[name] for name in self._measNames[:m]]).T
-        goal = np.stack([data[name] for name in self._measNames[m:-1]]).T
+        goal = np.stack([data[name] for name in self._measNames[m:-2]]).T
+        goal = np.append(goal, np.zeros((len(goal), 1)), axis=1)
         time_steps= data[self._measNames[-1]]
         des_distance = self._params["des_distance"]
         distances = computeDistances(fks, goal)
