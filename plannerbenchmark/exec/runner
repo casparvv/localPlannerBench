@@ -65,8 +65,8 @@ class Runner(object):
         self._parser.add_argument("--compare", dest="compare", action="store_true")
         self._parser.set_defaults(save=True)
         self._parser.set_defaults(ros=False)
-        self._parser.set_defaults(random_goal=True)
-        self._parser.set_defaults(random_obst=True)
+        self._parser.set_defaults(random_goal=False)
+        self._parser.set_defaults(random_obst=False)
         self._parser.set_defaults(random_init=False)
         self._parser.set_defaults(verbose=True)
         self._parser.set_defaults(render=False)
@@ -167,6 +167,7 @@ class Runner(object):
                     try:
                         self._experiment.addScene(self._env, planner._config.number_lidar_rays)
                     except AttributeError:
+                        print("No sensor added to the environment.")
                         self._experiment.addScene(self._env)
                 logger = Logger(self._res_folder, timeStamp)
                 logger.setSetups(self._experiment, planner)
@@ -195,7 +196,7 @@ class Runner(object):
                     except KeyError as key_error:
                         print(f"Sensor data not found in step {i}")
                     t_before = time.perf_counter()
-                    action = planner.computeAction(*observation) # Error thrown here
+                    action = planner.computeAction(*observation)
                     solving_time = time.perf_counter() - t_before
                     primeGoal = [self._experiment.evaluatePrimeGoal(t)]
                     obsts = self._experiment.evaluateObstacles(t)

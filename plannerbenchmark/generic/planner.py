@@ -9,9 +9,9 @@ class PlannerSettingIncomplete(Exception):
 @dataclass
 class PlannerConfig():
     interval: int = 1
-    n: int = 3
+    n: int = 2
     name: str = 'Planner'
-    robot_type: str = 'pointRobotUrdf'
+    robot_type: str = 'pointRobot'
 
 class Planner(metaclass=PlannerRegistry):
     def __init__(self, exp, **kwargs):

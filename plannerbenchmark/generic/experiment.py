@@ -163,6 +163,7 @@ class Experiment(object):
             env.add_goal(self.goal())
         except Exception as e:
             print(e)
+        # To do: make walls optional in the setup
         env.add_walls(dim=np.array([0.2, 9.2, 0.5]), poses_2d=[[-4.5, 3.5, 0], [4.5, 3.5, 0], [0, -1, np.pi/2], [0, 8, np.pi/2]])
         if nb_rays > 0:
             lidar = Lidar(4, nb_rays=nb_rays, raw_data=False)
