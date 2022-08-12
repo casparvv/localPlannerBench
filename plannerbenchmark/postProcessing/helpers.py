@@ -40,6 +40,7 @@ def createMetricsFromNames(
         Returns a list of all metrics for which the name was specified.
     """
     metrics = []
+    goal_indices = experiment.goal()._content_dict['subgoal0']['indices']
     m = experiment.obstacles()[0].dim()
     n = experiment.n()
     fksNames = []
@@ -50,11 +51,16 @@ def createMetricsFromNames(
         if obst.type() != 'sphereObstacle':
             r_obsts.append(obst.radius())
     for i in range(1, n + 1):
-        for j in range(m):
+        for j in goal_indices:
             fksNames.append("fk" + str(i) + "_" + indexMap[j])
-    for j in range(m):
+    for j in goal_indices:
         eeNames.append("fk" + str(n) + "_" + indexMap[j])
         goalNames.append("goal_" + str(j) + "_0")
+    
+    print(f"fksNames:{fksNames}")
+    print(f"goalNames: {goalNames}")
+    print(f"eeNames: {eeNames}")
+    
     for name in names:
         if name == "solverTime":
             metrics.append(

@@ -146,6 +146,8 @@ class Runner(object):
         print("start run")
         completedRuns = 0
         while completedRuns < self._numberRuns:
+            print("-----------------------------------------------")
+            print(self._numberRuns)
             self._experiment.shuffle(self._random_obst, self._random_init, self._random_goal)
             try:
                 self._experiment.checkFeasibility(checkGoalReachible=False)

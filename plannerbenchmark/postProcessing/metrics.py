@@ -69,10 +69,8 @@ class TimeToReachGoalMetric(Metric):
 
     def computeMetric(self, data):
         m = self._params["m"]
-        fks = np.stack([data[key] for key in data.keys() if "fk3" in key.lower()]).T
-        #fks = np.stack([data[name] for name in self._measNames[:m]]).T
-        goal = np.stack([data[key] for key in data.keys() if "goal" in key.lower()]).T
-        #goal = np.stack([data[name] for name in self._measNames[m:-1]]).T
+        fks = np.stack([data[name] for name in self._measNames[:m]]).T
+        goal = np.stack([data[name] for name in self._measNames[m:-1]]).T
         time_steps= data[self._measNames[-1]]
         des_distance = self._params["des_distance"]
         distances = computeDistances(fks, goal)
@@ -263,8 +261,7 @@ class PathLengthMetric(Metric):
 
     def computeMetric(self, data):
         pathLength = 0
-        fks = np.stack([data[key] for key in data.keys() if "fk3" in key.lower()]).T
-        #fks = np.stack([data[name] for name in self._measNames]).T
+        fks = np.stack([data[name] for name in self._measNames]).T
         pathLength = [np.linalg.norm(fks[i] - fks[i - 1]) for i in range(1, len(fks))]
         return {"short": float(np.sum(pathLength))}
 

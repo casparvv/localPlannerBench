@@ -80,6 +80,10 @@ class SensorFabricPlanner(Planner):
         self._number_static_obstacles = self._config.number_lidar_rays
         self._dynamic_goal = False
 
+    def reset(self):
+        # To do: add reset function
+        print("RESETTING PLANNER")
+
     def initialize_runtime_arguments(self):
         self._runtime_arguments = {}
         self._runtime_arguments['weight_goal_0'] = np.array(self.config.attractor['k_psi'])
