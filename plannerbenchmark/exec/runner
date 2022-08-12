@@ -145,9 +145,11 @@ class Runner(object):
     def run(self):
         print("start run")
         completedRuns = 0
+        print("Composing the planner")
+        start=time.perf_counter()
+        self.setPlanner()
+        print(f"Planner composed in {np.round(time.perf_counter()-start, decimals=2)} sec")
         while completedRuns < self._numberRuns:
-            print("-----------------------------------------------")
-            print(self._numberRuns)
             self._experiment.shuffle(self._random_obst, self._random_init, self._random_goal)
             try:
                 self._experiment.checkFeasibility(checkGoalReachible=False)
@@ -155,10 +157,6 @@ class Runner(object):
             except ExperimentInfeasible as e:
                 print("Case not feasible %s" % str(e))
                 continue
-            print("Composing the planner")
-            start=time.perf_counter()
-            self.setPlanner()
-            print(f"Planner composed in {np.round(time.perf_counter()-start, decimals=2)} sec")
             q0, q0dot = self._experiment.initState()
             timeStamp = "{:%Y%m%d_%H%M%S}".format(datetime.datetime.now())
             if self._compare:
@@ -169,7 +167,7 @@ class Runner(object):
                     try:
                         self._experiment.addScene(self._env, planner._config.number_lidar_rays)
                     except AttributeError:
-                        print("No sensor added to the environment.")
+                        print("No lidar sensor added to the environment.")
                         self._experiment.addScene(self._env)
                 logger = Logger(self._res_folder, timeStamp)
                 logger.setSetups(self._experiment, planner)
