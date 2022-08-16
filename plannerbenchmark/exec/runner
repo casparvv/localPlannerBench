@@ -163,6 +163,8 @@ class Runner(object):
                 timeStamp = self._compareTimeStamp
             for planner in self._planners:
                 ob, t0 = self.reset(q0, q0dot)
+                if completedRuns > 1:
+                    ob['lidarSensor']  = np.full_like(ob['lidarSensor'], 10.0)
                 if not self._ros:
                     try:
                         self._experiment.addScene(self._env, planner._config.number_lidar_rays)
