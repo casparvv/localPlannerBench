@@ -15,6 +15,7 @@ class SeriesComparison(SeriesEvaluation):
         plannerNames = set()
         pattern = re.compile(r"(\D*)_\d{8}_\d{6}")
         for fname in os.listdir(self._folder):
+            print(fname)
             match = re.match(pattern, fname)
             if match:
                 plannerNames.add(match.group(1))

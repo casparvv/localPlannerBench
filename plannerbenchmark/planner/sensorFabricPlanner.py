@@ -30,7 +30,7 @@ class SensorFabricConfig(PlannerConfig):
     m_arm: float = 1.0
     m_rot: float = 1.0
     number_lidar_rays: int = 24
-    radius_ray_obstacles: float = 0.05
+    radius_ray_obstacles: float = 0.1
 
 
 class SensorFabricPlanner(Planner):
@@ -155,9 +155,6 @@ class SensorFabricPlanner(Planner):
                 self._runtime_arguments[f'xdot_ref_dynamic_obst_{i}_{j}_leaf'] = args[1 + 3*i + 2]
                 self._runtime_arguments[f'xddot_ref_dynamic_obst_{i}_{j}_leaf'] = args[1 + 3*i + 3]
         if len(args) > 2:
-            #print(f" -  -  -  -  -  -  -  -  -  -  -  - ")
-            #print(args[2])
-            #print(args[2].shape)
             ob_lidar = args[2].reshape(self._config.number_lidar_rays, 2) + args[0][0:2]
             ob_lidar = np.append(ob_lidar, np.zeros((self._config.number_lidar_rays, 1)), axis=1)
         else:

@@ -19,9 +19,10 @@ class SeriesEvaluation(object):
         (by default this is set to false)
     """
 
-    def __init__(self, folder: str, recycle: bool = False):
+    def __init__(self, folder: str, recycle: bool = False, parallel:bool = False):
         self._folder: str = folder
         self._recycle: bool = recycle
+        self._parallel: bool = parallel
 
     def setMetrics(self, metricNames: list) -> None:
         self._metricNames = metricNames
@@ -35,7 +36,17 @@ class SeriesEvaluation(object):
         """
         listExpFolders = os.listdir(self._folder)
         totalExps = 0
-        fullPaths = [self._folder + "/" + exp for exp in listExpFolders]
+        fullPaths = [self._folder + "/" + exp for exp in listExpFolders if not exp.startswith('.')]
+       
+        if self._parallel:
+            fullPaths_parallel = []
+            for fullPath in fullPaths:
+                if not os.path.isdir(fullPath):
+                    continue
+                listExpFolders_parallel = os.listdir(fullPath)
+                fullPaths_parallel  += [fullPath + "/" + exp for exp in listExpFolders_parallel]
+            fullPaths = fullPaths_parallel
+        
         self._kpis = {}
         for fullPath in fullPaths:
             if not os.path.isdir(fullPath):
@@ -49,9 +60,15 @@ class SeriesEvaluation(object):
             timeStamp = case.timeStamp()
             plannerName = case.plannerName()
             kpi = case.kpis(short=True)
-            if not plannerName in self._kpis.keys():
-                self._kpis[plannerName] = {}
-            self._kpis[plannerName][timeStamp] = kpi
+            if self._parallel:
+                lidar_rays = os.path.split(os.path.split(fullPath)[0])[1]
+                if not plannerName + "_" + str(lidar_rays) in self._kpis.keys():
+                    self._kpis[plannerName + "_" + str(lidar_rays)] = {}
+                self._kpis[plannerName + "_" + str(lidar_rays)][timeStamp] = kpi
+            else:
+                if not plannerName in self._kpis.keys():
+                    self._kpis[plannerName] = {}
+                self._kpis[plannerName][timeStamp] = kpi
 
     def writeResults(self) -> None:
         """Writes results to yaml files."""
