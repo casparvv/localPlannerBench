@@ -27,7 +27,8 @@ class SeriesComparison(SeriesEvaluation):
         """Process series, writes results and compares different planners."""
         super().process()
         super().writeResults()
-        self.compare()
+        self.total()
+        #self.compare()
 
     def compare(self) -> None:
         """Compares the performance of multiple planners.
@@ -45,7 +46,7 @@ class SeriesComparison(SeriesEvaluation):
         self._results.append(comparedResults)
         self.writeComparison()
 
-    def writeComparison(self) -> None:
+    def writeResults(self, ) -> None:
         """Writes comparison resultTable_comparison.csv-file."""
         resultsTableFile = self._folder + "/resultsTable_comparison.csv"
         with open(resultsTableFile, "w") as file:
