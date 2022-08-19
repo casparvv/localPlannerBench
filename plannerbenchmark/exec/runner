@@ -164,12 +164,12 @@ class Runner(object):
             for planner in self._planners:
                 ob, t0 = self.reset(q0, q0dot)
                 try:
-                    # Sets the lidar data to 10.0 for the first step.
+                    # Sets the lidar data to 100.0 for the first step.
                     #  Otherwise, it is filled with 0s after one run or badly shaped after using
                     #  two sensor fabric planner in a row (using the old shape in the first step).
-                    ob['lidarSensor'] = np.full([planner._config.number_lidar_rays*2,], 10.0)
+                    ob['lidarSensor'] = np.full([planner._config.number_lidar_rays*2,], 100.0)
                 except KeyError:
-                    print("No lidar sensor available to set default values to 10.0")
+                    print("No lidar sensor available to set default values to 100.0")
                 if not self._ros:
                     try:
                         self._experiment.addScene(self._env, planner._config.number_lidar_rays)
@@ -178,7 +178,7 @@ class Runner(object):
                         print("No lidar sensor added to the environment.")
                         self._experiment.addScene(self._env)
                 if len(self._planners) > 1:
-                    logger = Logger(self._res_folder + '/' + str(planner._config.number_lidar_rays), timeStamp)
+                    logger = Logger(self._res_folder, str(planner._config.number_lidar_rays) + "_" + timeStamp)
                 else:
                     logger = Logger(self._res_folder, timeStamp)
                 logger.setSetups(self._experiment, planner)

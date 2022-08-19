@@ -1,5 +1,0 @@
-#!/bin/bash
-abspath=`realpath "${0}"`
-parallelFolder="${1}/"
-nbMetrics=$2
-gnuplot -c "makeParallelPlot.gnuplot" $parallelFolder $nbMetrics

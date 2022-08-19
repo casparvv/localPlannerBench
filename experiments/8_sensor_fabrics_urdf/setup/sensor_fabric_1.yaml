@@ -2,7 +2,7 @@ interval: 1
 name: sensorfabric
 robot_type: pointRobotUrdf
 n: 3
-m_base: 2.0
+m_base: 0.5
 obst:
   exp: 2.0
   lam: 3.0

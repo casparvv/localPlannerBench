@@ -8,17 +8,19 @@ from plannerbenchmark.postProcessing.seriesEvaluation import SeriesEvaluation
 
 
 class SeriesComparison(SeriesEvaluation):
-    """Series comparison between two planners."""
+    """Series comparison between multiple planners."""
 
     def getPlannerNames(self) -> list:
         """Gets planner names."""
         plannerNames = set()
+        folderNames = [os.path.split(folderName)[-1] for folderName in list(filter(os.path.isdir, list(map(lambda x: os.path.join(self._folder, x), os.listdir(self._folder)))))]
         pattern = re.compile(r"(\D*)_\d{8}_\d{6}")
-        for fname in os.listdir(self._folder):
-            print(fname)
+        if not re.match(pattern, folderNames[0]):
+            pattern = re.compile(r"(\D*)(_\d*)_\d{8}_\d{6}")
+        for fname in folderNames:
             match = re.match(pattern, fname)
             if match:
-                plannerNames.add(match.group(1))
+                plannerNames.add(match.group(1) + match.group(2))
         return sorted(list(plannerNames))
 
     def process(self) -> None:
@@ -28,9 +30,9 @@ class SeriesComparison(SeriesEvaluation):
         self.compare()
 
     def compare(self) -> None:
-        """Compares the performance of two planners.
+        """Compares the performance of multiple planners.
 
-        Two planners are compared by computing the ratio for all individual
+        Multiple planners are compared by computing the ratio for all individual
         metrics for every experiment in the series.
         """
         self.readResults()
@@ -63,6 +65,7 @@ class SeriesComparison(SeriesEvaluation):
             List containing all time stamps as strings that were solved by both methods.
 
         """
+        # To do: currently compares only two methods, fine for now, maybe compare all methods
         res0 = set(self._results[0])
         res1 = set(self._results[1])
         commonTimeStamps = []
@@ -74,7 +77,7 @@ class SeriesComparison(SeriesEvaluation):
         """Reads results from previous evaluations."""
         plannerNames = self.getPlannerNames()
         self._results = []
-        for i in range(2):
+        for i in range(len(plannerNames)):
             plannerDict = {}
             resultsTableFile = (
                 self._folder + "/resultsTable_" + plannerNames[i] + ".csv"
