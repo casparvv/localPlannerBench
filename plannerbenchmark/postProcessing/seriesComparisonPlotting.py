@@ -17,12 +17,23 @@ class SeriesComparisonPlotting(object):
     def getPlannerNames(self) -> list:
         """Gets planner names."""
         plannerNames = set()
+        folderNames = [os.path.split(folderName)[-1] for folderName in list(filter(os.path.isdir, list(map(lambda x: os.path.join(self._folder, x), os.listdir(self._folder)))))]
         pattern = re.compile(r"(\D*)_\d{8}_\d{6}")
-        for fname in os.listdir(self._folder):
+        if not re.match(pattern, folderNames[0]):
+            pattern = re.compile(r"(\D*)(_\d*)_\d{8}_\d{6}")
+        for fname in folderNames:
             match = re.match(pattern, fname)
             if match:
-                plannerNames.add(match.group(1))
+                plannerNames.add(match.group(1) + match.group(2))
         return sorted(list(plannerNames))
+        # """Gets planner names."""
+        # plannerNames = set()
+        # pattern = re.compile(r"(\D*)_\d{8}_\d{6}")
+        # for fname in os.listdir(self._folder):
+        #     match = re.match(pattern, fname)
+        #     if match:
+        #         plannerNames.add(match.group(1))
+        # return sorted(list(plannerNames))
 
     def plot(self) -> None:
         """Call the correct gnuplot script.

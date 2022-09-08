@@ -1,77 +1,36 @@
-set term postscript eps color size 2, 7 font "RomanSerif.ttf" 14
+set term postscript eps color size 7, 7 font "RomanSerif.ttf" 14
 seriesFolder=ARG1
 planner1Type=ARG2
 planner2Type=ARG3
 N=ARG4
-inFile=seriesFolder."resultsTable_comparison.csv"
-outFileBox=seriesFolder."/results_comparison.eps"
+
+inFile1=seriesFolder."resultsTable_sensorfabric_1.csv"
+inFile2=seriesFolder."resultsTable_sensorfabric_2.csv"
+inFile4=seriesFolder."resultsTable_sensorfabric_4.csv"
+inFile8=seriesFolder."resultsTable_sensorfabric_8.csv"
+inFile16=seriesFolder."resultsTable_sensorfabric_16.csv"
+inFile32=seriesFolder."resultsTable_sensorfabric_32.csv"
+inFile64=seriesFolder."resultsTable_sensorfabric_64.csv"
+inFile128=seriesFolder."resultsTable_sensorfabric_128.csv"
+inFile256=seriesFolder."resultsTable_sensorfabric_256.csv"
+inFile512=seriesFolder."resultsTable_sensorfabric_512.csv"
+inFile1024=seriesFolder."resultsTable_sensorfabric_1024.csv"
+inFile2048=seriesFolder."resultsTable_sensorfabric_2048.csv"
+
+outFileBox=seriesFolder."/results_comparison_pathlength.eps"
+set output outFileBox
+set datafile separator ' '
+firstrow = system('head -1 '.inFile1)
+
+set style fill solid 0.25 border -1
+set style boxplot outliers pointtype 7
+set style data boxplot
+set xtics ('0.0' 1, '1' 2, '2' 3, '4' 4, '8' 5, '16' 6, '32' 7, '64' 8, '128' 9, '256' 10, '512' 11, '1024' 12, '2048' 13)
+
+plot inFile1 using (2):2 notitle, inFile2 using (3):2 notitle, inFile4 using (4):2 notitle, inFile8 using (5):2 notitle, inFile16 using (6):2 notitle, inFile32 using (7):2 notitle, inFile64 using (8):2 notitle, inFile128 using (9):2 notitle, inFile256 using (10):2 notitle, inFile512 using (11):2 notitle, inFile1024 using (12):2 notitle, inFile2048 using (13):2 notitle
+
+
+outFileBox=seriesFolder."/results_comparison_time2goal.eps"
 set output outFileBox
 
-set datafile separator ' '
-#set bmargin at screen 0.40
-#set lmargin at screen 0.30
-#set rmargin at screen 0.9
-set bmargin at screen 0.26
-
-set style fill solid 0.5 border -1
-set style boxplot nooutliers
-set log y2 2
-# set style boxplot outliers pointtype -1
-set style data boxplot
-set y2range [0.3:1.8]
-unset ytics
-set y2tics nomirror font ',35' rotate by 90 out offset 0.5,-2.0
-set y2tics (0.3, 0.5, 0.8, 1.0, 1.25, 1.5)
-#set y2tics (0.8, 0.9, 1, 1.1)
-set grid y2tics
-set border 9
-
-# Planner names
-if (planner1Type eq 'fabric') planner1 = 'Static Fabric'
-if (planner2Type eq 'fabric') planner2 = 'Static Fabric'
-if (planner1Type eq 'mpc') planner1 = 'MPC'
-if (planner2Type eq 'mpc') planner2 = 'MPC'
-if (planner1Type eq 'dynamicFabric') planner1 = 'Dynamic Fabric'
-if (planner2Type eq 'dynamicFabric') planner2 = 'Dynamic Fabric'
-yLabel = sprintf("%s / %s on logarithmic scale", planner1, planner2)
-set y2label yLabel font ",35" rotate by 90
-
-
-firstrow = system('head -1 '.inFile)
-
-unset key
-set xtics () scale 1.0 font ",35" rotate by 90 out offset -0.5, -14.0
-set xtics nomirror
-do for [i=2:(N+2)] {
-  metricName = word(firstrow, i)
-  if (metricName eq "solverTime"){
-    set xtics add ("Solver Time" i);
-  }
-  if (metricName eq "integratedError") {
-    set xtics add ("Summed Error" i);
-  }
-  if (metricName eq "pathLength") {
-    set xtics add ("Path Length" i);
-  }
-  if (metricName eq "clearance") {
-    set xtics add ("Clearance" i);
-  }
-  if (metricName eq "invClearance") {
-    set xtics add ("Clearance^{-1}" i);
-  }
-  if (metricName eq "dynamicClearance") {
-    set xtics add ("Clearance" i);
-  }
-  if (metricName eq "invDynamicClearance") {
-    set xtics add ("Clearance^{-1}" i);
-  }
-  if (metricName eq "selfClearance") {
-    set xtics add ("Self Clearence" i);
-  }
-  if (metricName eq "time2Goal") {
-    set xtics add ("Time to Goal" i);
-  }
-}
-plot 1 with lines dt 3 lw 6 lt rgb "red" notitle axes x1y2, \
-  for [i=2:(N+1)] inFile using (i):i lw 2 lt rgb "gray30" axes x1y2
-
+plot inFile1 using (2):3 notitle, inFile2 using (3):3 notitle, inFile4 using (4):3 notitle, inFile8 using (5):3 notitle, inFile16 using (6):3 notitle, inFile32 using (7):3 notitle, inFile64 using (8):3 notitle, inFile128 using (9):3 notitle, inFile256 using (10):3 notitle, inFile512 using (11):3 notitle, inFile1024 using (12):3 notitle, inFile2048 using (13):3 notitle

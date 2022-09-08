@@ -27,24 +27,31 @@ class SeriesComparison(SeriesEvaluation):
         """Process series, writes results and compares different planners."""
         super().process()
         super().writeResults()
-        self.total()
-        #self.compare()
+        self.compare()
 
     def compare(self) -> None:
         """Compares the performance of multiple planners.
 
         Multiple planners are compared by computing the ratio for all individual
         metrics for every experiment in the series.
+        
+        To do: it now calculates the average for the metrics per experiment since there are more than 1 experiments. 
+         Find a new way to compare them or leave as is.
         """
         self.readResults()
         commonTimeStamps = self.getCasesSolvedByBoth()
-        comparedResults = {}
+        # comparedResults = {}
+        averageResults = {}
         for timeStamp in commonTimeStamps:
-            comparedResults[timeStamp] = (
-                self._results[0][timeStamp] / self._results[1][timeStamp]
-            )
-        self._results.append(comparedResults)
-        self.writeComparison()
+            averageResults[timeStamp] = [0, 0]
+            for n_experiment in range(len(self._results)):
+                averageResults[timeStamp] += self._results[n_experiment][timeStamp]
+            averageResults[timeStamp] = averageResults[timeStamp] / len(self._results)
+            # comparedResults[timeStamp] = (
+            #     self._results[0][timeStamp] / self._results[1][timeStamp]
+            # )
+        # self._results.append(comparedResults)
+        self._results.append(averageResults)
 
     def writeResults(self, ) -> None:
         """Writes comparison resultTable_comparison.csv-file."""
@@ -66,7 +73,7 @@ class SeriesComparison(SeriesEvaluation):
             List containing all time stamps as strings that were solved by both methods.
 
         """
-        # To do: currently compares only two methods, fine for now, maybe compare all methods
+        # To do: currently compares two methods which also works fine for more methods though.
         res0 = set(self._results[0])
         res1 = set(self._results[1])
         commonTimeStamps = []
