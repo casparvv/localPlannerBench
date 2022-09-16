@@ -128,7 +128,8 @@ class ClearanceMetric(Metric):
         # To do: fix this metric, make it dependent on the right dimensions for a point robot.
         print(f"self_measNames {self._measNames}")
         rawData = np.stack([data[name] for name in self._measNames])
-        fks = rawData.T.reshape(-1, n, m)
+        # fks = rawData.T.reshape(-1, n, m)
+        fks = rawData.T.reshape(-1, n, 2)
         minDistances = []
         distanceToObsts = {}
         for i, obst in enumerate(obstacles):

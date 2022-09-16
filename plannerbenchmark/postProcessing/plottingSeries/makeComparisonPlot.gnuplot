@@ -29,6 +29,7 @@ set boxwidth 0.5
 set pointsize 0.5
 set xtics ('0.0' 1, '1' 2, '2' 3, '4' 4, '8' 5, '16' 6, '32' 7, '64' 8, '128' 9, '256' 10, '512' 11, '1024' 12, '2048' 13)
 set grid ytics
+set yrange [-2.0:30]
 set xlabel "Number of LiDAR rays" font ",25"
 set ylabel "Path length (m)" font ",25"
 
@@ -38,6 +39,7 @@ plot inFile1 using (2):2 notitle, inFile2 using (3):2 notitle, inFile4 using (4)
 outFileBox=seriesFolder."/results_comparison_time2goal.eps"
 set output outFileBox
 
+set yrange [-2.0:30]
 set xlabel "Number of LiDAR rays" font ",25"
 set ylabel "Time to goal (s)" font ",25"
 

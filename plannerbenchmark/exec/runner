@@ -157,11 +157,12 @@ class Runner(object):
             except ExperimentInfeasible as e:
                 print("Case not feasible %s" % str(e))
                 continue
-            q0, q0dot = self._experiment.initState()
+            #q0, q0dot = self._experiment.initState()
             timeStamp = "{:%Y%m%d_%H%M%S}".format(datetime.datetime.now())
             if self._compare:
                 timeStamp = self._compareTimeStamp
             for planner in self._planners:
+                q0, q0dot = self._experiment.initState()
                 ob, t0 = self.reset(q0, q0dot)
                 try:
                     # Sets the lidar data to 100.0 for the first step.

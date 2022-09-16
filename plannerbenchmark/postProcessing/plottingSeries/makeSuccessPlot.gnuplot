@@ -1,4 +1,4 @@
-set term postscript eps color size 2.0, 7.0 font "RomanSerif.ttf" 14
+set term postscript eps color size 7.0, 7.0 font "RomanSerif.ttf" 14
 seriesFolder=ARG1
 planner1Type=ARG2
 planner2Type=ARG3
@@ -19,20 +19,21 @@ set style data histogram
 set style histogram rowstacked
 set border 9
 set boxwidth 0.5
-planner1 = ""
-planner2 = ""
-if (planner1Type eq 'fabric') planner1 = 'Static Fabric'
-if (planner1Type eq 'dynamicFabric') planner1 = 'Dyn. Fabric'
-if (planner2Type eq 'fabric') planner2 = 'Static Fabric'
-if (planner2Type eq 'dynamicFabric') planner2 = 'Dyn. Fabric'
-if (planner1Type eq 'mpc') planner1 = 'MPC'
-if (planner2Type eq 'mpc') planner2 = 'MPC'
-set xtics (planner1 0, planner2 1) scale 1.0 font ',35' rotate by 90 offset 0, -14.0 nomirror
+# planner1 = ""
+# planner2 = ""
+# if (planner1Type eq 'fabric') planner1 = 'Static Fabric'
+# if (planner1Type eq 'dynamicFabric') planner1 = 'Dyn. Fabric'
+# if (planner2Type eq 'fabric') planner2 = 'Static Fabric'
+# if (planner2Type eq 'dynamicFabric') planner2 = 'Dyn. Fabric'
+# if (planner1Type eq 'mpc') planner1 = 'MPC'
+# if (planner2Type eq 'mpc') planner2 = 'MPC'
+# set xtics (planner1 0, planner2 1) scale 1.0 font ',35' rotate by 90 offset 0, -14.0 nomirror
+set xtics ('1' 0, '2' 1, '4' 2, '8' 3, '16' 4, '32' 5, '64' 6, '128' 7, '256' 8, '512' 9, '1024' 10, '2048' 11) scale 1.0 font ',35' rotate by 90 offset 0, -14.0 nomirror
 unset ytics
-nbPlanner=2
-nbCases=40
+nbPlanner=12
+nbCases=15
 set xrange [-0.5:nbPlanner - 0.5]
-set y2range [0:1.6 * nbCases]
+set y2range [0:1.2 * nbCases]
 set y2tics nomirror font ',35'
 set y2tics 0,nbCases/5,nbCases rotate by 90 offset 0.5,-2.0
 set y2label '#Cases' font ',35'
