@@ -61,7 +61,7 @@ obstacles:
         - -4.0
         - 1.2
         - 0.0
-      radius: 0.2
+      radius: 0.4
     high:
       position:
         - 4.0

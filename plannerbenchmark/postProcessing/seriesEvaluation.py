@@ -102,9 +102,6 @@ class SeriesEvaluation(object):
                             self._kpis[plannerKey][timeStampKey]
                         )
                         csv_writer.writerow([timeStampKey] + kpis_timeStamp)
-                    # If the time2Goal kpi is -1, a 1 is subtracted from the success column
-                    if kpis_timeStamp[1] == -1:
-                        success[self.success(plannerKey, timeStampKey)] -= 1 
             successes[plannerKey] = success
         successTableFile = self._folder + "/successTable.csv"
         with open(successTableFile, "w") as file:

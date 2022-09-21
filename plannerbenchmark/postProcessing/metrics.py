@@ -125,17 +125,14 @@ class ClearanceMetric(Metric):
         m = obstacles[0].dim()
         n = self._params["n"]
         r_body = self._params["r_body"]
-        # To do: fix this metric, make it dependent on the right dimensions for a point robot.
-        print(f"self_measNames {self._measNames}")
         rawData = np.stack([data[name] for name in self._measNames])
-        # fks = rawData.T.reshape(-1, n, m)
         fks = rawData.T.reshape(-1, n, 2)
         minDistances = []
         distanceToObsts = {}
         for i, obst in enumerate(obstacles):
             for i_fk in range(0, n):
                 distancesToObst = (
-                    computeDistances(fks[:, i_fk, :], np.array(obst.position()))
+                        computeDistances(fks[:, i_fk, :], np.array(obst.position()[0:2]))
                     - obst.radius()
                     - r_body
                 )
@@ -246,14 +243,12 @@ class SelfClearanceMetric(Metric):
 class SolverTimesMetric(Metric):
     """Metric to compute the average solver time of the motion planner.
 
-    Requires the interval at which the planner was invoked.
-    Computes the solvertime in miliseconds.
+    Computes the solvertime in seconds.
     """
 
     def computeMetric(self, data):
-        interval = self._params["interval"]
-        t_planning = data[self._measNames[0]]
-        return {"short": 1000 * float(np.mean(t_planning[0::interval]))}
+        t_planning = data['t_planning']
+        return {"short": float(np.mean(t_planning))}
 
 
 class PathLengthMetric(Metric):

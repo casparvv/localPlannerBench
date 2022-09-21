@@ -40,18 +40,18 @@ class SeriesComparison(SeriesEvaluation):
         """
         self.readResults()
         commonTimeStamps = self.getCasesSolvedByBoth()
-        # comparedResults = {}
-        averageResults = {}
+        comparedResults = {}
+        # averageResults = {}
         for timeStamp in commonTimeStamps:
-            averageResults[timeStamp] = [0, 0]
-            for n_experiment in range(len(self._results)):
-                averageResults[timeStamp] += self._results[n_experiment][timeStamp]
-            averageResults[timeStamp] = averageResults[timeStamp] / len(self._results)
-            # comparedResults[timeStamp] = (
-            #     self._results[0][timeStamp] / self._results[1][timeStamp]
-            # )
-        # self._results.append(comparedResults)
-        self._results.append(averageResults)
+            # averageResults[timeStamp] = [0, 0, 0]
+            # for n_experiment in range(len(self._results)):
+            #     averageResults[timeStamp] += self._results[n_experiment][timeStamp]
+            # averageResults[timeStamp] = averageResults[timeStamp] / len(self._results)
+            comparedResults[timeStamp] = (
+                self._results[0][timeStamp] / self._results[1][timeStamp]
+            )
+        self._results.append(comparedResults)
+        # self._results.append(averageResults)
 
     def writeResults(self, ) -> None:
         """Writes comparison resultTable_comparison.csv-file."""

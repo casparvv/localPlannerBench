@@ -2,8 +2,6 @@ set term postscript eps color size 7.0, 7.0 font "RomanSerif.ttf" 14
 seriesFolder=ARG1
 planner1Type=ARG2
 planner2Type=ARG3
-print planner1Type
-print planner2Type
 inFile=seriesFolder."successTable.csv"
 
 outFileHist=seriesFolder."/success.eps"

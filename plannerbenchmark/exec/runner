@@ -6,6 +6,7 @@ import datetime
 import time
 import os
 import sys
+import csv
 import warnings
 import numpy as np
 import signal
@@ -104,13 +105,22 @@ class Runner(object):
         self._rosConverter = ActionConverterNode(dt, rate_int, self._experiment.robotType())
 
     def setPlanner(self):
+        composition_time = {}
         for planner in self._planners:
+            start_composition = time.perf_counter()
             planner.reset()
             planner.setJointLimits(self._experiment.limits())
             planner.setSelfCollisionAvoidance(self._experiment.rBody())
             planner.setObstacles(self._experiment.obstacles(), self._experiment.rBody())
             planner.setGoal(self._experiment.goal())
             planner.concretize()
+            end_composition = time.perf_counter()
+            try:
+                planner_name = planner._config.number_lidar_rays
+            except:
+                planner_name = planner._config.name
+            composition_time[planner_name] = np.round(end_composition-start_composition, decimals=2)
+        return composition_time
 
     def applyAction(self, action, t_exp):
         if self._ros:
@@ -145,10 +155,9 @@ class Runner(object):
     def run(self):
         print("start run")
         completedRuns = 0
-        print("Composing the planner")
-        start=time.perf_counter()
-        self.setPlanner()
-        print(f"Planner composed in {np.round(time.perf_counter()-start, decimals=2)} sec")
+        print("Composing the planner(s)")
+        composition_time = self.setPlanner()
+        print(f"Planner(s) composed in {composition_time} sec")
         while completedRuns < self._numberRuns:
             self._experiment.shuffle(self._random_obst, self._random_init, self._random_goal)
             try:
@@ -157,7 +166,7 @@ class Runner(object):
             except ExperimentInfeasible as e:
                 print("Case not feasible %s" % str(e))
                 continue
-            #q0, q0dot = self._experiment.initState()
+            # q0, q0dot = self._experiment.initState()
             timeStamp = "{:%Y%m%d_%H%M%S}".format(datetime.datetime.now())
             if self._compare:
                 timeStamp = self._compareTimeStamp
@@ -219,6 +228,10 @@ class Runner(object):
                 if self._save:
                     logger.save()
             print("Completed %d runs" % completedRuns)
+            with open(str(self._res_folder) + '/' + 'composition_time.csv', 'w') as csv_file:
+                writer = csv.writer(csv_file)
+                for key, value in composition_time.items():
+                    writer.writerow([key, value])
             self.stopEnvironment()
 
 def newmain():

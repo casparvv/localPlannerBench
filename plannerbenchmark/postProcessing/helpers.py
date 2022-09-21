@@ -121,6 +121,8 @@ def createMetricsFromNames(
             )
         if name == "pathLength":
             metrics.append(PathLengthMetric(name, eeNames, {}))
+        if name == "solverTimes":
+            metrics.append(SolverTimesMetric(name, eeNames, {}))
         if name == "integratedError":
             metrics.append(
                 IntegratedErrorMetric(
