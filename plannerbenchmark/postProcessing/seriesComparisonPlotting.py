@@ -51,8 +51,6 @@ class SeriesComparisonPlotting(object):
             [
                 "./createComparisonPlot",
                 self._folder,
-                plannerNames[0],
-                plannerNames[1],
                 str(self._nbMetrics),
             ],
             cwd=createPlotFolder,
