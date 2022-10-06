@@ -30,7 +30,7 @@ class SensorFabricConfig(PlannerConfig):
     m_arm: float = 1.0
     m_rot: float = 1.0
     number_lidar_rays: int = 24
-    radius_ray_obstacles: float = 0.1
+    radius_ray_obstacles: float = 0.10
 
 
 class SensorFabricPlanner(Planner):
@@ -43,10 +43,10 @@ class SensorFabricPlanner(Planner):
             "0.5 * sym('base_inertia') * ca.dot(xdot, xdot)"
         )
         collision_geometry: str = (
-            "-sym('obst_geo_lam') / (x ** sym('obst_geo_exp')) * xdot ** 2"
+            "-sym('obst_geo_lam') / (x**sym('obst_geo_exp')) * xdot**2"
         )
         collision_finsler: str = (
-            f"(10.0/{self._config.number_lidar_rays})/(x**2) * (1 - ca.heaviside(xdot)) * xdot**2"
+            f"(20.0/{self._config.number_lidar_rays})/(x**1) * (1 - ca.heaviside(xdot)) * xdot**2"
         )
         limit_geometry: str = (
             "-0.1 / (x ** 1) * xdot ** 2"
@@ -167,6 +167,4 @@ class SensorFabricPlanner(Planner):
         self.adapt_runtime_arguments(args)
         action = np.zeros(3)
         action = np.clip(self._planner.compute_action(**self._runtime_arguments), -2.174, 2.174)
-        action[2]  = 0.0
-        #print(f"action: {action}")
         return action
