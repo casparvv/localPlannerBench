@@ -56,6 +56,9 @@ class Runner(object):
         self._parser.add_argument(
             "--numberRuns", "-n", type=int, default=1, help="Number of runs of the experiment"
         )
+        self._parser.add_argument(
+            "--show-rays", "-sr", type=bool, default=False, help="Show LiDAR ray visualization by setting to True"
+        )
         self._parser.add_argument("--ros", dest="ros", action="store_true")
         self._parser.add_argument("--no-save", dest="save", action="store_false")
         self._parser.add_argument("--random-goal", dest="random_goal", action="store_true")
@@ -88,6 +91,7 @@ class Runner(object):
         self._experiment = Experiment(args.caseSetup)
         self._ros = args.ros
         self._compare = args.compare
+        self._show_rays = args.show_rays
         if self._compare:
             self._compareTimeStamp = args.caseSetup[-24:-9]
         if self._ros:
@@ -213,11 +217,12 @@ class Runner(object):
                         observation += [qudot]
                     try:
                         sensor_data = ob['lidarSensor']
-                        if i == 0:
-                            # Set body_ids_old to None for the first time creating ray visualizations.
-                            body_ids_old = None
-                        if i in range(1, self._experiment.T(), 100):
-                            body_ids_old = self._experiment.showLidar(self._env, sensor_data, q, body_ids_old, planner._config.number_lidar_rays)
+                        if self._show_rays:
+                            if i == 0:
+                                # Set body_ids_old to None for the first time creating ray visualizations.
+                                body_ids_old = None
+                            if i in range(1, self._experiment.T(), 100):
+                                body_ids_old = self._experiment.showLidar(self._env, sensor_data, q, body_ids_old, planner._config.number_lidar_rays)
                         observation += [sensor_data]
                     except KeyError as key_error:
                         print(f"Sensor data not found in step {i}")
