@@ -10,4 +10,8 @@ try:
     from plannerbenchmark.planner.sensorFabricPlanner import SensorFabricPlanner
 except ModuleNotFoundError as e:
     print(f"Module sensorFabricPlanner not found: {e}")
+try:
+    from plannerbenchmark.planner.filterSensorFabricPlanner import FilterSensorFabricPlanner
+except ModuleNotFoundError as e:
+    print(f"Module filterSensorFabricPlanner not found: {e}")
 from plannerbenchmark.planner.pdPlanner import PDPlanner
