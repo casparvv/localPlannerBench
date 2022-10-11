@@ -156,8 +156,11 @@ class Experiment(object):
         else:
             return gym.make(self.envName(), render=render, dt=self.dt())
 
-    def showLidar(self, env, sensor_data, q, body_ids_old, number_lidar_rays):
-        body_ids = env.show_lidar(sensor_data, q, body_ids_old, number_lidar_rays)
+    def showLidar(self, env, sensor_data, q, body_ids_old, number_lidar_rays, show_lidar_mode):
+        if show_lidar_mode == "rays_spheres":
+            body_ids = env.show_lidar(sensor_data, q, body_ids_old, number_lidar_rays)
+        if show_lidar_mode == "spheres":
+            body_ids = env.show_lidar_spheres(sensor_data, q, body_ids_old, number_lidar_rays)
         return body_ids
     
     def addScene(self, env, nb_rays=0):

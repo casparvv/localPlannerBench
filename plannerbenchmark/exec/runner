@@ -221,8 +221,11 @@ class Runner(object):
                             if i == 0:
                                 # Set body_ids_old to None for the first time creating ray visualizations.
                                 body_ids_old = None
-                            if i in range(1, self._experiment.T(), 100):
-                                body_ids_old = self._experiment.showLidar(self._env, sensor_data, q, body_ids_old, planner._config.number_lidar_rays)
+                            show_lidar_mode = "spheres" # "rays_spheres" for full visualization or "spheres" for sphere visualizations only (faster).
+                            if show_lidar_mode == "rays_spheres": show_lidar_step = 100
+                            else: show_lidar_step = 1
+                            if i in range(1, self._experiment.T(), show_lidar_step):
+                                body_ids_old = self._experiment.showLidar(self._env, sensor_data, q, body_ids_old, planner._config.number_lidar_rays, show_lidar_mode)
                         observation += [sensor_data]
                     except KeyError as key_error:
                         print(f"Sensor data not found in step {i}")
