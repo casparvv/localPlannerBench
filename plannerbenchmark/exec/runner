@@ -134,7 +134,10 @@ class Runner(object):
                 self._rosConverter.setObstacle(obst, i, t=t_exp)
         else:
             ob, _, _, _ = self._env.step(action)
+            print(f"action: {action}")
+            print(f"ob: {ob}")
             t = t_exp + self._experiment.dt()
+            print(f"t: {t}")
         return ob, t
 
     def reset(self, q0, q0dot):

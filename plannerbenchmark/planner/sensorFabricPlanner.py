@@ -30,7 +30,7 @@ class SensorFabricConfig(PlannerConfig):
     m_arm: float = 1.0
     m_rot: float = 1.0
     number_lidar_rays: int = 24
-    radius_ray_obstacles: float = 0.10
+    radius_ray_obstacles: float = 0.1
 
 
 class SensorFabricPlanner(Planner):
@@ -46,7 +46,7 @@ class SensorFabricPlanner(Planner):
             "-sym('obst_geo_lam') / (x**sym('obst_geo_exp')) * xdot**2"
         )
         collision_finsler: str = (
-            f"(20.0/{self._config.number_lidar_rays})/(x**1) * (1 - ca.heaviside(xdot)) * xdot**2"
+            f"(1.0/{self._config.number_lidar_rays}) / (x**2) * (1 - ca.heaviside(xdot)) * xdot**2"
         )
         limit_geometry: str = (
             "-0.1 / (x ** 1) * xdot ** 2"
@@ -61,7 +61,7 @@ class SensorFabricPlanner(Planner):
             "1.0/(x**1) * (-0.5 * (ca.sign(xdot) - 1)) * xdot**2"
         )
         attractor_potential: str = (
-            "1.0 * (ca.norm_2(x) + 1 / 10 * ca.log(1 + ca.exp(-2 * 10 * ca.norm_2(x))))"
+            "3.0 * (ca.norm_2(x) + 1 / 10 * ca.log(1 + ca.exp(-2 * 10 * ca.norm_2(x))))"
         )
         attractor_metric: str = (
             "((2.0 - 0.3) * ca.exp(-1 * (0.75 * ca.norm_2(x))**2) + 0.3) * ca.SX(np.identity(x.size()[0]))"
@@ -74,6 +74,8 @@ class SensorFabricPlanner(Planner):
             collision_finsler=collision_finsler,
             self_collision_geometry=self_collision_geometry,
             self_collision_finsler=self_collision_finsler,
+            attractor_potential=attractor_potential,
+            attractor_metric=attractor_metric,
         )
         self._collision_links = [i for i in range(1, self.config.n+1)]
         self._collision_links = [1]
@@ -166,5 +168,7 @@ class SensorFabricPlanner(Planner):
     def computeAction(self, *args):
         self.adapt_runtime_arguments(args)
         action = np.zeros(3)
-        action = np.clip(self._planner.compute_action(**self._runtime_arguments), -2.174, 2.174)
+        #action = np.clip(self._planner.compute_action(**self._runtime_arguments), -2.174, 2.174)
+        action = self._planner.compute_action(**self._runtime_arguments)
+        action[2] = 0
         return action
