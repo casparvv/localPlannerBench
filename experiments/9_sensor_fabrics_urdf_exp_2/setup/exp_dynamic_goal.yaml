@@ -49,6 +49,15 @@ r_body: 0.2
 randomObstacles:
   number: 3
 obstacles:
+  obst4:
+    type: analyticSphere
+    dim: 3
+    geometry:
+      trajectory:
+        - "0.6"
+        - "5-0.2*t"
+        - "0"
+      radius: 0.4
   obst0:
     type: sphereObstacle
     dim: 3

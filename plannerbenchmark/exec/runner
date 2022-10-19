@@ -233,7 +233,11 @@ class Runner(object):
                     except KeyError as key_error:
                         print(f"Sensor data not found in step {i}")
                     t_before = time.perf_counter()
+                    observation += [np.around(t, 4)]
                     action = planner.computeAction(*observation)
+                    if np.isnan(action).any():
+                        print(f"Action contains NaN values, using zero velocity instead.")
+                        action = np.zeros_like(action)
                     solving_time = time.perf_counter() - t_before
                     primeGoal = [self._experiment.evaluatePrimeGoal(t)]
                     obsts = self._experiment.evaluateObstacles(t)

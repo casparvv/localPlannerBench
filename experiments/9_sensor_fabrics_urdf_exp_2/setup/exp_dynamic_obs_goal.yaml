@@ -12,20 +12,18 @@ goal:
     indices:
       - 0
       - 1
-    parent_link: origin
-    child_link: base_link
-    trajectory:
-      degree: 2
-      controlPoints:
-         - [0.0, 0.1]
-         - [0.0, 4.0]
-         - [0.0, 8.5]
-         - [2.0, 8.5]
-         - [4.0, 8.0]
-         - [4.0, 6.0]
-         - [4.0, 4.0]
-      duration: 50
-    type: splineSubGoal
+    parent_link: 0
+    child_link: 1
+    desired_position:
+      - 4.0
+      - 5.0
+    low:
+      - 4.0
+      - 5.0
+    high: 
+      - 4.0
+      - 5.0
+    type: staticSubGoal
     epsilon: 0.1
 initState:
   q0:
@@ -49,6 +47,15 @@ r_body: 0.2
 randomObstacles:
   number: 3
 obstacles:
+  obst4:
+    type: analyticSphere
+    dim: 3
+    geometry:
+      trajectory:
+        - "0.6"
+        - "5-0.2*t"
+        - "0"
+      radius: 0.4
   obst0:
     type: sphereObstacle
     dim: 3

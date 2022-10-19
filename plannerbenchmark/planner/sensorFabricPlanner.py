@@ -43,7 +43,7 @@ class SensorFabricPlanner(Planner):
             "0.5 * sym('base_inertia') * ca.dot(xdot, xdot)"
         )
         collision_geometry: str = (
-            "-sym('obst_geo_lam') / (x**sym('obst_geo_exp')) * xdot**2"
+            "-sym('obst_geo_lam') / (x**sym('obst_geo_exp')) * (1 - ca.heaviside(xdot)) * xdot**2"
         )
         collision_finsler: str = (
             f"(1.0/{self._config.number_lidar_rays}) / (x**2) * (1 - ca.heaviside(xdot)) * xdot**2"
@@ -143,19 +143,20 @@ class SensorFabricPlanner(Planner):
         self.initialize_runtime_arguments()
 
     def adapt_runtime_arguments(self, args):
+        time = args[3]
         self._runtime_arguments['q'] = args[0]
         self._runtime_arguments['qdot'] = args[1]
         if self._dynamic_goal:
-            self._runtime_arguments['x_ref_goal_0_leaf'] = args[2]
-            self._runtime_arguments['xdot_ref_goal_0_leaf'] = args[3]
-            self._runtime_arguments['xddot_ref_goal_0_leaf'] = args[4]
+            self._runtime_arguments['x_ref_goal_0_leaf'] = np.array(self._goal.primeGoal().position(t = time))
+            self._runtime_arguments['xdot_ref_goal_0_leaf'] = np.array(self._goal.primeGoal().velocity(t = time))
+            self._runtime_arguments['xddot_ref_goal_0_leaf'] = np.array(self._goal.primeGoal().acceleration(t = time))
         else:
             self._runtime_arguments['x_goal_0'] = np.array(self._goal.primeGoal().position())
-        for i, obst in enumerate(self._dynamic_obsts):
-            for j in self._collision_links:
-                self._runtime_arguments[f'x_ref_dynamic_obst_{i}_{j}_leaf'] = args[1 + 3*i+1]
-                self._runtime_arguments[f'xdot_ref_dynamic_obst_{i}_{j}_leaf'] = args[1 + 3*i + 2]
-                self._runtime_arguments[f'xddot_ref_dynamic_obst_{i}_{j}_leaf'] = args[1 + 3*i + 3]
+#        for i, obst in enumerate(self._dynamic_obsts):
+#            for j in self._collision_links:
+#                self._runtime_arguments[f'x_ref_dynamic_obst_{i}_{j}_leaf'] = args[1 + 3*i+1]
+#                self._runtime_arguments[f'xdot_ref_dynamic_obst_{i}_{j}_leaf'] = args[1 + 3*i + 2]
+#                self._runtime_arguments[f'xddot_ref_dynamic_obst_{i}_{j}_leaf'] = args[1 + 3*i + 3]
         if len(args) > 2:
             ob_lidar = args[2].reshape(self._config.number_lidar_rays, 2) + args[0][0:2]
             ob_lidar = np.append(ob_lidar, np.zeros((self._config.number_lidar_rays, 1)), axis=1)
@@ -167,6 +168,7 @@ class SensorFabricPlanner(Planner):
 
     def computeAction(self, *args):
         self.adapt_runtime_arguments(args)
+        #print(f"runtimeargs: {self._runtime_arguments['x_goal_0']}")
         action = np.zeros(3)
         #action = np.clip(self._planner.compute_action(**self._runtime_arguments), -2.174, 2.174)
         action = self._planner.compute_action(**self._runtime_arguments)

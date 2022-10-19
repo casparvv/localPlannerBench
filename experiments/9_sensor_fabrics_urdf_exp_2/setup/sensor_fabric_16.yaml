@@ -12,14 +12,14 @@ selfCol:
 attractor:
   k_psi: 1.0
 speed:
-  ex_factor: 1.0
+  ex_factor: 0.1
 limits:
   lam: 10.0
   exp: 3.0
 damper:
   r_d: 0.80
   b: 
-   - 0.1
+   - 8.0
    - 6.5
 dynamic: False
 number_lidar_rays: 16
