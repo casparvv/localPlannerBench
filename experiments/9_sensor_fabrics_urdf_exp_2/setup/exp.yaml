@@ -6,9 +6,8 @@ robot_type: pointRobotUrdf
 n: 3
 goal:
   subgoal0:
-    prime: True
-    m: 2
-    w: 1.0
+    is_primary_goal: True
+    weight: 1.0
     indices:
       - 0
       - 1
@@ -19,14 +18,14 @@ goal:
       controlPoints:
          - [0.0, 0.1]
          - [0.0, 4.0]
-         - [0.0, 8.5]
-         - [2.0, 8.5]
+         - [0.0, 8.0]
+         - [2.0, 8.0]
          - [4.0, 8.0]
          - [4.0, 6.0]
          - [4.0, 4.0]
       duration: 50
     type: splineSubGoal
-    epsilon: 0.1
+    epsilon: 0.2
 initState:
   q0:
     - 0.0
@@ -51,7 +50,6 @@ randomObstacles:
 obstacles:
   obst0:
     type: sphereObstacle
-    dim: 3
     geometry:
       position: 
         - 0.6
@@ -72,7 +70,6 @@ obstacles:
       radius: 0.5
   obst1:
     type: sphereObstacle
-    dim: 3
     geometry:
       position: 
         - -0.6
@@ -93,7 +90,6 @@ obstacles:
       radius: 0.5
   obst3:
     type: sphereObstacle
-    dim: 3
     geometry:
       position: 
         - 0.7

@@ -21,6 +21,6 @@ damper:
   b: 
    - 8.0
    - 6.5
-dynamic: False
+dynamic: True
 number_lidar_rays: 16
 

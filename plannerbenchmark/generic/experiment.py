@@ -7,11 +7,12 @@ import casadi as ca
 import planarenvs.point_robot
 import planarenvs.n_link_reacher
 import planarenvs.ground_robots
-import urdfenvs.tiago_reacher
-import urdfenvs.panda_reacher
-import urdfenvs.mobile_reacher
-import urdfenvs.albert_reacher
-import urdfenvs.boxer_robot
+#import urdfenvs.robots.tiago.tiago_robot
+#import urdfenvs.robots.generic_urdf.panda
+#import urdfenvs.mobile_reacher
+#import urdfenvs.albert_reacher
+#import urdfenvs.robots.boxer.boxer_robot
+#import urdfenvs.generic_urdf.point_robot
 import urdfenvs.point_robot_urdf
 
 from urdfenvs.sensors.lidar import Lidar
@@ -59,7 +60,7 @@ class Experiment(object):
         with open(self._setupFile, "r") as setupStream:
             self._setup = yaml.safe_load(setupStream)
         self.checkCompleteness()
-        self._motionPlanningGoal = GoalComposition(name="mpg", contentDict=self._setup['goal'])
+        self._motionPlanningGoal = GoalComposition(name="mpg", content_dict=self._setup['goal'])
         self.parseObstacles()
 
     def parseObstacles(self):
@@ -70,7 +71,7 @@ class Experiment(object):
                 obstData = self._setup["obstacles"][obst]
                 obstType = obstData['type']
                 obstName = obst
-                self._obstacles.append(self._obstacleCreator.createObstacle(obstType, obstName, obstData))
+                self._obstacles.append(self._obstacleCreator.create_obstacle(obstType, obstName, obstData))
 
     def dynamic(self):
         return self._setup['dynamic']
@@ -138,11 +139,11 @@ class Experiment(object):
         return self._motionPlanningGoal
 
     def primeGoal(self, **kwargs):
-        return self._motionPlanningGoal.primeGoal()
+        return self._motionPlanningGoal.primary_goal()
         if 't' in kwargs:
             return self._motionPlanningGoal.evaluatePrimeGoal(kwargs.get('t'))
         else:
-            return self._motionPlanningGoal.primeGoal()
+            return self._motionPlanningGoal.primary_goal()
 
     def evaluatePrimeGoal(self, t):
         return self.primeGoal().position(t=t)
