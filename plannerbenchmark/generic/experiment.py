@@ -254,7 +254,7 @@ class Experiment(object):
         obstFile = folderPath + "/obst"
         initStateFilename = folderPath + "/initState.csv"
         for i, obst in enumerate(self._obstacles):
-            obstsDict[obst.name()] = obst.toDict()
+            obstsDict[obst.name()] = obst.dict()
             obst.toCSV(obstFile + "_" + str(i) + ".csv")
         self._setup["obstacles"] = obstsDict
         with open(folderPath + "/exp.yaml", "w") as file:
