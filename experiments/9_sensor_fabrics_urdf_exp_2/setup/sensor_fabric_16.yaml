@@ -2,7 +2,7 @@ interval: 1
 name: sensorfabric
 robot_type: pointRobotUrdf
 n: 3
-m_base: 2.0
+m_base: 0.4
 obst:
   exp: 2.0
   lam: 2.0
@@ -19,8 +19,8 @@ limits:
 damper:
   r_d: 0.80
   b: 
-   - 8.0
+   - 0.1
    - 6.5
-dynamic: True
+dynamic: False
 number_lidar_rays: 16
 

@@ -2,17 +2,17 @@ interval: 1
 name: filtersensorfabric
 robot_type: pointRobotUrdf
 n: 3
-m_base: 2.0
+m_base: 0.4
 obst:
   exp: 2.0
-  lam: 3.0
+  lam: 2.0
 selfCol:
   exp: 1.0
   lam: 2.0
 attractor:
   k_psi: 1.0
 speed:
-  ex_factor: 1.0
+  ex_factor: 0.1
 limits:
   lam: 10.0
   exp: 3.0

@@ -171,14 +171,14 @@ class Experiment(object):
         # Exp 2
         #env.add_walls(dim=np.array([0.2, 14, 0.5]), poses_2d=[[0, 3, np.pi/2]])
         
-        env.add_walls(dim=np.array([0.2, 2.2, 0.5]), poses_2d=[[0, -1, np.pi/2]])
-        env.add_walls(dim=np.array([0.2, 10, 0.5]), poses_2d=[[-1, 4, 0]])
-        env.add_walls(dim=np.array([0.2, 8, 0.5]), poses_2d=[[1, 3, 0]])
-        env.add_walls(dim=np.array([0.2, 6.2, 0.5]), poses_2d=[[2, 9, np.pi/2]])
-        env.add_walls(dim=np.array([0.2, 2.2, 0.5]), poses_2d=[[2, 7, np.pi/2]])
-        env.add_walls(dim=np.array([0.2, 6, 0.5]), poses_2d=[[5, 6, 0]])
-        env.add_walls(dim=np.array([0.2, 4, 0.5]), poses_2d=[[3, 5, 0]])
-        env.add_walls(dim=np.array([0.2, 2.2, 0.5]), poses_2d=[[4, 3, np.pi/2]])
+        env.add_walls(dim=np.array([0.2, 3.2, 0.5]), poses_2d=[[0, -1, np.pi/2]])
+        env.add_walls(dim=np.array([0.2, 10, 0.5]), poses_2d=[[-1.5, 4, 0]])
+        env.add_walls(dim=np.array([0.2, 7, 0.5]), poses_2d=[[1.5, 2.5, 0]])
+        env.add_walls(dim=np.array([0.2, 8.2, 0.5]), poses_2d=[[2.5, 9, np.pi/2]])
+        env.add_walls(dim=np.array([0.2, 2.2, 0.5]), poses_2d=[[2.5, 6, np.pi/2]])
+        env.add_walls(dim=np.array([0.2, 6, 0.5]), poses_2d=[[6.5, 6, 0]])
+        env.add_walls(dim=np.array([0.2, 3, 0.5]), poses_2d=[[3.5, 4.5, 0]])
+        env.add_walls(dim=np.array([0.2, 3.2, 0.5]), poses_2d=[[5, 3, np.pi/2]])
         
         for obst in self._obstacles:
             env.add_obstacle(obst)
@@ -196,11 +196,11 @@ class Experiment(object):
 
     def shuffleObstacles(self):
         self._obstacles = []
-        obstData = self._setup["obstacles"]['obst0']
-        obstType = obstData['type']
         for i in range(self._setup["randomObstacles"]["number"]):
-            obstName = 'obst' + str(i)
-            randomObst = self._obstacleCreator.createObstacle(obstType, obstName, obstData)
+            obstData = self._setup["obstacles"][f"obst{str(i)}"]
+            obstType = obstData['type']
+            obstName = f"obst{str(i)}"
+            randomObst = self._obstacleCreator.create_obstacle(obstType, obstName, obstData)
             randomObst.shuffle()
             self._obstacles.append(randomObst)
 
