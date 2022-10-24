@@ -249,7 +249,7 @@ class Experiment(object):
                 raise ExperimentInfeasible("Goal unreachible")
 
     def save(self, folderPath):
-        self._setup["goal"] = self._motionPlanningGoal.toDict()
+        self._setup["goal"] = self._motionPlanningGoal.dict()
         obstsDict = {}
         obstFile = folderPath + "/obst"
         initStateFilename = folderPath + "/initState.csv"
