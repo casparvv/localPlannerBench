@@ -1,6 +1,6 @@
 set term postscript eps color size 7.0, 7.0 font "RomanSerif.ttf" 14
 seriesFolder=ARG1
-inFile=seriesFolder."successTable.csv"
+inFile=seriesFolder."successTableOrdered.csv"
 outFileHist=seriesFolder."/success.eps"
 
 set output outFileHist
@@ -18,7 +18,7 @@ set xtics ('4' 0, '16' 1, '64' 2, '256' 3, '512' 4) scale 1.0 font ',55' rotate 
 unset ytics
 set xlabel "Number of LiDAR rays" font ",60" offset 0,-8
 nbPlanner=5
-nbCases=30
+nbCases=10
 set xrange [-0.5:nbPlanner - 0.5]
 set yrange [0:2 * nbCases]
 set y2range [0:1.2 * nbCases]

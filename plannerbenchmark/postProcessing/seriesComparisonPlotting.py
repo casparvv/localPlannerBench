@@ -46,10 +46,15 @@ class SeriesComparisonPlotting(object):
         curPath = os.path.dirname(os.path.abspath(__file__)) + "/"
         curPath = pkg_path
         createPlotFolder = curPath + "plottingSeries"
+        plot_shell_script = "./createComparisonPlot"
+        # Exp 1 or Exp 2, remove for normal usage
+        createPlotFolder = curPath + "plottingSensorFabric"
+        plot_shell_script = "./createComparisonPlotExp2"
+        
         plannerNames = self.getPlannerNames()
         subprocess.Popen(
             [
-                "./createComparisonPlot",
+                plot_shell_script,
                 self._folder,
                 str(self._nbMetrics),
             ],

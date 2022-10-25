@@ -122,7 +122,7 @@ class ClearanceMetric(Metric):
 
     def computeMetric(self, data):
         obstacles = self._params["obstacles"]
-        m = obstacles[0].dim()
+        m = len(obstacles[0].position())
         n = self._params["n"]
         r_body = self._params["r_body"]
         rawData = np.stack([data[name] for name in self._measNames])

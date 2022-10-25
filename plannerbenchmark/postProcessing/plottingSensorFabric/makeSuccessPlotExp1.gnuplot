@@ -1,6 +1,6 @@
 set term postscript eps color size 7.0, 7.0 font "RomanSerif.ttf" 14
 seriesFolder=ARG1
-inFile=seriesFolder."successTable.csv"
+inFile=seriesFolder."successTableOrdered.csv"
 outFileHist=seriesFolder."/success.eps"
 
 set output outFileHist
