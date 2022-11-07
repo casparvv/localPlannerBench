@@ -46,7 +46,7 @@ class SensorFabricPlanner(Planner):
             "-sym('obst_geo_lam') / (x**sym('obst_geo_exp')) * (1 - ca.heaviside(xdot)) * xdot**2"
         )
         collision_finsler: str = (
-            f"(1.0/{self._config.number_lidar_rays}) / (x**2) * (1 - ca.heaviside(xdot)) * xdot**2"
+            f"(10.0/{self._config.number_lidar_rays}) / (x**2) * (1 - ca.heaviside(xdot)) * xdot**2"
         )
         limit_geometry: str = (
             "-0.1 / (x ** 1) * xdot ** 2"
@@ -61,7 +61,7 @@ class SensorFabricPlanner(Planner):
             "1.0/(x**1) * (-0.5 * (ca.sign(xdot) - 1)) * xdot**2"
         )
         attractor_potential: str = (
-            "3.0 * (ca.norm_2(x) + 1 / 10 * ca.log(1 + ca.exp(-2 * 10 * ca.norm_2(x))))"
+            "1.0/ca.norm_2(xdot) * (ca.norm_2(x) + 1 / 10 * ca.log(1 + ca.exp(-2 * 10 * ca.norm_2(x))))"
         )
         attractor_metric: str = (
             "((2.0 - 0.3) * ca.exp(-1 * (0.75 * ca.norm_2(x))**2) + 0.3) * ca.SX(np.identity(x.size()[0]))"
