@@ -18,7 +18,7 @@ set xtics ('4' 0, '16' 1, '64' 2, '256' 3, '512' 4) scale 1.0 font ',55' rotate 
 unset ytics
 set xlabel "Number of LiDAR rays" font ",60" offset 0,-8
 nbPlanner=5
-nbCases=10
+nbCases=30
 set xrange [-0.5:nbPlanner - 0.5]
 set yrange [0:2 * nbCases]
 set y2range [0:1.2 * nbCases]
@@ -36,12 +36,12 @@ x3 = x2 + 2 * dx
 y = 1.05 * nbCases
 dy = 0.05 * nbCases
 
-set label 2 'Success' at x,y+dy rotate by 90 offset 1*nbPlanner + 1*dx - 8,15 font ',55'
+set label 2 'Success' at x,y+dy rotate by 90 offset 1*nbPlanner + 1*dx - 1,15 font ',55'
 set object rect from x,y+22 to x+dx,y+dy+22 fc rgb 'white' fs transparent solid 0.5
-set label 3 'Collision' at x2 - 1,y+dy rotate by 90 offset 1*nbPlanner + 1*dx - 8,15 font ',55'
-set object rectangle from x2 - 1,y+22 to x2+dx - 1,y+dy+22 fc rgb 'black' fs transparent solid 0.5
-set label 4 'Not Reached' at x3 - 2,y+dy rotate by 90 offset 1*nbPlanner + 1*dx - 8,15 font ',55'
-set object rectangle from x3 - 2,y+22 to x3+dx - 2,y+dy+22 fc rgb 'gray' fs transparent solid 0.5
+set label 3 'Collision' at x2 - 1,y+dy rotate by 90 offset 1*nbPlanner + 1*dx - -12,15 font ',55'
+set object rectangle from x2-0.4,y+22 to x2-0.4+dx,y+dy+22 fc rgb 'black' fs transparent solid 0.5
+set label 4 'Not Reached' at x3 - 2,y+dy rotate by 90 offset 1*nbPlanner + 1*dx - -25,15 font ',55'
+set object rectangle from x3 - 0.8,y+22 to x3 - 0.8+dx,y+dy+22 fc rgb 'gray' fs transparent solid 0.5
 plot inFile using 4 notitle lc rgbcolor 'white' axes x1y2, \
    '' using 3 notitle lc rgb 'black' axes x1y2, \
    '' using 2 notitle lc rgb 'gray' axes x1y2
