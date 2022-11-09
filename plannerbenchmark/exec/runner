@@ -164,11 +164,11 @@ class Runner(object):
     def run(self):
         print("start run")
         completedRuns = 0
-        print("Composing the planner(s)")
-        composition_time = self.setPlanner()
-        print(f"Planner(s) composed in {composition_time} sec")
         while completedRuns < self._numberRuns:
             self._experiment.shuffle(self._random_obst, self._random_init, self._random_goal)
+            print("Composing the planner(s)")
+            composition_time = self.setPlanner()
+            print(f"Planner(s) composed in {composition_time} sec")
             try:
                 self._experiment.checkFeasibility(checkGoalReachible=False)
                 completedRuns += 1
