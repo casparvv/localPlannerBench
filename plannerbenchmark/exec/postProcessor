@@ -60,9 +60,9 @@ class SlimPostProcessor(object):
                 evaluator = SeriesComparison(folder, recycle=args.recycle)
         else:
             evaluator = CaseEvaluation(folder, recycle=args.recycle)
-        evaluator.setMetrics(kpis)
-        evaluator.process()
-        evaluator.writeResults()
+        #evaluator.setMetrics(kpis)
+        #evaluator.process()
+        #evaluator.writeResults()
         if args.plot and not args.series:
             plotter = CasePlotting(folder)
             plotter.plot()

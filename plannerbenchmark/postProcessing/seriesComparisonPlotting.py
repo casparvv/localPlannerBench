@@ -49,7 +49,7 @@ class SeriesComparisonPlotting(object):
         plot_shell_script = "./createComparisonPlot"
         # Exp 1 or Exp 2, remove for normal usage
         createPlotFolder = curPath + "plottingSensorFabric"
-        plot_shell_script = "./createComparisonPlotExp2"
+        plot_shell_script = "./createComparisonPlotExp1"
         
         plannerNames = self.getPlannerNames()
         subprocess.Popen(

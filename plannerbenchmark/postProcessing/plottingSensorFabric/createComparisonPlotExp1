@@ -2,5 +2,5 @@
 abspath=`realpath "$0"`
 seriesFolder="$1/"
 N=$2
-gnuplot -c "makeComparisonPlot.gnuplot" $seriesFolder $N
-gnuplot -c "makeSuccessPlot.gnuplot" $seriesFolder
+gnuplot -c "makeComparisonPlotExp1.gnuplot" $seriesFolder $N
+gnuplot -c "makeSuccessPlotExp1.gnuplot" $seriesFolder
