@@ -71,6 +71,8 @@ class TimeToReachGoalMetric(Metric):
         dimension_goal = len(self._params["goal_indices"])
         fks = np.stack([data[name] for name in self._measNames[:dimension_goal]]).T
         goal = np.stack([data[name] for name in self._measNames[dimension_goal:-1]]).T
+        # Rework to compute time to goal in the case of a moving goal.
+        goal = np.full((1000, 2), [5.0, 4.5])
         time_steps = data[self._measNames[-1]]
         des_distance = self._params["des_distance"]
         distances = computeDistances(fks, goal)

@@ -1,4 +1,3 @@
-
 # General dependencies
 from dataclasses import dataclass, field
 from typing import Dict
@@ -127,7 +126,7 @@ class SensorFabricPlanner(Planner):
         self._limits = limits
 
     def setGoal(self, goal):
-        self._dynamic_goal = isinstance(goal.primary_goal(), DynamicSubGoal) 
+        self._dynamic_goal = isinstance(goal.primary_goal(), DynamicSubGoal)
         self._goal = goal
 
     def concretize(self):
@@ -173,3 +172,4 @@ class SensorFabricPlanner(Planner):
         #action = self._planner.compute_action(**self._runtime_arguments)
         action[2] = 0
         return action
+

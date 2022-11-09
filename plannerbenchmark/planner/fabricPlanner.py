@@ -43,7 +43,7 @@ class FabricPlanner(Planner):
             "-sym('obst_geo_lam') / (x ** sym('obst_geo_exp')) * xdot ** 2"
         )
         collision_finsler: str = (
-            "1.0/(x**1) * (-0.5 * (ca.sign(xdot) - 1)) * xdot**2"
+            "1.0 / (x**2) * (1 - ca.heaviside(xdot)) * xdot**2"
         )
         limit_geometry: str = (
             "-0.1 / (x ** 1) * xdot ** 2"
@@ -71,8 +71,11 @@ class FabricPlanner(Planner):
             collision_finsler=collision_finsler,
             self_collision_geometry=self_collision_geometry,
             self_collision_finsler=self_collision_finsler,
+            attractor_potential=attractor_potential,
+            attractor_metric=attractor_metric,
         )
         self._collision_links = [i for i in range(1, self.config.n+1)]
+        self._collision_links = [1]
         self._number_obstacles = 0
         self._dynamic_goal = False
 
@@ -123,7 +126,7 @@ class FabricPlanner(Planner):
         self._limits = limits
 
     def setGoal(self, goal):
-        self._dynamic_goal = isinstance(goal.primeGoal(), DynamicSubGoal) 
+        self._dynamic_goal = isinstance(goal.primary_goal(), DynamicSubGoal)
         self._goal = goal
 
     def concretize(self):
@@ -140,25 +143,26 @@ class FabricPlanner(Planner):
 
 
     def adapt_runtime_arguments(self, args):
+        time = args[2]
         self._runtime_arguments['q'] = args[0]
         self._runtime_arguments['qdot'] = args[1]
         if self._dynamic_goal:
-            self._runtime_arguments['x_ref_goal_0_leaf'] = args[2]
-            self._runtime_arguments['xdot_ref_goal_0_leaf'] = args[3]
-            self._runtime_arguments['xddot_ref_goal_0_leaf'] = args[4]
+            self._runtime_arguments['x_ref_goal_0_leaf'] = np.array(self._goal.primary_goal().position(t = time))
+            self._runtime_arguments['xdot_ref_goal_0_leaf'] = np.array(self._goal.primary_goal().velocity(t = time))
+            self._runtime_arguments['xddot_ref_goal_0_leaf'] = np.array(self._goal.primary_goal().acceleration(t = time))
         else:
-            self._runtime_arguments['x_goal_0'] = np.array(self._goal.primeGoal().position())
-        for i, obst in enumerate(self._dynamic_obsts):
-            for j in self._collision_links:
-                self._runtime_arguments[f'x_ref_dynamic_obst_{i}_{j}_leaf'] = args[1 + 3*i+1]
-                self._runtime_arguments[f'xdot_ref_dynamic_obst_{i}_{j}_leaf'] = args[1 + 3*i + 2]
-                self._runtime_arguments[f'xddot_ref_dynamic_obst_{i}_{j}_leaf'] = args[1 + 3*i + 3]
-
-
-        pass
+            self._runtime_arguments['x_goal_0'] = np.array(self._goal.primary_goal().position())
+#        for i, obst in enumerate(self._dynamic_obsts):
+#            for j in self._collision_links:
+#                self._runtime_arguments[f'x_ref_dynamic_obst_{i}_{j}_leaf'] = args[1 + 3*i+1]
+#                self._runtime_arguments[f'xdot_ref_dynamic_obst_{i}_{j}_leaf'] = args[1 + 3*i + 2]
+#                self._runtime_arguments[f'xddot_ref_dynamic_obst_{i}_{j}_leaf'] = args[1 + 3*i + 3]
 
     def computeAction(self, *args):
         self.adapt_runtime_arguments(args)
         action = np.zeros(3)
-        action = self._planner.compute_action(**self._runtime_arguments)
+        action = np.clip(self._planner.compute_action(**self._runtime_arguments), -2.174, 2.174)
+        #action = self._planner.compute_action(**self._runtime_arguments)
+        action[2] = 0
         return action
+
