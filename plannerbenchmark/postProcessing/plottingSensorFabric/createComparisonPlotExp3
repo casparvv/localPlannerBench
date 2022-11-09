@@ -1,0 +1,6 @@
+#!/bin/bash
+abspath=`realpath "$0"`
+seriesFolder="$1/"
+N=$2
+gnuplot -c "makeComparisonPlotExp3.gnuplot" $seriesFolder $N
+gnuplot -c "makeSuccessPlotExp3.gnuplot" $seriesFolder

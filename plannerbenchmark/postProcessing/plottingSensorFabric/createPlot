@@ -1,7 +1,0 @@
-#!/bin/bash
-abspath=`realpath "$0"`
-seriesFolder="${1}/"
-planner=${2}
-N=${3}
-gnuplot -c "makeSeriesPlot.gnuplot" $seriesFolder $planner $N
-gnuplot -c "makeSuccessPlot.gnuplot" $seriesFolder $planner
