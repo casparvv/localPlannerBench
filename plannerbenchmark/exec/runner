@@ -164,11 +164,11 @@ class Runner(object):
     def run(self):
         print("start run")
         completedRuns = 0
+        print("Composing the planner(s)")
+        composition_time = self.setPlanner()
+        print(f"Planner(s) composed in {composition_time} sec")
         while completedRuns < self._numberRuns:
             self._experiment.shuffle(self._random_obst, self._random_init, self._random_goal)
-            print("Composing the planner(s)")
-            composition_time = self.setPlanner()
-            print(f"Planner(s) composed in {composition_time} sec")
             try:
                 self._experiment.checkFeasibility(checkGoalReachible=False)
                 completedRuns += 1
@@ -197,7 +197,10 @@ class Runner(object):
                         print("No lidar sensor added to the environment.")
                         self._experiment.addScene(self._env)
                 if len(self._planners) > 1:
-                    logger = Logger(self._res_folder, str(planner._config.number_lidar_rays) + "_" + timeStamp)
+                    if planner._config.name == "fabric":
+                        logger = Logger(self._res_folder, "0" + "_" + timeStamp)
+                    else:
+                        logger = Logger(self._res_folder, str(planner._config.number_lidar_rays) + "_" + timeStamp)
                 else:
                     logger = Logger(self._res_folder, timeStamp)
                 logger.setSetups(self._experiment, planner)
@@ -233,9 +236,12 @@ class Runner(object):
                                 body_ids_old = self._experiment.showLidar(self._env, sensor_data, q, body_ids_old, planner._config.number_lidar_rays, show_lidar_mode)
                         observation += [sensor_data]
                     except KeyError as key_error:
-                        print(f"Sensor data not found in step {i}")
+                        pass
+                        #print(f"Sensor data not found in step {i}")
                     t_before = time.perf_counter()
                     observation += [np.around(t, 4)]
+                    if planner._config.name == "fabric":
+                        observation += [self._experiment.obstacles()]
                     action = planner.computeAction(*observation)
                     if np.isnan(action).any():
                         print(f"Action contains NaN values, using zero velocity instead.")

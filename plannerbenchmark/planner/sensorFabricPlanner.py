@@ -60,7 +60,7 @@ class SensorFabricPlanner(Planner):
             "1.0/(x**1) * (-0.5 * (ca.sign(xdot) - 1)) * xdot**2"
         )
         attractor_potential: str = (
-            "1.0/ca.norm_2(xdot) * (ca.norm_2(x) + 1 / 10 * ca.log(1 + ca.exp(-2 * 10 * ca.norm_2(x))))"
+            "5.0 * (ca.norm_2(x) + 1 / 10 * ca.log(1 + ca.exp(-2 * 10 * ca.norm_2(x))))"
         )
         attractor_metric: str = (
             "((2.0 - 0.3) * ca.exp(-1 * (0.75 * ca.norm_2(x))**2) + 0.3) * ca.SX(np.identity(x.size()[0]))"

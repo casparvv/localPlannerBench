@@ -40,10 +40,10 @@ class FabricPlanner(Planner):
             "0.5 * sym('base_inertia') * ca.dot(xdot, xdot)"
         )
         collision_geometry: str = (
-            "-sym('obst_geo_lam') / (x ** sym('obst_geo_exp')) * xdot ** 2"
+            "-sym('obst_geo_lam') / (x**sym('obst_geo_exp')) * (1 - ca.heaviside(xdot)) * xdot**2"
         )
         collision_finsler: str = (
-            "1.0 / (x**2) * (1 - ca.heaviside(xdot)) * xdot**2"
+            f"1.0 / (x**2) * (1 - ca.heaviside(xdot)) * xdot**2"
         )
         limit_geometry: str = (
             "-0.1 / (x ** 1) * xdot ** 2"
@@ -152,6 +152,9 @@ class FabricPlanner(Planner):
             self._runtime_arguments['xddot_ref_goal_0_leaf'] = np.array(self._goal.primary_goal().acceleration(t = time))
         else:
             self._runtime_arguments['x_goal_0'] = np.array(self._goal.primary_goal().position())
+        for j in range(self._number_static_obstacles):
+            self._runtime_arguments[f'radius_obst_{j}'] = np.array([args[3][j].radius()])
+            self._runtime_arguments[f'x_obst_{j}'] = np.array(args[3][j].position())
 #        for i, obst in enumerate(self._dynamic_obsts):
 #            for j in self._collision_links:
 #                self._runtime_arguments[f'x_ref_dynamic_obst_{i}_{j}_leaf'] = args[1 + 3*i+1]
