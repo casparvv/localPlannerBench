@@ -236,8 +236,7 @@ class Runner(object):
                                 body_ids_old = self._experiment.showLidar(self._env, sensor_data, q, body_ids_old, planner._config.number_lidar_rays, show_lidar_mode)
                         observation += [sensor_data]
                     except KeyError as key_error:
-                        pass
-                        #print(f"Sensor data not found in step {i}")
+                        observation += [0]
                     t_before = time.perf_counter()
                     observation += [np.around(t, 4)]
                     if planner._config.name == "fabric":

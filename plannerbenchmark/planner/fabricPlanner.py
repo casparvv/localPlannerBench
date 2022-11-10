@@ -143,7 +143,7 @@ class FabricPlanner(Planner):
 
 
     def adapt_runtime_arguments(self, args):
-        time = args[2]
+        time = args[3]
         self._runtime_arguments['q'] = args[0]
         self._runtime_arguments['qdot'] = args[1]
         if self._dynamic_goal:
@@ -153,8 +153,8 @@ class FabricPlanner(Planner):
         else:
             self._runtime_arguments['x_goal_0'] = np.array(self._goal.primary_goal().position())
         for j in range(self._number_static_obstacles):
-            self._runtime_arguments[f'radius_obst_{j}'] = np.array([args[3][j].radius()])
-            self._runtime_arguments[f'x_obst_{j}'] = np.array(args[3][j].position())
+            self._runtime_arguments[f'radius_obst_{j}'] = np.array([args[4][j].radius()])
+            self._runtime_arguments[f'x_obst_{j}'] = np.array(args[4][j].position())
 #        for i, obst in enumerate(self._dynamic_obsts):
 #            for j in self._collision_links:
 #                self._runtime_arguments[f'x_ref_dynamic_obst_{i}_{j}_leaf'] = args[1 + 3*i+1]
