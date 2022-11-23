@@ -240,7 +240,7 @@ class Runner(object):
                     t_before = time.perf_counter()
                     observation += [np.around(t, 4)]
                     if planner._config.name == "fabric":
-                        observation += [self._experiment.obstacles()]
+                        observation += [self._experiment.evaluateObstacles(t)]
                     action = planner.computeAction(*observation)
                     if np.isnan(action).any():
                         print(f"Action contains NaN values, using zero velocity instead.")

@@ -106,9 +106,12 @@ class FabricPlanner(Planner):
         self._static_obsts = []
         for obst in obsts:
             if isinstance(obst, DynamicSphereObstacle):
-                self._dynamic_obsts.append(obst)
+                print(f"Dynamic sphere disabled in fabricPlanner.py in setObstacles")
+                #self._dynamic_obsts.append(obst)
             else:
                 self._static_obsts.append(obst)
+            # Workaround to still add the obstacles, but as static obstacles.
+            self._static_obsts.append(obst)
         self._number_static_obstacles = len(self._static_obsts)
         self._number_dynamic_obstacles = len(self._dynamic_obsts)
 
@@ -153,8 +156,8 @@ class FabricPlanner(Planner):
         else:
             self._runtime_arguments['x_goal_0'] = np.array(self._goal.primary_goal().position())
         for j in range(self._number_static_obstacles):
-            self._runtime_arguments[f'radius_obst_{j}'] = np.array([args[4][j].radius()])
-            self._runtime_arguments[f'x_obst_{j}'] = np.array(args[4][j].position())
+            self._runtime_arguments[f'radius_obst_{j}'] = np.array(0.4)
+            self._runtime_arguments[f'x_obst_{j}'] = np.array(args[4][j])
 #        for i, obst in enumerate(self._dynamic_obsts):
 #            for j in self._collision_links:
 #                self._runtime_arguments[f'x_ref_dynamic_obst_{i}_{j}_leaf'] = args[1 + 3*i+1]

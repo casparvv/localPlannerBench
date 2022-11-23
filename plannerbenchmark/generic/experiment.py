@@ -94,10 +94,13 @@ class Experiment(object):
         return evalGoal + evalObsts
 
     def evaluateObstacles(self, t):
-        evals = []
+        evals = np.zeros((len(self._obstacles), 3))
+        i = 0
         for obst in self._obstacles:
             if 'analytic' in obst.type():
-                evals += obst.traj().evaluate(t=t)
+                # Current workaround to only return position information from obstacles.
+                evals[i] = obst.traj().evaluate(t=t)[0]
+                i += 1
         return evals
 
     def robotType(self):

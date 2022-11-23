@@ -20,13 +20,13 @@ set style boxplot nooutliers
 set style data boxplot
 set boxwidth 0.5
 set pointsize 0.5
-set xtics ('0.0' 1, 'Regular' 2, '16' 3, '64' 4, '256' 5, '512' 6) rotate by 90 font ",55" offset 0,-7.5
+set xtics ('0.0' 1, '0' 2, '16' 3, '64' 4, '256' 5, '512' 6) rotate by 90 font ",55" offset 0,-7.5
 set ytics font ",55"
 set grid ytics
 
 outFileBox=seriesFolder."/results_comparison_clearance.eps"
 set output outFileBox
-set yrange [0.0:2.0]
+set yrange [0.0:1.0]
 set xlabel "Number of LiDAR rays" font ",60" offset -6.0,-8
 set ylabel "Clearance (m)" font ",60" offset -9.0,0
 plot inFile0 using (2):2 notitle, inFile16 using (3):2 notitle, inFile64 using (4):2 notitle, inFile256 using (5):2 notitle, inFile512 using (6):2 notitle
@@ -48,7 +48,7 @@ plot inFile0 using (2):4 notitle, inFile16 using (3):4 notitle, inFile64 using (
 
 outFileBox=seriesFolder."/results_comparison_time2goal.eps"
 set output outFileBox
-set yrange [0:30]
+set yrange [0:20]
 set xlabel "Number of LiDAR rays" font ",60" offset -6.0,-8
 set ylabel "Time to goal (s)" font ",60" offset -8.0,0
 plot inFile0 using (2):5 notitle, inFile16 using (3):5 notitle, inFile64 using (4):5 notitle, inFile256 using (5):5 notitle, inFile512 using (6):5 notitle
