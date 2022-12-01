@@ -47,405 +47,385 @@ randomObstacles:
   number: 20
 obstacles:
   obst0:
-    type: sphereObstacle
+    type: cylinderObstacle
     geometry:
       position: 
-        - -1.2
-        - 2.0
-        - 0.2
-      radius: 0.1
+        - 0.0
+        - 3.0
+        - 0.25
+      radius: 0.025
+      height: 0.5
     low:
       position:
-        - -0.5
+        - -5.0
         - 2.0
-        - 0.2
-      radius: 0.1
+        - 0.25
     high:
       position:
-        - 0.5
-        - 2.0
-        - 0.2
-      radius: 0.1
+        - 5.0
+        - 12.0
+        - 0.25
   obst1:
-    type: sphereObstacle
+    type: cylinderObstacle
     geometry:
       position: 
-        - 1.2
-        - 4.0
-        - 0.2
-      radius: 0.1
+        - 0.0
+        - 5.0
+        - 0.25
+      radius: 0.025
+      height: 0.5
     low:
       position:
-        - -0.5
-        - 4.0
-        - 0.2
-      radius: 0.1
+        - -5.0
+        - 2.0
+        - 0.25
     high:
       position:
-        - 0.5
-        - 4.0
-        - 0.2
-      radius: 0.1
+        - 5.0
+        - 12.0
+        - 0.25
   obst2:
-    type: sphereObstacle
+    type: cylinderObstacle
     geometry:
       position: 
-        - -1.2
-        - 6.0
-        - 0.2
-      radius: 0.1
+        - 0.0
+        - 5.0
+        - 0.25
+      radius: 0.025
+      height: 0.5
     low:
       position:
-        - -0.5
-        - 6.0
-        - 0.2
-      radius: 0.1
+        - -5.0
+        - 2.0
+        - 0.25
     high:
       position:
-        - 0.5
-        - 6.0
-        - 0.2
-      radius: 0.1
+        - 5.0
+        - 12.0
+        - 0.25
   obst3:
-    type: sphereObstacle
+    type: cylinderObstacle
     geometry:
       position: 
-        - 1.2
-        - 8.0
-        - 0.2
-      radius: 0.1
+        - 0.0
+        - 5.0
+        - 0.25
+      radius: 0.025
+      height: 0.5
     low:
       position:
-        - -0.5
-        - 8.0
-        - 0.2
-      radius: 0.1
+        - -5.0
+        - 2.0
+        - 0.25
     high:
       position:
-        - 0.5
-        - 8.0
-        - 0.2
-      radius: 0.1
+        - 5.0
+        - 12.0
+        - 0.25
   obst4:
-    type: sphereObstacle
+    type: cylinderObstacle
     geometry:
       position: 
-        - -1.2
-        - 10.0
-        - 0.2
-      radius: 0.1
+        - 0.0
+        - 5.0
+        - 0.25
+      radius: 0.025
+      height: 0.5
     low:
       position:
-        - -0.5
-        - 10.0
-        - 0.2
-      radius: 0.1
+        - -5.0
+        - 2.0
+        - 0.25
     high:
       position:
-        - 0.5
-        - 10.0
-        - 0.2
-      radius: 0.1
+        - 5.0
+        - 12.0
+        - 0.25
   obst5:
-    type: sphereObstacle
+    type: cylinderObstacle
     geometry:
       position: 
-        - 1.2
-        - 12.0
-        - 0.2
-      radius: 0.1
+        - 0.0
+        - 5.0
+        - 0.25
+      radius: 0.025
+      height: 0.5
     low:
       position:
-        - -0.5
-        - 12.0
-        - 0.2
-      radius: 0.1
+        - -5.0
+        - 2.0
+        - 0.25
     high:
       position:
-        - 0.5
+        - 5.0
         - 12.0
-        - 0.2
-      radius: 0.1
+        - 0.25
   obst6:
-    type: sphereObstacle
+    type: cylinderObstacle
     geometry:
       position: 
-        - 1.2
-        - 12.0
-        - 0.2
-      radius: 0.1
+        - 0.0
+        - 5.0
+        - 0.25
+      radius: 0.025
+      height: 0.5
     low:
       position:
-        - -1.5
+        - -5.0
         - 2.0
-        - 0.2
-      radius: 0.1
+        - 0.25
     high:
       position:
-        - 1.5
+        - 5.0
         - 12.0
-        - 0.2
-      radius: 0.1
+        - 0.25
   obst7:
-    type: sphereObstacle
+    type: cylinderObstacle
     geometry:
       position: 
-        - 1.2
-        - 12.0
-        - 0.2
-      radius: 0.1
+        - 0.0
+        - 5.0
+        - 0.25
+      radius: 0.025
+      height: 0.5
     low:
       position:
-        - -1.5
+        - -5.0
         - 2.0
-        - 0.2
-      radius: 0.1
+        - 0.25
     high:
       position:
-        - 1.5
+        - 5.0
         - 12.0
-        - 0.2
-      radius: 0.1
+        - 0.25
   obst8:
-    type: sphereObstacle
+    type: cylinderObstacle
     geometry:
       position: 
-        - 1.2
-        - 12.0
-        - 0.2
-      radius: 0.1
+        - 0.0
+        - 5.0
+        - 0.25
+      radius: 0.025
+      height: 0.5
     low:
       position:
-        - -1.5
+        - -5.0
         - 2.0
-        - 0.2
-      radius: 0.1
+        - 0.25
     high:
       position:
-        - 1.5
+        - 5.0
         - 12.0
-        - 0.2
-      radius: 0.1
+        - 0.25
   obst9:
-    type: sphereObstacle
+    type: cylinderObstacle
     geometry:
       position: 
-        - 1.2
-        - 12.0
-        - 0.2
-      radius: 0.1
+        - 0.0
+        - 5.0
+        - 0.25
+      radius: 0.025
+      height: 0.5
     low:
       position:
-        - -1.5
+        - -5.0
         - 2.0
-        - 0.2
-      radius: 0.1
+        - 0.25
     high:
       position:
-        - 1.5
+        - 5.0
         - 12.0
-        - 0.2
-      radius: 0.1
+        - 0.25
   obst10:
-    type: sphereObstacle
+    type: cylinderObstacle
     geometry:
       position: 
-        - 1.2
-        - 12.0
-        - 0.2
-      radius: 0.1
+        - 0.0
+        - 5.0
+        - 0.25
+      radius: 0.025
+      height: 0.5
     low:
       position:
-        - -1.5
+        - -5.0
         - 2.0
-        - 0.2
-      radius: 0.1
+        - 0.25
     high:
       position:
-        - 1.5
+        - 5.0
         - 12.0
-        - 0.2
-      radius: 0.1
+        - 0.25
   obst11:
-    type: sphereObstacle
+    type: cylinderObstacle
     geometry:
       position: 
-        - 1.2
-        - 12.0
-        - 0.2
-      radius: 0.1
+        - 0.0
+        - 5.0
+        - 0.25
+      radius: 0.025
+      height: 0.5
     low:
       position:
-        - -1.5
+        - -5.0
         - 2.0
-        - 0.2
-      radius: 0.1
+        - 0.25
     high:
       position:
-        - 1.5
+        - 5.0
         - 12.0
-        - 0.2
-      radius: 0.1
+        - 0.25
   obst12:
-    type: sphereObstacle
+    type: cylinderObstacle
     geometry:
       position: 
-        - 1.2
-        - 12.0
-        - 0.2
-      radius: 0.1
+        - 0.0
+        - 5.0
+        - 0.25
+      radius: 0.025
+      height: 0.5
     low:
       position:
-        - -1.5
+        - -5.0
         - 2.0
-        - 0.2
-      radius: 0.1
+        - 0.25
     high:
       position:
-        - 1.5
+        - 5.0
         - 12.0
-        - 0.2
-      radius: 0.1
+        - 0.25
   obst13:
-    type: sphereObstacle
+    type: cylinderObstacle
     geometry:
       position: 
-        - 1.2
-        - 12.0
-        - 0.2
-      radius: 0.1
+        - 0.0
+        - 5.0
+        - 0.25
+      radius: 0.025
+      height: 0.5
     low:
       position:
-        - -1.5
+        - -5.0
         - 2.0
-        - 0.2
-      radius: 0.1
+        - 0.25
     high:
       position:
-        - 1.5
+        - 5.0
         - 12.0
-        - 0.2
-      radius: 0.1
+        - 0.25
   obst14:
-    type: sphereObstacle
+    type: cylinderObstacle
     geometry:
       position: 
-        - 1.2
-        - 12.0
-        - 0.2
-      radius: 0.1
+        - 0.0
+        - 5.0
+        - 0.25
+      radius: 0.025
+      height: 0.5
     low:
       position:
-        - -1.5
+        - -5.0
         - 2.0
-        - 0.2
-      radius: 0.1
+        - 0.25
     high:
       position:
-        - 1.5
+        - 5.0
         - 12.0
-        - 0.2
-      radius: 0.1
+        - 0.25
   obst15:
-    type: sphereObstacle
+    type: cylinderObstacle
     geometry:
       position: 
-        - 1.2
-        - 12.0
-        - 0.2
-      radius: 0.1
+        - 0.0
+        - 5.0
+        - 0.25
+      radius: 0.025
+      height: 0.5
     low:
       position:
-        - -1.5
+        - -5.0
         - 2.0
-        - 0.2
-      radius: 0.1
+        - 0.25
     high:
       position:
-        - 1.5
+        - 5.0
         - 12.0
-        - 0.2
-      radius: 0.1
+        - 0.25
   obst16:
-    type: sphereObstacle
+    type: cylinderObstacle
     geometry:
       position: 
-        - 1.2
-        - 12.0
-        - 0.2
-      radius: 0.1
+        - 0.0
+        - 5.0
+        - 0.25
+      radius: 0.025
+      height: 0.5
     low:
       position:
-        - -1.5
+        - -5.0
         - 2.0
-        - 0.2
-      radius: 0.1
+        - 0.25
     high:
       position:
-        - 1.5
+        - 5.0
         - 12.0
-        - 0.2
-      radius: 0.1
+        - 0.25
   obst17:
-    type: sphereObstacle
+    type: cylinderObstacle
     geometry:
       position: 
-        - 1.2
-        - 12.0
-        - 0.2
-      radius: 0.1
+        - 0.0
+        - 5.0
+        - 0.25
+      radius: 0.025
+      height: 0.5
     low:
       position:
-        - -1.5
+        - -5.0
         - 2.0
-        - 0.2
-      radius: 0.1
+        - 0.25
     high:
       position:
-        - 1.5
+        - 5.0
         - 12.0
-        - 0.2
-      radius: 0.1
+        - 0.25
   obst18:
-    type: sphereObstacle
+    type: cylinderObstacle
     geometry:
       position: 
-        - 1.2
-        - 12.0
-        - 0.2
-      radius: 0.1
+        - 0.0
+        - 5.0
+        - 0.25
+      radius: 0.025
+      height: 0.5
     low:
       position:
-        - -1.5
+        - -5.0
         - 2.0
-        - 0.2
-      radius: 0.1
+        - 0.25
     high:
       position:
-        - 1.5
+        - 5.0
         - 12.0
-        - 0.2
-      radius: 0.1
+        - 0.25
   obst19:
-    type: sphereObstacle
+    type: cylinderObstacle
     geometry:
       position: 
-        - 1.2
-        - 12.0
-        - 0.2
-      radius: 0.1
+        - 0.0
+        - 5.0
+        - 0.25
+      radius: 0.025
+      height: 0.5
     low:
       position:
-        - -1.5
+        - -5.0
         - 2.0
-        - 0.2
-      radius: 0.1
+        - 0.25
     high:
       position:
-        - 1.5
+        - 5.0
         - 12.0
-        - 0.2
-      radius: 0.1
+        - 0.25
 selfCollision:
   pairs:
 
