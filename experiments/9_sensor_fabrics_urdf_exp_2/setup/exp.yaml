@@ -6,7 +6,7 @@ robot_type: pointRobotUrdf
 n: 3
 goal:
   subgoal0:
-    is_primary_goal: True
+    prime: True
     weight: 1.0
     indices:
       - 0

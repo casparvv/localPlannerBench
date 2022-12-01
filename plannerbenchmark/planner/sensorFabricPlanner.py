@@ -42,7 +42,7 @@ class SensorFabricPlanner(Planner):
             "0.5 * sym('base_inertia') * ca.dot(xdot, xdot)"
         )
         collision_geometry: str = (
-            "-sym('obst_geo_lam') / (x**sym('obst_geo_exp')) * (1 - ca.heaviside(xdot)) * xdot**2"
+            "-2*sym('obst_geo_lam') / (x**sym('obst_geo_exp')) * (1 - ca.heaviside(xdot)) * xdot**2"
         )
         collision_finsler: str = (
             f"(20.0/{self._config.number_lidar_rays}) / (x**2) * (1 - ca.heaviside(xdot)) * xdot**2"
