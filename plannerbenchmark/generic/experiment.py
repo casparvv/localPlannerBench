@@ -168,10 +168,10 @@ class Experiment(object):
         return body_ids
     
     def addScene(self, env, nb_rays=0):
-        number_exp = 3
-        if number_exp == 1:
+        name_exp = "a3"
+        if name_exp == "a1":
             env.add_walls(dim=np.array([0.2, 9.2, 0.5]), poses_2d=[[-4.5, 3.5, 0], [4.5, 3.5, 0], [0, -1, np.pi/2], [0, 8, np.pi/2]])
-        if number_exp == 2:
+        if name_exp == "a2":
             env.add_walls(dim=np.array([0.2, 3.2, 0.5]), poses_2d=[[0, -1, np.pi/2]])
             env.add_walls(dim=np.array([0.2, 10, 0.5]), poses_2d=[[-1.5, 4, 0]])
             env.add_walls(dim=np.array([0.2, 7, 0.5]), poses_2d=[[1.5, 2.5, 0]])
@@ -179,8 +179,12 @@ class Experiment(object):
             env.add_walls(dim=np.array([0.2, 2.2, 0.5]), poses_2d=[[2.5, 6, np.pi/2]])
             env.add_walls(dim=np.array([0.2, 6, 0.5]), poses_2d=[[6.5, 6, 0]])
             env.add_walls(dim=np.array([0.2, 3, 0.5]), poses_2d=[[3.5, 4.5, 0]])
-            env.add_walls(dim=np.array([0.2, 3.2, 0.5]), poses_2d=[[5, 3, np.pi/2]])
-        
+            env.add_walls(dim=np.array([0.2, 3.2, 0.5]), poses_2d=[[5, 3, np.pi/2]]) 
+        if name_exp == "a3":
+            env.add_walls(dim=np.array([0.2, 3.2, 0.5]), poses_2d=[[0, -1, np.pi/2]])
+            env.add_walls(dim=np.array([0.2, 16.2, 0.5]), poses_2d=[[-1.5, 7, 0]])
+            env.add_walls(dim=np.array([0.2, 16.2, 0.5]), poses_2d=[[1.5, 7, 0]])
+            env.add_walls(dim=np.array([0.2, 3.2, 0.5]), poses_2d=[[0, 15, np.pi/2]])
         for obst in self._obstacles:
             env.add_obstacle(obst)
         try:

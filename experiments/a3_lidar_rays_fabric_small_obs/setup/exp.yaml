@@ -44,7 +44,7 @@ limits:
     - 0.0
 r_body: 0.2
 randomObstacles:
-  number: 20
+  number: 30
 obstacles:
   obst0:
     type: cylinderObstacle
@@ -57,12 +57,12 @@ obstacles:
       height: 0.5
     low:
       position:
-        - -5.0
+        - -1.5
         - 2.0
         - 0.25
     high:
       position:
-        - 5.0
+        - 1.5
         - 12.0
         - 0.25
   obst1:
@@ -76,12 +76,12 @@ obstacles:
       height: 0.5
     low:
       position:
-        - -5.0
+        - -1.5
         - 2.0
         - 0.25
     high:
       position:
-        - 5.0
+        - 1.5
         - 12.0
         - 0.25
   obst2:
@@ -89,18 +89,18 @@ obstacles:
     geometry:
       position: 
         - 0.0
-        - 5.0
+        - 1.5
         - 0.25
       radius: 0.025
       height: 0.5
     low:
       position:
-        - -5.0
+        - -1.5
         - 2.0
         - 0.25
     high:
       position:
-        - 5.0
+        - 1.5
         - 12.0
         - 0.25
   obst3:
@@ -108,18 +108,18 @@ obstacles:
     geometry:
       position: 
         - 0.0
-        - 5.0
+        - 1.5
         - 0.25
       radius: 0.025
       height: 0.5
     low:
       position:
-        - -5.0
+        - -1.5
         - 2.0
         - 0.25
     high:
       position:
-        - 5.0
+        - 1.5
         - 12.0
         - 0.25
   obst4:
@@ -127,18 +127,18 @@ obstacles:
     geometry:
       position: 
         - 0.0
-        - 5.0
+        - 1.5
         - 0.25
       radius: 0.025
       height: 0.5
     low:
       position:
-        - -5.0
+        - -1.5
         - 2.0
         - 0.25
     high:
       position:
-        - 5.0
+        - 1.5
         - 12.0
         - 0.25
   obst5:
@@ -146,18 +146,18 @@ obstacles:
     geometry:
       position: 
         - 0.0
-        - 5.0
+        - 1.5
         - 0.25
       radius: 0.025
       height: 0.5
     low:
       position:
-        - -5.0
+        - -1.5
         - 2.0
         - 0.25
     high:
       position:
-        - 5.0
+        - 1.5
         - 12.0
         - 0.25
   obst6:
@@ -165,18 +165,18 @@ obstacles:
     geometry:
       position: 
         - 0.0
-        - 5.0
+        - 1.5
         - 0.25
       radius: 0.025
       height: 0.5
     low:
       position:
-        - -5.0
+        - -1.5
         - 2.0
         - 0.25
     high:
       position:
-        - 5.0
+        - 1.5
         - 12.0
         - 0.25
   obst7:
@@ -184,18 +184,18 @@ obstacles:
     geometry:
       position: 
         - 0.0
-        - 5.0
+        - 1.5
         - 0.25
       radius: 0.025
       height: 0.5
     low:
       position:
-        - -5.0
+        - -1.5
         - 2.0
         - 0.25
     high:
       position:
-        - 5.0
+        - 1.5
         - 12.0
         - 0.25
   obst8:
@@ -203,18 +203,18 @@ obstacles:
     geometry:
       position: 
         - 0.0
-        - 5.0
+        - 1.5
         - 0.25
       radius: 0.025
       height: 0.5
     low:
       position:
-        - -5.0
+        - -1.5
         - 2.0
         - 0.25
     high:
       position:
-        - 5.0
+        - 1.5
         - 12.0
         - 0.25
   obst9:
@@ -222,18 +222,18 @@ obstacles:
     geometry:
       position: 
         - 0.0
-        - 5.0
+        - 1.5
         - 0.25
       radius: 0.025
       height: 0.5
     low:
       position:
-        - -5.0
+        - -1.5
         - 2.0
         - 0.25
     high:
       position:
-        - 5.0
+        - 1.5
         - 12.0
         - 0.25
   obst10:
@@ -241,18 +241,18 @@ obstacles:
     geometry:
       position: 
         - 0.0
-        - 5.0
+        - 1.5
         - 0.25
       radius: 0.025
       height: 0.5
     low:
       position:
-        - -5.0
+        - -1.5
         - 2.0
         - 0.25
     high:
       position:
-        - 5.0
+        - 1.5
         - 12.0
         - 0.25
   obst11:
@@ -260,18 +260,18 @@ obstacles:
     geometry:
       position: 
         - 0.0
-        - 5.0
+        - 1.5
         - 0.25
       radius: 0.025
       height: 0.5
     low:
       position:
-        - -5.0
+        - -1.5
         - 2.0
         - 0.25
     high:
       position:
-        - 5.0
+        - 1.5
         - 12.0
         - 0.25
   obst12:
@@ -279,18 +279,18 @@ obstacles:
     geometry:
       position: 
         - 0.0
-        - 5.0
+        - 1.5
         - 0.25
       radius: 0.025
       height: 0.5
     low:
       position:
-        - -5.0
+        - -1.5
         - 2.0
         - 0.25
     high:
       position:
-        - 5.0
+        - 1.5
         - 12.0
         - 0.25
   obst13:
@@ -298,18 +298,18 @@ obstacles:
     geometry:
       position: 
         - 0.0
-        - 5.0
+        - 1.5
         - 0.25
       radius: 0.025
       height: 0.5
     low:
       position:
-        - -5.0
+        - -1.5
         - 2.0
         - 0.25
     high:
       position:
-        - 5.0
+        - 1.5
         - 12.0
         - 0.25
   obst14:
@@ -317,18 +317,18 @@ obstacles:
     geometry:
       position: 
         - 0.0
-        - 5.0
+        - 1.5
         - 0.25
       radius: 0.025
       height: 0.5
     low:
       position:
-        - -5.0
+        - -1.5
         - 2.0
         - 0.25
     high:
       position:
-        - 5.0
+        - 1.5
         - 12.0
         - 0.25
   obst15:
@@ -336,18 +336,18 @@ obstacles:
     geometry:
       position: 
         - 0.0
-        - 5.0
+        - 1.5
         - 0.25
       radius: 0.025
       height: 0.5
     low:
       position:
-        - -5.0
+        - -1.5
         - 2.0
         - 0.25
     high:
       position:
-        - 5.0
+        - 1.5
         - 12.0
         - 0.25
   obst16:
@@ -355,18 +355,18 @@ obstacles:
     geometry:
       position: 
         - 0.0
-        - 5.0
+        - 1.5
         - 0.25
       radius: 0.025
       height: 0.5
     low:
       position:
-        - -5.0
+        - -1.5
         - 2.0
         - 0.25
     high:
       position:
-        - 5.0
+        - 1.5
         - 12.0
         - 0.25
   obst17:
@@ -374,18 +374,18 @@ obstacles:
     geometry:
       position: 
         - 0.0
-        - 5.0
+        - 1.5
         - 0.25
       radius: 0.025
       height: 0.5
     low:
       position:
-        - -5.0
+        - -1.5
         - 2.0
         - 0.25
     high:
       position:
-        - 5.0
+        - 1.5
         - 12.0
         - 0.25
   obst18:
@@ -393,18 +393,18 @@ obstacles:
     geometry:
       position: 
         - 0.0
-        - 5.0
+        - 1.5
         - 0.25
       radius: 0.025
       height: 0.5
     low:
       position:
-        - -5.0
+        - -1.5
         - 2.0
         - 0.25
     high:
       position:
-        - 5.0
+        - 1.5
         - 12.0
         - 0.25
   obst19:
@@ -412,18 +412,208 @@ obstacles:
     geometry:
       position: 
         - 0.0
-        - 5.0
+        - 1.5
         - 0.25
       radius: 0.025
       height: 0.5
     low:
       position:
-        - -5.0
+        - -1.5
         - 2.0
         - 0.25
     high:
       position:
-        - 5.0
+        - 1.5
+        - 12.0
+        - 0.25
+  obst20:
+    type: cylinderObstacle
+    geometry:
+      position: 
+        - 0.0
+        - 1.5
+        - 0.25
+      radius: 0.025
+      height: 0.5
+    low:
+      position:
+        - -1.5
+        - 2.0
+        - 0.25
+    high:
+      position:
+        - 1.5
+        - 12.0
+        - 0.25
+  obst21:
+    type: cylinderObstacle
+    geometry:
+      position: 
+        - 0.0
+        - 1.5
+        - 0.25
+      radius: 0.025
+      height: 0.5
+    low:
+      position:
+        - -1.5
+        - 2.0
+        - 0.25
+    high:
+      position:
+        - 1.5
+        - 12.0
+        - 0.25
+  obst22:
+    type: cylinderObstacle
+    geometry:
+      position: 
+        - 0.0
+        - 1.5
+        - 0.25
+      radius: 0.025
+      height: 0.5
+    low:
+      position:
+        - -1.5
+        - 2.0
+        - 0.25
+    high:
+      position:
+        - 1.5
+        - 12.0
+        - 0.25
+  obst23:
+    type: cylinderObstacle
+    geometry:
+      position: 
+        - 0.0
+        - 1.5
+        - 0.25
+      radius: 0.025
+      height: 0.5
+    low:
+      position:
+        - -1.5
+        - 2.0
+        - 0.25
+    high:
+      position:
+        - 1.5
+        - 12.0
+        - 0.25
+  obst24:
+    type: cylinderObstacle
+    geometry:
+      position: 
+        - 0.0
+        - 1.5
+        - 0.25
+      radius: 0.025
+      height: 0.5
+    low:
+      position:
+        - -1.5
+        - 2.0
+        - 0.25
+    high:
+      position:
+        - 1.5
+        - 12.0
+        - 0.25
+  obst25:
+    type: cylinderObstacle
+    geometry:
+      position: 
+        - 0.0
+        - 1.5
+        - 0.25
+      radius: 0.025
+      height: 0.5
+    low:
+      position:
+        - -1.5
+        - 2.0
+        - 0.25
+    high:
+      position:
+        - 1.5
+        - 12.0
+        - 0.25
+  obst26:
+    type: cylinderObstacle
+    geometry:
+      position: 
+        - 0.0
+        - 1.5
+        - 0.25
+      radius: 0.025
+      height: 0.5
+    low:
+      position:
+        - -1.5
+        - 2.0
+        - 0.25
+    high:
+      position:
+        - 1.5
+        - 12.0
+        - 0.25
+  obst27:
+    type: cylinderObstacle
+    geometry:
+      position: 
+        - 0.0
+        - 1.5
+        - 0.25
+      radius: 0.025
+      height: 0.5
+    low:
+      position:
+        - -1.5
+        - 2.0
+        - 0.25
+    high:
+      position:
+        - 1.5
+        - 12.0
+        - 0.25
+  obst28:
+    type: cylinderObstacle
+    geometry:
+      position: 
+        - 0.0
+        - 1.5
+        - 0.25
+      radius: 0.025
+      height: 0.5
+    low:
+      position:
+        - -1.5
+        - 2.0
+        - 0.25
+    high:
+      position:
+        - 1.5
+        - 12.0
+        - 0.25
+  obst29:
+    type: cylinderObstacle
+    geometry:
+      position: 
+        - 0.0
+        - 1.5
+        - 0.25
+      radius: 0.025
+      height: 0.5
+    low:
+      position:
+        - -1.5
+        - 2.0
+        - 0.25
+    high:
+      position:
+        - 1.5
         - 12.0
         - 0.25
 selfCollision:
