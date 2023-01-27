@@ -26,14 +26,14 @@ set grid ytics
 
 outFileBox=seriesFolder."/results_comparison_clearance.eps"
 set output outFileBox
-set yrange [0.0:0.35]
+set yrange [0.0:0.30]
 set xlabel "Number of LiDAR rays" font ",60" offset -6.0,-8
 set ylabel "Clearance (m)" font ",60" offset -9.0,0
 plot inFile4 using (2):2 notitle, inFile16 using (3):2 notitle, inFile64 using (4):2 notitle, inFile256 using (5):2 notitle, inFile512 using (6):2 notitle
 
 outFileBox=seriesFolder."/results_comparison_pathlength.eps"
 set output outFileBox
-set yrange [10:20]
+set yrange [12:20]
 #set ytics 0,2,20
 set xlabel "Number of LiDAR rays" font ",60" offset -6.0,-8
 set ylabel "Path length (m)" font ",60" offset -8.0,0
@@ -48,7 +48,7 @@ plot inFile4 using (2):4 notitle, inFile16 using (3):4 notitle, inFile64 using (
 
 outFileBox=seriesFolder."/results_comparison_time2goal.eps"
 set output outFileBox
-set yrange [0:45]
+set yrange [15:45]
 set xlabel "Number of LiDAR rays" font ",60" offset -6.0,-8
 set ylabel "Time to goal (s)" font ",60" offset -8.0,0
 plot inFile4 using (2):5 notitle, inFile16 using (3):5 notitle, inFile64 using (4):5 notitle, inFile256 using (5):5 notitle, inFile512 using (6):5 notitle

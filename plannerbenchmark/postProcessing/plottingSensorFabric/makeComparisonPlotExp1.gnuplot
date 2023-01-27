@@ -40,7 +40,7 @@ plot inFile1 using (2):2 notitle, inFile2 using (3):2 notitle, inFile4 using (4)
 
 outFileBox=seriesFolder."/results_comparison_pathlength.eps"
 set output outFileBox
-set yrange [0.0:20]
+set yrange [5:15]
 #set ytics 0,2,20
 set xlabel "Number of LiDAR rays" font ",60" offset 0,-8
 set ylabel "Path length (m)" font ",60" offset -8.0,0
@@ -55,7 +55,7 @@ plot inFile1 using (2):4 notitle, inFile2 using (3):4 notitle, inFile4 using (4)
 
 outFileBox=seriesFolder."/results_comparison_time2goal.eps"
 set output outFileBox
-set yrange [0.0:25]
+set yrange [5:25]
 set xlabel "Number of LiDAR rays" font ",60" offset 0,-8
 set ylabel "Time to goal (s)" font ",60" offset -8.0,0
 plot inFile1 using (2):5 notitle, inFile2 using (3):5 notitle, inFile4 using (4):5 notitle, inFile8 using (5):5 notitle, inFile16 using (6):5 notitle, inFile32 using (7):5 notitle, inFile64 using (8):5 notitle, inFile128 using (9):5 notitle, inFile256 using (10):5 notitle, inFile512 using (11):5 notitle, inFile1024 using (12):5 notitle, inFile2048 using (13):5 notitle

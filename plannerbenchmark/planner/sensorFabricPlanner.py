@@ -168,8 +168,8 @@ class SensorFabricPlanner(Planner):
     def computeAction(self, *args):
         self.adapt_runtime_arguments(args)
         action = np.zeros(3)
-        #action = np.clip(self._planner.compute_action(**self._runtime_arguments), -2.174, 2.174)
-        action = self._planner.compute_action(**self._runtime_arguments)
-        #action[2] = 0
+        action = np.clip(self._planner.compute_action(**self._runtime_arguments), -2.174, 2.174)
+        #action = self._planner.compute_action(**self._runtime_arguments)
+        action[2] = 0
         return action
 

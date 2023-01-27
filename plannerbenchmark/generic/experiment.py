@@ -168,7 +168,7 @@ class Experiment(object):
         return body_ids
     
     def addScene(self, env, nb_rays=0):
-        name_exp = "a3"
+        name_exp = "a4"
         if name_exp == "a1":
             env.add_walls(dim=np.array([0.2, 9.2, 0.5]), poses_2d=[[-4.5, 3.5, 0], [4.5, 3.5, 0], [0, -1, np.pi/2], [0, 8, np.pi/2]])
         if name_exp == "a2":

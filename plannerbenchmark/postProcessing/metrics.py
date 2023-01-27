@@ -138,7 +138,7 @@ class ClearanceMetric(Metric):
                     - obst.radius()
                     - r_body
                 )
-                minDistToObst = float(np.min(distancesToObst)) + 1e-3  # make  MPC happy
+                minDistToObst = float(np.min(distancesToObst)) # + 1e-3  # make  MPC happy
                 minDistances.append(minDistToObst)
                 distanceToObsts["obst" + str(i) + "_fk" + str(i_fk)] = {
                     "dist": minDistToObst,
@@ -169,6 +169,45 @@ class DynamicClearanceMetric(Metric):
     of the dynamic obstacles, `r_obsts`. Minimum distances between all
     robot links and all obstacles are computed and the returned.
     """
+
+    def computeMetric(self, data):
+        m = self._params["dimension_obstacle"]
+        n = self._params["n"]
+        r_body = self._params["r_body"]
+        r_obstacle = self._params["r_obstacle"][0]
+        
+        rawData = np.stack([data[name] for name in self._measNames])
+        t = rawData[6]
+        rawData_fks = rawData[0:6]
+        #print(f"rawfks: {rawData_fks.shape}")
+        fks = rawData_fks.T.reshape(-1, n, 2)
+        #print(f"fks: {fks.shape}")
+        
+        rawData_obst = rawData[7:]
+        #print(f"rawobs: {rawData_obst.shape}")
+        obst = rawData_obst.T.reshape(20, 1000, 3)
+        #print(f"obs: {obst.shape}")
+
+        minDistances = []
+        distanceToObsts = {}
+        for i in range(20):
+            for i_fk in range(0, n):
+                #print(f"fa: {fks[:, i_fk, :].shape}")
+                #print(f"ba: {obst[19][:,0:2].shape}")
+                distancesToObst = (
+                        computeDistances(fks[:, i_fk, :], obst[i][:, 0:2])
+                    - r_obstacle
+                    - r_body
+                )
+                minDistToObst = float(np.min(distancesToObst))
+                minDistances.append(minDistToObst)
+                distanceToObsts["obst" + str(i) + "_fk" + str(i_fk)] = {
+                    "dist": minDistToObst,
+                    "loc": list(obst[i][:, 0:2]),
+                    "r": r_obstacle,
+                }
+        return {"short": float(min(minDistances)), "allMinDist": distanceToObsts}
+
 
 class InverseDynamicClearanceMetric(ClearanceMetric):
 

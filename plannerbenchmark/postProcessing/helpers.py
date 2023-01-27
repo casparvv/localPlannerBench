@@ -46,10 +46,21 @@ def createMetricsFromNames(
     fksNames = []
     eeNames = []
     goalNames = []
+    obstNames = []
     r_obsts = []
     for obst in experiment.obstacles():
         if obst.type() != 'sphereObstacle':
             r_obsts.append(obst.radius())
+    
+    # Work around for obstNames
+    for i in range(7):
+        for j in range(3):
+            for k in range(3):
+                obstNames.append("obst" + "_" + str(i) + "_" + str(k) + "_" + str(j))
+    obstNames.remove("obst_6_2_2")
+    obstNames.remove("obst_6_1_2")
+    obstNames.remove("obst_6_0_2")
+
     for i in range(1, n + 1):
         for j in goal_indices:
             fksNames.append("fk" + str(i) + "_" + indexMap[j])
@@ -102,10 +113,10 @@ def createMetricsFromNames(
             metrics.append(
                 DynamicClearanceMetric(
                     "clearance", 
-                    fksNames + ['t'],
+                    fksNames + obstNames + ['t'],
                     {
                         'r_body': experiment.rBody(),
-                        'r_obsts': r_obsts, 
+                        'r_obstacle': r_obsts,
                         'dimension_obstacle': dimension_obstacle,
                         'n': experiment.n()
                     }
