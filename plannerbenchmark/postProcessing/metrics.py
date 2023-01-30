@@ -1,3 +1,4 @@
+import time
 import numpy as np
 from abc import ABC, abstractmethod
 from typing import Callable
@@ -175,35 +176,31 @@ class DynamicClearanceMetric(Metric):
         n = self._params["n"]
         r_body = self._params["r_body"]
         r_obstacle = self._params["r_obstacle"][0]
+        number_of_obstacles = self._params["number_of_obstacles"]
         
         rawData = np.stack([data[name] for name in self._measNames])
-        t = rawData[6]
-        rawData_fks = rawData[0:6]
-        #print(f"rawfks: {rawData_fks.shape}")
-        fks = rawData_fks.T.reshape(-1, n, 2)
-        #print(f"fks: {fks.shape}")
+        rawData_fks = rawData[0:n*2]
+        fks = rawData_fks.T.reshape(-1, n, n-1)
+        rawData_obst = rawData[n*2:-1]
+        obst = rawData_obst.T.reshape(-1, number_of_obstacles, m)
+        t = rawData[-1]
         
-        rawData_obst = rawData[7:]
-        #print(f"rawobs: {rawData_obst.shape}")
-        obst = rawData_obst.T.reshape(20, 1000, 3)
-        #print(f"obs: {obst.shape}")
-
         minDistances = []
         distanceToObsts = {}
-        for i in range(20):
+        for i in range(number_of_obstacles):
             for i_fk in range(0, n):
-                #print(f"fa: {fks[:, i_fk, :].shape}")
-                #print(f"ba: {obst[19][:,0:2].shape}")
                 distancesToObst = (
-                        computeDistances(fks[:, i_fk, :], obst[i][:, 0:2])
+                        computeDistances(fks[:, i_fk, :], obst[:, i, 0:2])
                     - r_obstacle
                     - r_body
                 )
                 minDistToObst = float(np.min(distancesToObst))
+                minDistToObstIndex = np.argmin(distancesToObst)
                 minDistances.append(minDistToObst)
+
                 distanceToObsts["obst" + str(i) + "_fk" + str(i_fk)] = {
                     "dist": minDistToObst,
-                    "loc": list(obst[i][:, 0:2]),
+                    "loc": obst[minDistToObstIndex, i, 0:2].tolist(),
                     "r": r_obstacle,
                 }
         return {"short": float(min(minDistances)), "allMinDist": distanceToObsts}

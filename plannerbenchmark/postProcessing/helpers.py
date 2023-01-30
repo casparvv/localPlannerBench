@@ -112,12 +112,13 @@ def createMetricsFromNames(
         if name == "dynamicClearance":
             metrics.append(
                 DynamicClearanceMetric(
-                    "clearance", 
+                    "dynamic_clearance", 
                     fksNames + obstNames + ['t'],
                     {
                         'r_body': experiment.rBody(),
                         'r_obstacle': r_obsts,
                         'dimension_obstacle': dimension_obstacle,
+                        'number_of_obstacles': len(experiment.obstacles()),
                         'n': experiment.n()
                     }
                 )
