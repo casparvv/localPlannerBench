@@ -143,7 +143,7 @@ class ClearanceMetric(Metric):
                 minDistances.append(minDistToObst)
                 distanceToObsts["obst" + str(i) + "_fk" + str(i_fk)] = {
                     "dist": minDistToObst,
-                    "loc": list(obst.position()),
+                    "loc": obst.position().tolist(),
                     "r": obst.radius(),
                 }
         return {"short": float(min(minDistances)), "allMinDist": distanceToObsts}

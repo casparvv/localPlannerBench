@@ -51,16 +51,13 @@ def createMetricsFromNames(
     for obst in experiment.obstacles():
         if obst.type() != 'sphereObstacle':
             r_obsts.append(obst.radius())
-    
     # Work around for obstNames
-    for i in range(7):
-        for j in range(3):
-            for k in range(3):
-                obstNames.append("obst" + "_" + str(i) + "_" + str(k) + "_" + str(j))
-    obstNames.remove("obst_6_2_2")
-    obstNames.remove("obst_6_1_2")
-    obstNames.remove("obst_6_0_2")
-
+    number_of_obstacle_names = len(experiment.obstacles()*dimension_obstacle)
+    for i in range(dimension_obstacle*2 + 1):
+        for j in range(dimension_obstacle):
+            for k in range(dimension_obstacle):
+                if len(obstNames) < number_of_obstacle_names:
+                    obstNames.append("obst" + "_" + str(i) + "_" + str(k) + "_" + str(j))
     for i in range(1, n + 1):
         for j in goal_indices:
             fksNames.append("fk" + str(i) + "_" + indexMap[j])
