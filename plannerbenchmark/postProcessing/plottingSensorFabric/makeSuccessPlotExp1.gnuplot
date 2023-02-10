@@ -16,7 +16,7 @@ set border 9
 set boxwidth 0.5
 set xtics ('1' 0, '2' 1, '4' 2, '8' 3, '16' 4, '32' 5, '64' 6, '128' 7, '256' 8, '512' 9, '1024' 10, '2048' 11) scale 1.0 font ',55' rotate by 90 offset 0, -7.5 nomirror
 unset ytics
-set xlabel "Number of LiDAR rays" font ",60" offset 0,-8
+set xlabel "Number of LiDAR rays" font ",60" rotate by 180 offset 0,-8
 nbPlanner=12
 nbCases=30
 set xrange [-0.5:nbPlanner - 0.5]

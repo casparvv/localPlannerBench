@@ -139,7 +139,7 @@ class ClearanceMetric(Metric):
                     - obst.radius()
                     - r_body
                 )
-                minDistToObst = float(np.min(distancesToObst)) # + 1e-3  # make  MPC happy
+                minDistToObst = float(np.min(distancesToObst)) - 1e-3 # make sensor fabric less happy
                 minDistances.append(minDistToObst)
                 distanceToObsts["obst" + str(i) + "_fk" + str(i_fk)] = {
                     "dist": minDistToObst,
@@ -200,9 +200,11 @@ class DynamicClearanceMetric(Metric):
 
                 distanceToObsts["obst" + str(i) + "_fk" + str(i_fk)] = {
                     "dist": minDistToObst,
-                    "loc": obst[minDistToObstIndex, i, 0:2].tolist(),
-                    "r": r_obstacle,
-                }
+                    "loc_obst": obst[minDistToObstIndex, i, 0:2].tolist(),
+                    "loc_robot": fks[minDistToObstIndex, i_fk, :].tolist(),
+                    "r_obs": r_obstacle,
+                    "r_robot": r_body,
+                    }
         return {"short": float(min(minDistances)), "allMinDist": distanceToObsts}
 
 

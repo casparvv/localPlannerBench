@@ -109,7 +109,7 @@ def createMetricsFromNames(
         if name == "dynamicClearance":
             metrics.append(
                 DynamicClearanceMetric(
-                    "dynamic_clearance", 
+                    "clearance", 
                     fksNames + obstNames + ['t'],
                     {
                         'r_body': experiment.rBody(),
