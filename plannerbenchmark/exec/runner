@@ -104,10 +104,12 @@ class Runner(object):
             self._planners.append(planner)
 
     def startRosConverterNode(self):
-        from plannerbenchmark.ros.ros_converter_node import ActionConverterNode
+        #from plannerbenchmark.ros.ros_converter_node import ActionConverterNode
+        from plannerbenchmark.ros.ros_pcl_converter_node import ActionPCLConverterNode
         dt = self._experiment.dt()
         rate_int = int(1/dt)
-        self._rosConverter = ActionConverterNode(dt, rate_int, self._experiment.robotType())
+        #self._rosConverter = ActionConverterNode(dt, rate_int, self._experiment.robotType())
+        self._rosConverter = ActionPCLConverterNode(dt, rate_int, self._experiment.robotType())
 
     def setPlanner(self):
         composition_time = {}
