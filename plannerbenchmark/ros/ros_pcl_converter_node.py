@@ -54,7 +54,7 @@ class ActionPCLConverterNode(object):
         self._xdot = np.zeros(self._n)
         self._qdot = np.zeros(self._nu)
         
-        number_of_lidar_rays = 16 # make variable on robot config
+        number_of_lidar_rays = 16
         self._point_cloud = np.full([number_of_lidar_rays, self._n], 100.0)
         
         self._acc_msg = Float64MultiArray()
@@ -88,8 +88,7 @@ class ActionPCLConverterNode(object):
         self._qdot = np.array([data.velocity[i] for i in self._qdotIndices])
                 
     def point_cloud_cb(self, data):
-        # fix the conversion of PCL2 to a numpy array. Use similar as below or ros_numpy numpify
-        self._point_cloud = np.array([data.position[i] for i in self._stateIndices])
+        self._point_cloud = np.reshape(data.data, (-1, self._n))
         # self._point_cloud = ros_numpy.numpify(data)
 
     def ob(self):
