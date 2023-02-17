@@ -14,7 +14,8 @@ class Logger(object):
         self._exp = exp
         self._planner = planner
 
-    def addResultPoint(self, t, q, qdot, action, solving_time, goal, obsts):
+    def addResultPoint(self, t, q, qdot, action, solving_time, obsts):
+    #def addResultPoint(self, t, q, qdot, action, solving_time, goal, obsts):
         resDict = {'t': t, 't_planning': solving_time}
         for a_i, a in enumerate(action):
             resDict['a' + str(a_i)] = a
@@ -31,9 +32,9 @@ class Logger(object):
                 fk = self._exp.fk(q, n_i, positionOnly=True)
                 resDict['fk' + str(n_i) + "_x"] = fk[0]
                 resDict['fk' + str(n_i) + "_y"] = fk[1]
-        for i_der, goal_der in enumerate(goal):
-            for j_dim, goal_dim in enumerate(goal_der):
-                resDict['goal_' + str(j_dim) + '_' + str(i_der)] = goal_dim
+        #for i_der, goal_der in enumerate(goal):
+        #    for j_dim, goal_dim in enumerate(goal_der):
+        #        resDict['goal_' + str(j_dim) + '_' + str(i_der)] = goal_dim
         for k_obst, obst in enumerate(obsts):
             for i_der, obst_der in enumerate(obst):
                 for j_dim in range(obst_der.size):

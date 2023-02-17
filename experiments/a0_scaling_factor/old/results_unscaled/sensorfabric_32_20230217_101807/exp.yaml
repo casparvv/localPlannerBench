@@ -1,0 +1,51 @@
+T: 70
+dt: 0.05
+dynamic: false
+env: pointRobotUrdf-acc-v0
+initState:
+  q0:
+  - 0.435623145325436
+  - -0.05696628281481997
+  - 0.0
+  q0dot:
+  - 0.5
+  - 0.1
+  - 0.0
+limits:
+  high:
+  - 0.5
+  - 0.5
+  - 0
+  low:
+  - -0.5
+  - -0.5
+  - 0
+n: 3
+obstacles:
+  obst0:
+    geometry:
+      position:
+      - 1.5
+      - 0.0
+      - 0.0
+      radius: 0.5
+    high:
+      position:
+      - 4.0
+      - 4.2
+      - 0.0
+      radius: 0.5
+    low:
+      position:
+      - -4.0
+      - 1.2
+      - 0.0
+      radius: 0.4
+    movable: false
+    type: sphereObstacle
+r_body: 0.2
+randomObstacles:
+  number: 0
+robot_type: pointRobotUrdf
+selfCollision:
+  pairs: null

@@ -117,7 +117,7 @@ class Runner(object):
             planner.setJointLimits(self._experiment.limits())
             planner.setSelfCollisionAvoidance(self._experiment.rBody())
             planner.setObstacles(self._experiment.obstacles(), self._experiment.rBody())
-            planner.setGoal(self._experiment.goal())
+            #planner.setGoal(self._experiment.goal())
             planner.concretize()
             end_composition = time.perf_counter()
             try:
@@ -201,9 +201,12 @@ class Runner(object):
                     if planner._config.name == "fabric":
                         logger = Logger(self._res_folder, "0" + "_" + timeStamp)
                     else:
-                        logger = Logger(self._res_folder, str(planner._config.number_lidar_rays) + "_" + timeStamp)
+                        #logger = Logger(self._res_folder, str(planner._config.number_lidar_rays) + "_" + timeStamp)
+                        logger = Logger(self._res_folder, str(len(self._experiment.obstacles())) + "_" + timeStamp)
                 else:
-                    logger = Logger(self._res_folder, timeStamp)
+                    #logger = Logger(self._res_folder, timeStamp)
+                    #logger = Logger(self._res_folder, str(planner._config.number_lidar_rays) + "_" + timeStamp)
+                    logger = Logger(self._res_folder, str(len(self._experiment.obstacles())) + "_" + timeStamp)
                 logger.setSetups(self._experiment, planner)
                 t = 0.0
                 for i in range(self._experiment.T()):
@@ -247,10 +250,11 @@ class Runner(object):
                         print(f"Action contains NaN values, using zero velocity instead.")
                         action = np.zeros_like(action)
                     solving_time = time.perf_counter() - t_before
-                    primeGoal = [self._experiment.evaluatePrimeGoal(t)]
+                    #primeGoal = [self._experiment.evaluatePrimeGoal(t)]
                     obsts = self._experiment.evaluateObstacles(t)
                     obsts_cleaned = [obsts[i:i+3] for i in range(0, len(obsts), 3)]
-                    logger.addResultPoint(t, q, qdot, action, solving_time, primeGoal, obsts_cleaned)
+                    logger.addResultPoint(t, q, qdot, action, solving_time, obsts_cleaned)
+                    #logger.addResultPoint(t, q, qdot, action, solving_time, primeGoal, obsts_cleaned)
                     ob, t_new = self.applyAction(action, t)
                     t = t_new - t0
                 if self._save:

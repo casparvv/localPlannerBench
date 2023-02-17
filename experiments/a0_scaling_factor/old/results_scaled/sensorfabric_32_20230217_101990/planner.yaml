@@ -1,0 +1,30 @@
+attractor:
+  k_psi: 1.0
+damper:
+  b:
+  - 0.1
+  - 6.5
+  r_d: 0.8
+dynamic: false
+interval: 1
+l_offset: 0.2
+limits:
+  exp: 3.0
+  lam: 10.0
+m_arm: 1.0
+m_base: 2.0
+m_ratio: 1.0
+m_rot: 1.0
+n: 3
+name: sensorfabric
+number_lidar_rays: 32
+obst:
+  exp: 2.0
+  lam: 3.0
+radius_ray_obstacles: 0.1
+robot_type: pointRobotUrdf
+selfCol:
+  exp: 1.0
+  lam: 2.0
+speed:
+  ex_factor: 1.0

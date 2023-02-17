@@ -1,0 +1,5 @@
+#!/bin/bash
+abspath=`realpath "$0"`
+seriesFolder="$1/"
+N=$2
+gnuplot -c "makeComparisonPlotExp5.gnuplot" $seriesFolder $N

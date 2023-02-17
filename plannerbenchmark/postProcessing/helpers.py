@@ -40,12 +40,13 @@ def createMetricsFromNames(
         Returns a list of all metrics for which the name was specified.
     """
     metrics = []
-    goal_indices = experiment.primeGoal().indices()
+    #goal_indices = experiment.primeGoal().indices()
+    goal_indices = [0, 1]
     dimension_obstacle = len(experiment.obstacles()[0].position())
     n = experiment.n()
     fksNames = []
     eeNames = []
-    goalNames = []
+    #goalNames = []
     obstNames = []
     r_obsts = []
     for obst in experiment.obstacles():
@@ -61,9 +62,9 @@ def createMetricsFromNames(
     for i in range(1, n + 1):
         for j in goal_indices:
             fksNames.append("fk" + str(i) + "_" + indexMap[j])
-    for j in goal_indices:
-        eeNames.append("fk" + str(n) + "_" + indexMap[j])
-        goalNames.append("goal_" + str(j) + "_0")
+    #for j in goal_indices:
+    #    eeNames.append("fk" + str(n) + "_" + indexMap[j])
+    #    goalNames.append("goal_" + str(j) + "_0")
     for name in names:
         if name == "solverTime":
             metrics.append(

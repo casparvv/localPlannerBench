@@ -1,0 +1,2591 @@
+T: 70
+dynamic: False
+dt: 0.05
+env: pointRobotUrdf-acc-v0
+robot_type: pointRobotUrdf
+n: 3
+initState:
+  q0:
+    - 0.0
+    - 0.0
+    - 0.0
+  q0dot:
+    - 0.5
+    - 0.1
+    - 0.0
+limits:
+  low:
+    - -0.5
+    - -0.5
+    - 0
+  high:
+    - 0.5
+    - 0.5
+    - 0
+r_body: 0.2
+randomObstacles:
+  number: 128
+obstacles:
+  obst0:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst1:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst2:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst3:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst4:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst5:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst6:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst7:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst8:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst9:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst10:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst11:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst12:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst13:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst14:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst15:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst16:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst17:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst18:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst19:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst20:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst21:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst22:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst23:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst24:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst25:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst26:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst27:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst28:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst29:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst30:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst31:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst32:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst33:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst34:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst35:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst36:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst37:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst38:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst39:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst40:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst41:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst42:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst43:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst44:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst45:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst46:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst47:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst48:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst49:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst50:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst51:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst52:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst53:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst54:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst55:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst56:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst57:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst58:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst59:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst60:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst61:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst62:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst63:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst64:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst65:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst66:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst67:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst68:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst69:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst70:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst71:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst72:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst73:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst74:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst75:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst76:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst77:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst78:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst79:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst80:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst81:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst82:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst83:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst84:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst85:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst86:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst87:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst88:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst89:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst90:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst91:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst92:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst93:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst94:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst95:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst96:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst97:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst98:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst99:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst100:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst101:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst102:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst103:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst104:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst105:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst106:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst107:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst108:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst109:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst110:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst111:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst112:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst113:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst114:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst115:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst116:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst117:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst118:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst119:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst120:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst121:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst122:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst123:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst124:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst125:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst126:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst127:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+selfCollision:
+  pairs:
+

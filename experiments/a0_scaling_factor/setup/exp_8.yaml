@@ -1,0 +1,191 @@
+T: 70
+dynamic: False
+dt: 0.05
+env: pointRobotUrdf-acc-v0
+robot_type: pointRobotUrdf
+n: 3
+initState:
+  q0:
+    - 0.0
+    - 0.0
+    - 0.0
+  q0dot:
+    - 0.5
+    - 0.1
+    - 0.0
+limits:
+  low:
+    - -0.5
+    - -0.5
+    - 0
+  high:
+    - 0.5
+    - 0.5
+    - 0
+r_body: 0.2
+randomObstacles:
+  number: 8
+obstacles:
+  obst0:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst1:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst2:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst3:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst4:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst5:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst6:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+  obst7:
+    type: sphereObstacle
+    geometry:
+      position: 
+        - 1.5
+        - 0.0
+        - 0.0
+      radius: 0.5
+    low:
+      position:
+        - -4.0
+        - 1.2
+        - 0.0
+      radius: 0.4
+    high:
+      position:
+        - 4.0
+        - 4.2
+        - 0.0
+      radius: 0.5
+selfCollision:
+  pairs:
+

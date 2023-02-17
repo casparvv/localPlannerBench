@@ -44,7 +44,7 @@ class Experiment(object):
             "dt",
             "env",
             "n",
-            "goal",
+            #"goal",
             "initState",
             "robot_type",
             "limits",
@@ -60,7 +60,7 @@ class Experiment(object):
         with open(self._setupFile, "r") as setupStream:
             self._setup = yaml.safe_load(setupStream)
         self.checkCompleteness()
-        self._motionPlanningGoal = GoalComposition(name="mpg", content_dict=self._setup['goal'])
+        #self._motionPlanningGoal = GoalComposition(name="mpg", content_dict=self._setup['goal'])
         self.parseObstacles()
 
     def parseObstacles(self):
@@ -100,6 +100,9 @@ class Experiment(object):
             if 'analytic' in obst.type():
                 # Current workaround to only return position information from obstacles.
                 evals[i] = obst.traj().evaluate(t=t)[0]
+                i += 1
+            else:
+                evals[i] = obst.evaluate()[0]
                 i += 1
         return evals
 
@@ -237,10 +240,10 @@ class Experiment(object):
                 dist_initState = np.linalg.norm(np.array(o.position()) - fk)
                 if dist_initState < (o.radius() + self.rBody()):
                     raise ExperimentInfeasible("Initial configuration in collision")
-            if not self.dynamic() and len(o.position()) == len(self.primeGoal().position()):
-                dist_goal = np.linalg.norm(np.array(o.position()) - self.primeGoal().position())
-                if dist_goal < (o.radius() + self.rBody()):
-                    raise ExperimentInfeasible("Goal in collision")
+            #if not self.dynamic() and len(o.position()) == len(self.primeGoal().position()):
+            #    dist_goal = np.linalg.norm(np.array(o.position()) - self.primeGoal().position())
+            #    if dist_goal < (o.radius() + self.rBody()):
+            #        raise ExperimentInfeasible("Goal in collision")
         for pair in self.selfCollisionPairs():
             fk1 = self.fk(self.initState()[0], pair[0], positionOnly=True)
             fk2 = self.fk(self.initState()[0], pair[1], positionOnly=True)
@@ -254,7 +257,7 @@ class Experiment(object):
                 raise ExperimentInfeasible("Goal unreachible")
 
     def save(self, folderPath):
-        self._setup["goal"] = self._motionPlanningGoal.dict()
+        #self._setup["goal"] = self._motionPlanningGoal.dict()
         obstsDict = {}
         obstFile = folderPath + "/obst"
         initStateFilename = folderPath + "/initState.csv"
