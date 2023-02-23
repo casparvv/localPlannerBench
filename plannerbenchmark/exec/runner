@@ -136,7 +136,7 @@ class Runner(object):
         else:
             ob, _, _, _ = self._env.step(action)
             t = t_exp + self._experiment.dt()
-            show_state = False
+            show_state = False #True #False #True #False
             if show_state is True:
                 print(f"ob: {ob}")
                 print(f"action: {action}")

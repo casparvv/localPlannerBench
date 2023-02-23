@@ -1,4 +1,4 @@
-T: 70
+T: 150
 dynamic: False
 dt: 0.05
 env: pointRobotUrdf-acc-v0
@@ -6,21 +6,21 @@ robot_type: pointRobotUrdf
 n: 3
 initState:
   q0:
-    - 0.0
-    - 0.0
+    - -2.0
+    - 0.3
     - 0.0
   q0dot:
     - 0.5
-    - 0.1
+    - 0.0
     - 0.0
 limits:
   low:
-    - -0.5
-    - -0.5
+    - -2.4
+    - 0.3
     - 0
   high:
-    - 0.5
-    - 0.5
+    - -2.0
+    - 0.3
     - 0
 r_body: 0.2
 randomObstacles:

@@ -40,11 +40,17 @@ class FabricPlanner(Planner):
             "0.5 * sym('base_inertia') * ca.dot(xdot, xdot)"
         )
         collision_geometry: str = (
-            "-0.1*sym('obst_geo_lam') / (x**sym('obst_geo_exp')) * (1 - ca.heaviside(xdot)) * xdot**2"
+            "-0.2 / (x ** 2) * (-0.5 * (ca.sign(xdot) - 1)) * xdot ** 2"
         )
         collision_finsler: str = (
-            f"0.1 / (x**2) * (1 - ca.heaviside(xdot)) * xdot**2"
+            "0.1/(x**1) * xdot**2"
         )
+        #collision_geometry: str = (
+        #    "-1*sym('obst_geo_lam') / (x**sym('obst_geo_exp')) * (1 - ca.heaviside(xdot)) * xdot**2"
+        #)
+        #collision_finsler: str = (
+        #    f"0.1 / (x**2) * (1 - ca.heaviside(xdot)) * xdot**2"
+        #)
         limit_geometry: str = (
             "-0.1 / (x ** 1) * xdot ** 2"
         )
@@ -133,7 +139,6 @@ class FabricPlanner(Planner):
         self._goal = goal
 
     def concretize(self):
-        print(self._number_static_obstacles)
         self._planner.set_components(
             self._collision_links,
             self._self_collision_dict,
@@ -158,8 +163,7 @@ class FabricPlanner(Planner):
         #    self._runtime_arguments['x_goal_0'] = np.array(self._goal.primary_goal().position())
         for j in range(self._number_static_obstacles):
             self._runtime_arguments[f'radius_obst_{j}'] = np.array(0.5)
-            #self._runtime_arguments[f'x_obst_{j}'] = np.array(args[4][j])
-            self._runtime_arguments[f'x_obst_{j}'] = np.array([1.5, 0, 0])
+            self._runtime_arguments[f'x_obst_{j}'] = np.array(args[4][j])
 #        for i, obst in enumerate(self._dynamic_obsts):
 #            for j in self._collision_links:
 #                self._runtime_arguments[f'x_ref_dynamic_obst_{i}_{j}_leaf'] = args[1 + 3*i+1]
