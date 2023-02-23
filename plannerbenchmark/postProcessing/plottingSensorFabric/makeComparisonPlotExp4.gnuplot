@@ -13,29 +13,29 @@ set datafile separator ' '
 firstrow = system('head -1 '.inFile4)
 
 set tmargin at screen 0.95
-set bmargin at screen 0.18
-set lmargin at screen 0.14
+set bmargin at screen 0.21
+set lmargin at screen 0.18
 set style fill solid 0.5 border -1
 set style boxplot nooutliers
 set style data boxplot
 set boxwidth 0.5
 set pointsize 0.5
-set xtics ('0.0' 1, '4' 2, '16' 3, '64' 4, '256' 5, '512' 6) font ",60" offset 0,-2.5
-set ytics font ",60"
+set xtics ('0.0' 1, '4' 2, '16' 3, '64' 4, '256' 5, '512' 6) font ",90" offset 0,-4.5
+set ytics font ",90"
 set grid ytics
 
 outFileBox=seriesFolder."/results_comparison_clearance.eps"
 set output outFileBox
 set yrange [0.0:0.35]
-set xlabel "Number of LiDAR rays" font ",65" offset -6.0,-6
-set ylabel "Clearance (m)" font ",65" offset -11,0
+set xlabel "Number of LiDAR rays" font ",90" offset -6.0,-9
+set ylabel "Clearance (m)" font ",90" offset -19,0
 plot inFile4 using (2):2 notitle, inFile16 using (3):2 notitle, inFile64 using (4):2 notitle, inFile256 using (5):2 notitle, inFile512 using (6):2 notitle
 
 outFileBox=seriesFolder."/results_comparison_pathlength.eps"
 set output outFileBox
 set yrange [13:19]
-set xlabel "Number of LiDAR rays" font ",65" offset -6.0,-6
-set ylabel "Path length (m)" font ",65" offset -10,0
+set xlabel "Number of LiDAR rays" font ",90" offset -6.0,-9
+set ylabel "Path length (m)" font ",90" offset -13,0
 plot inFile4 using (2):3 notitle, inFile16 using (3):3 notitle, inFile64 using (4):3 notitle, inFile256 using (5):3 notitle, inFile512 using (6):3 notitle
 
 outFileBox=seriesFolder."/results_comparison_solving_time.eps"
@@ -48,8 +48,8 @@ plot inFile4 using (2):4 notitle, inFile16 using (3):4 notitle, inFile64 using (
 outFileBox=seriesFolder."/results_comparison_time2goal.eps"
 set output outFileBox
 set yrange [15:30]
-set xlabel "Number of LiDAR rays" font ",65" offset -6.0,-6
-set ylabel "Time to goal (s)" font ",65" offset -9.0,0
+set xlabel "Number of LiDAR rays" font ",90" offset -6.0,-9
+set ylabel "Time to goal (s)" font ",90" offset -14,0
 plot inFile4 using (2):5 notitle, inFile16 using (3):5 notitle, inFile64 using (4):5 notitle, inFile256 using (5):5 notitle, inFile512 using (6):5 notitle
 
 outFileBox=seriesFolder."/results_comparision_composition_time.eps"
