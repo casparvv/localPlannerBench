@@ -40,17 +40,11 @@ class FabricPlanner(Planner):
             "0.5 * sym('base_inertia') * ca.dot(xdot, xdot)"
         )
         collision_geometry: str = (
-            "-0.2 / (x ** 2) * (-0.5 * (ca.sign(xdot) - 1)) * xdot ** 2"
+            "-2 / (x**2) * xdot ** 2"
         )
         collision_finsler: str = (
-            "0.1/(x**1) * xdot**2"
+            "1 / (x**2) * xdot**2"
         )
-        #collision_geometry: str = (
-        #    "-1*sym('obst_geo_lam') / (x**sym('obst_geo_exp')) * (1 - ca.heaviside(xdot)) * xdot**2"
-        #)
-        #collision_finsler: str = (
-        #    f"0.1 / (x**2) * (1 - ca.heaviside(xdot)) * xdot**2"
-        #)
         limit_geometry: str = (
             "-0.1 / (x ** 1) * xdot ** 2"
         )
