@@ -5,16 +5,15 @@ description = "Benchmark suite for local planner in dynamic environment."
 authors = ["Max Spahn <m.spahn@tudelft.nl>"]
 
 [tool.poetry.dependencies]
-python = "^3.6.5,<3.10"
+python = "^3.8,<3.10"
 forwardkinematics = "^1.0.6"
 planarenvs = "^1.0.3" 
-urdfenvs = "^0.2.2"
+urdfenvs = "^0.5.1"
 motion-planning-scenes = "^0.3.0"
 fabrics = {path = "../../Develop/fabrics"}
 Sphinx = { version = "4.2.0", optional = true }
 sphinx-rtd-theme = { version = "1.0.0", optional = true }
 sphinxcontrib-napoleon = { version = "0.7", optional = true }
-
 
 [tool.poetry.extras]
 mpc = ['robotmpcs']

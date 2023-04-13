@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
 import argparse
 import os
+import sys
 import subprocess
+
+plannerbench_path = "/home/celepar/Develop/localPlannerBench"
+sys.path.insert(0, plannerbench_path)
 
 from plannerbenchmark.postProcessing.caseEvaluation import CaseEvaluation
 from plannerbenchmark.postProcessing.seriesEvaluation import SeriesEvaluation
@@ -60,9 +64,9 @@ class SlimPostProcessor(object):
                 evaluator = SeriesComparison(folder, recycle=args.recycle)
         else:
             evaluator = CaseEvaluation(folder, recycle=args.recycle)
-        evaluator.setMetrics(kpis)
-        evaluator.process()
-        evaluator.writeResults()
+        #evaluator.setMetrics(kpis)
+        #evaluator.process()
+        #evaluator.writeResults()
         if args.plot and not args.series:
             plotter = CasePlotting(folder)
             plotter.plot()

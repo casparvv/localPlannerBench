@@ -4,16 +4,17 @@ import gym
 import numpy as np
 import casadi as ca
 
-import planarenvs.point_robot
-import planarenvs.n_link_reacher
-import planarenvs.ground_robots
+#import planarenvs.point_robot
+#import planarenvs.n_link_reacher
+#import planarenvs.ground_robots
 #import urdfenvs.robots.tiago.tiago_robot
 #import urdfenvs.robots.generic_urdf.panda
 #import urdfenvs.mobile_reacher
 #import urdfenvs.albert_reacher
 #import urdfenvs.robots.boxer.boxer_robot
 #import urdfenvs.generic_urdf.point_robot
-import urdfenvs.point_robot_urdf
+#import urdfenvs.point_robot_urdf
+import urdfenvs.robots.generic_urdf.point_robot
 
 from urdfenvs.sensors.lidar import Lidar
 
