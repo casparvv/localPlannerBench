@@ -6,7 +6,7 @@ robot_type: pointRobotUrdf
 n: 3
 goal:
   subgoal0:
-    weight: 1.0
+    weight: 0.5
     is_primary_goal: True
     indices:
       - 0
@@ -16,7 +16,7 @@ goal:
     desired_position:
       - 0.0
       - 4.0
-    epsilon: 0.2
+    epsilon: 0.1
     type: staticSubGoal
     low:
       - 5.0

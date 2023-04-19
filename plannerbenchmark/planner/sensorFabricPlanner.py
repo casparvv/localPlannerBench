@@ -66,14 +66,18 @@ class SensorFabricPlanner(Planner):
         self._planner = ParameterizedFabricPlanner(
             self.config.n,
             self._exp.robotType(),
-            base_energy=base_energy,
-            collision_geometry=collision_geometry,
-            collision_finsler=collision_finsler,
-            self_collision_geometry=self_collision_geometry,
-            self_collision_finsler=self_collision_finsler,
-            attractor_potential=attractor_potential,
-            attractor_metric=attractor_metric,
         )
+        #self._planner = ParameterizedFabricPlanner(
+        #    self.config.n,
+        #    self._exp.robotType(),
+        #    base_energy=base_energy,
+        #    collision_geometry=collision_geometry,
+        #    collision_finsler=collision_finsler,
+        #    self_collision_geometry=self_collision_geometry,
+        #    self_collision_finsler=self_collision_finsler,
+        #    attractor_potential=attractor_potential,
+        #    attractor_metric=attractor_metric,
+        #)
         self._collision_links = [i for i in range(1, self.config.n+1)]
         self._collision_links = [1]
         self._number_static_obstacles = self._config.number_lidar_rays
