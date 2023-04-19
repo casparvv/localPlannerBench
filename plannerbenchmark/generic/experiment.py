@@ -4,26 +4,14 @@ import gym
 import numpy as np
 import casadi as ca
 
-#import planarenvs.point_robot
-#import planarenvs.n_link_reacher
-#import planarenvs.ground_robots
-#import urdfenvs.robots.tiago.tiago_robot
-#import urdfenvs.robots.generic_urdf.panda
-#import urdfenvs.mobile_reacher
-#import urdfenvs.albert_reacher
-#import urdfenvs.robots.boxer.boxer_robot
-#import urdfenvs.generic_urdf.point_robot
-#import urdfenvs.point_robot_urdf
-import urdfenvs.robots.generic_urdf.point_robot
+from urdfenvs.robots.generic_urdf import GenericUrdfReacher
+from urdfenvs.urdf_common.urdf_env import UrdfEnv
 
 from urdfenvs.sensors.lidar import Lidar
 
 from forwardkinematics.fksCommon.fk_creator import FkCreator
-from MotionPlanningEnv.obstacleCreator import ObstacleCreator
-from MotionPlanningGoal.staticSubGoal import StaticSubGoal
-from MotionPlanningGoal.goalComposition import GoalComposition
-
-
+from mpscenes.goals.goal_composition import GoalComposition
+from mpscenes.obstacles.dynamic_sphere_obstacle import DynamicSphereObstacle
 
 class ExperimentIncompleteError(Exception):
     pass
@@ -66,13 +54,30 @@ class Experiment(object):
 
     def parseObstacles(self):
         self._obstacles = []
-        self._obstacleCreator = ObstacleCreator()
+
+        splineDict = {
+            "degree": 2,
+            "controlPoints": [[0.0, 1.0, 1.0], [1.0, 1.0, 1.0], [1.0, 1.0, 0.0]],
+            "duration": 2,
+        }
+        dynamicObst3Dict = {
+            "type": "splineSphere",
+            "geometry": {"trajectory": splineDict, "radius": 0.2},
+        }
+        dynamicSphereObst3 = DynamicSphereObstacle(
+            name="simpleSphere", content_dict=dynamicObst3Dict
+        )
+        
         if self._setup["obstacles"]:
             for obst in self._setup["obstacles"]:
-                obstData = self._setup["obstacles"][obst]
-                obstType = obstData['type']
-                obstName = obst
-                self._obstacles.append(self._obstacleCreator.create_obstacle(obstType, obstName, obstData))
+                self._obstacles.append(dynamicSphereObst3)
+
+        #if self._setup["obstacles"]:
+        #    for obst in self._setup["obstacles"]:
+        #        obstData = self._setup["obstacles"][obst]
+        #        obstType = obstData['type']
+        #        obstName = obst
+        #        self._obstacles.append(self._obstacleCreator.create_obstacle(obstType, obstName, obstData))
 
     def dynamic(self):
         return self._setup['dynamic']
@@ -158,6 +163,15 @@ class Experiment(object):
     def env(self, render=False):
         if self.robotType() == 'planarArm':
             return gym.make(self.envName(), render=render, n=self.n(), dt=self.dt())
+        if self.robotType() == 'pointRobotUrdf':
+            robots = [
+                    GenericUrdfReacher(urdf="pointRobot.urdf", mode="acc"),
+            ]
+            env: UrdfEnv = gym.make(
+                    "urdf-env-v0",
+                    dt=0.01, robots=robots, render=render
+            )
+            return env
         else:
             return gym.make(self.envName(), render=render, dt=self.dt())
 
@@ -194,7 +208,8 @@ class Experiment(object):
             print(e)
         if nb_rays > 0:
             lidar = Lidar(4, nb_rays=nb_rays, raw_data=False)
-            env.add_sensor(lidar)
+            env.add_sensor(lidar, robot_ids=[0])
+            env.set_spaces()
 
     def shuffleInitConfiguration(self):
         q0_new = np.random.uniform(low=self.limits()[0], high=self.limits()[1])

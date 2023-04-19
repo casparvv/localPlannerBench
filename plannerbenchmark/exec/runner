@@ -12,6 +12,9 @@ import warnings
 import numpy as np
 import signal
 
+plannerbench_path = "/home/celepar/Develop/localPlannerBench"
+sys.path.insert(0, plannerbench_path)
+
 from plannerbenchmark.generic.experiment import Experiment, ExperimentInfeasible
 from plannerbenchmark.generic.logger import Logger
 
@@ -181,15 +184,13 @@ class Runner(object):
             if self._compare:
                 timeStamp = self._compareTimeStamp
             for planner in self._planners:
-                q0, q0dot = self._experiment.initState()
-                ob, t0 = self.reset(q0, q0dot)
-                try:
+                #try:
                     # Sets the lidar data to 100.0 for the first step.
                     #  Otherwise, it is filled with 0s after one run or badly shaped after using
                     #  two sensor fabric planner in a row (using the old shape in the first step).
-                    ob['lidarSensor'] = np.full([planner._config.number_lidar_rays*2,], 100.0)
-                except AttributeError:
-                    print("No lidar sensor available to set default values to 100.0")
+                    #ob['robot_0']['LidarSensor'] = np.full([planner._config.number_lidar_rays*2,], 100.0)
+                #except AttributeError:
+                #    print("No lidar sensor available to set default values to 100.0")
                 if not self._ros:
                     try:
                         self._experiment.addScene(self._env, planner._config.number_lidar_rays)
@@ -197,6 +198,10 @@ class Runner(object):
                     except AttributeError:
                         print("No lidar sensor added to the environment.")
                         self._experiment.addScene(self._env)
+                
+                q0, q0dot = self._experiment.initState()
+                ob, t0 = self.reset(q0, q0dot)
+
                 if len(self._planners) > 1:
                     if planner._config.name == "fabric":
                         logger = Logger(self._res_folder, "0" + "_" + timeStamp)
@@ -207,12 +212,15 @@ class Runner(object):
                 logger.setSetups(self._experiment, planner)
                 t = 0.0
                 for i in range(self._experiment.T()):
+                    if i == -1:
+                        print(f"ob: {ob}")
+                        time.sleep(111)
                     if self._aborted:
                         break
                     if i % 1000 == 0:
                         print("Timestep : %d" %i)
-                    q = ob['joint_state']['position']
-                    qdot = ob["joint_state"]["velocity"]
+                    q = ob['robot_0']['joint_state']['position']
+                    qdot = ob['robot_0']["joint_state"]["velocity"]
                     if self._experiment.dynamic():
                         envEval = self._experiment.evaluate(t)
                         if not planner.config.dynamic:
@@ -225,19 +233,20 @@ class Runner(object):
                         qudot = np.concatenate((ob['vel'], ob['xdot'][3:]))
                         observation += [qudot]
                     try:
-                        sensor_data = ob['lidarSensor']
-                        if self._show_rays:
-                            if i == 0:
-                                # Set body_ids_old to None for the first time creating ray visualizations.
-                                body_ids_old = None
-                            show_lidar_mode = "spheres" # "rays_spheres" for full visualization or "spheres" for sphere visualizations only (faster).
-                            if show_lidar_mode == "rays_spheres": show_lidar_step = 30
-                            else: show_lidar_step = 1
-                            if i in range(1, self._experiment.T(), show_lidar_step):
-                                body_ids_old = self._experiment.showLidar(self._env, sensor_data, q, body_ids_old, planner._config.number_lidar_rays, show_lidar_mode)
+                        sensor_data = ob['robot_0']['LidarSensor']
+                        #if self._show_rays:
+                            #if i == 0:
+                            #    # Set body_ids_old to None for the first time creating ray visualizations.
+                            #    body_ids_old = None
+                            #show_lidar_mode = "spheres" # "rays_spheres" for full visualization or "spheres" for sphere visualizations only (faster).
+                            #if show_lidar_mode == "rays_spheres": show_lidar_step = 30
+                            #else: show_lidar_step = 1
+                            #if i in range(1, self._experiment.T(), show_lidar_step):
+                            #    body_ids_old = self._experiment.showLidar(self._env, sensor_data, q, body_ids_old, planner._config.number_lidar_rays, show_lidar_mode)
                         observation += [sensor_data]
                     except KeyError as key_error:
                         observation += [0]
+                    
                     t_before = time.perf_counter()
                     observation += [np.around(t, 4)]
                     if planner._config.name == "fabric":

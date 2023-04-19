@@ -31,9 +31,7 @@ class SensorFabricConfig(PlannerConfig):
     number_lidar_rays: int = 24
     radius_ray_obstacles: float = 0.1
 
-
 class SensorFabricPlanner(Planner):
-
     def __init__(self, exp, **kwargs):
         super().__init__(exp, **kwargs)
         self._config = SensorFabricConfig(**kwargs)
@@ -150,14 +148,14 @@ class SensorFabricPlanner(Planner):
             self._runtime_arguments['xdot_ref_goal_0_leaf'] = np.array(self._goal.primary_goal().velocity(t = time))
             self._runtime_arguments['xddot_ref_goal_0_leaf'] = np.array(self._goal.primary_goal().acceleration(t = time))
         else:
-            self._runtime_arguments['x_goal_0'] = np.array(self._goal.primary_goal().position())
+            self._runtime_arguments['x_goal_0'] = np.array(self._goal.primary_goal().position()[0:2])
 #        for i, obst in enumerate(self._dynamic_obsts):
 #            for j in self._collision_links:
 #                self._runtime_arguments[f'x_ref_dynamic_obst_{i}_{j}_leaf'] = args[1 + 3*i+1]
 #                self._runtime_arguments[f'xdot_ref_dynamic_obst_{i}_{j}_leaf'] = args[1 + 3*i + 2]
 #                self._runtime_arguments[f'xddot_ref_dynamic_obst_{i}_{j}_leaf'] = args[1 + 3*i + 3]
         if len(args) > 2:
-            ob_lidar = args[2].reshape(self._config.number_lidar_rays, 2) + args[0][0:2]
+            ob_lidar = args[2].reshape((self._config.number_lidar_rays, 2)) + args[0][0:2]
             ob_lidar = np.append(ob_lidar, np.zeros((self._config.number_lidar_rays, 1)), axis=1)
         else:
             ob_lidar = [[100, 100, 100],] * self._config.number_lidar_rays
@@ -168,8 +166,8 @@ class SensorFabricPlanner(Planner):
     def computeAction(self, *args):
         self.adapt_runtime_arguments(args)
         action = np.zeros(3)
-        action = np.clip(self._planner.compute_action(**self._runtime_arguments), -2.174, 2.174)
-        #action = self._planner.compute_action(**self._runtime_arguments)
+        #action = np.clip(self._planner.compute_action(**self._runtime_arguments), -2.174, 2.174)
+        action = self._planner.compute_action(**self._runtime_arguments)
         action[2] = 0
         return action
 
