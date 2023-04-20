@@ -66,14 +66,18 @@ class FabricPlanner(Planner):
         self._planner = ParameterizedFabricPlanner(
             self.config.n,
             self._exp.robotType(),
-            base_energy=base_energy,
-            collision_geometry=collision_geometry,
-            collision_finsler=collision_finsler,
-            self_collision_geometry=self_collision_geometry,
-            self_collision_finsler=self_collision_finsler,
-            attractor_potential=attractor_potential,
-            attractor_metric=attractor_metric,
         )
+        #self._planner = ParameterizedFabricPlanner(
+        #    self.config.n,
+        #    self._exp.robotType(),
+        #    base_energy=base_energy,
+        #    collision_geometry=collision_geometry,
+        #    collision_finsler=collision_finsler,
+        #    self_collision_geometry=self_collision_geometry,
+        #    self_collision_finsler=self_collision_finsler,
+        #    attractor_potential=attractor_potential,
+        #    attractor_metric=attractor_metric,
+        #)
         self._collision_links = [i for i in range(1, self.config.n+1)]
         self._collision_links = [1]
         self._number_obstacles = 0
@@ -107,11 +111,11 @@ class FabricPlanner(Planner):
         for obst in obsts:
             if isinstance(obst, DynamicSphereObstacle):
                 print(f"Dynamic sphere disabled in fabricPlanner.py in setObstacles")
-                #self._dynamic_obsts.append(obst)
+                self._dynamic_obsts.append(obst)
             else:
                 self._static_obsts.append(obst)
             # Workaround to still add the obstacles, but as static obstacles.
-            self._static_obsts.append(obst)
+            #self._static_obsts.append(obst)
         self._number_static_obstacles = len(self._static_obsts)
         self._number_dynamic_obstacles = len(self._dynamic_obsts)
 
@@ -139,11 +143,10 @@ class FabricPlanner(Planner):
             self._goal,
             limits=self._limits,
             number_obstacles=self._number_static_obstacles,
-            number_dynamic_obstacles=self._number_dynamic_obstacles,
+            #number_dynamic_obstacles=self._number_dynamic_obstacles,
         )
         self._planner.concretize()
         self.initialize_runtime_arguments()
-
 
     def adapt_runtime_arguments(self, args):
         time = args[3]
@@ -156,7 +159,7 @@ class FabricPlanner(Planner):
         else:
             self._runtime_arguments['x_goal_0'] = np.array(self._goal.primary_goal().position())
         for j in range(self._number_static_obstacles):
-            self._runtime_arguments[f'radius_obst_{j}'] = np.array(0.45)
+            self._runtime_arguments[f'radius_obst_{j}'] = np.array(0.4)
             self._runtime_arguments[f'x_obst_{j}'] = np.array(args[4][j])
 #        for i, obst in enumerate(self._dynamic_obsts):
 #            for j in self._collision_links:
@@ -167,8 +170,8 @@ class FabricPlanner(Planner):
     def computeAction(self, *args):
         self.adapt_runtime_arguments(args)
         action = np.zeros(3)
-        action = np.clip(self._planner.compute_action(**self._runtime_arguments), -2.174, 2.174)
-        #action = self._planner.compute_action(**self._runtime_arguments)
+        #action = np.clip(self._planner.compute_action(**self._runtime_arguments), -2.174, 2.174)
+        action = self._planner.compute_action(**self._runtime_arguments)
         action[2] = 0
         return action
 

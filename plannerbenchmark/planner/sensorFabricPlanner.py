@@ -29,7 +29,7 @@ class SensorFabricConfig(PlannerConfig):
     m_arm: float = 1.0
     m_rot: float = 1.0
     number_lidar_rays: int = 24
-    radius_ray_obstacles: float = 0.2
+    radius_ray_obstacles: float = 0.1
 
 class SensorFabricPlanner(Planner):
     def __init__(self, exp, **kwargs):
@@ -48,7 +48,7 @@ class SensorFabricPlanner(Planner):
 
         collision_geometry = "-0.5 / (x ** 5) * (1 - ca.heaviside(xdot)) * xdot ** 2"
         #collision_finsler = f"(20.0/{self._config.number_lidar_rays})/(x**1) * (1 - ca.heaviside(xdot)) * xdot**2"
-        collision_finsler = f"(20.0/{self._config.number_lidar_rays})/(x**1) * xdot**2"
+        collision_finsler = f"(6.4/{self._config.number_lidar_rays})/(x**1) * xdot**2"
 
         limit_geometry: str = (
             "-0.1 / (x ** 1) * xdot ** 2"

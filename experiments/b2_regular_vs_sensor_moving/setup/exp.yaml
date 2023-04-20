@@ -6,7 +6,7 @@ robot_type: pointRobotUrdf
 n: 3
 goal:
   subgoal0:
-    weight: 0.5
+    weight: 1.0
     is_primary_goal: True
     indices:
       - 0
@@ -43,17 +43,7 @@ limits:
     - 30.0
     - 0.0
 r_body: 0.2
-randomObstacles:
-  number: 1
 obstacles:
-  obst0:
-    type: analyticSphere
-    geometry:
-      trajectory:
-        - "0.2"
-        - "2.0"
-        - "0.0"
-      radius: 0.4
 selfCollision:
   pairs:
 
