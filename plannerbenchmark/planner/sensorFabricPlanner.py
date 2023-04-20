@@ -140,12 +140,9 @@ class SensorFabricPlanner(Planner):
 
     def concretize(self):
         self._planner.set_components(
-            self._collision_links,
-            self._self_collision_dict,
-            self._goal,
-            limits=self._limits,
+            collision_links=self._collision_links,
+            goal=self._goal,
             number_obstacles=self._config.number_lidar_rays,
-            number_dynamic_obstacles=0,
         )
         self._planner.concretize()
         self.initialize_runtime_arguments()

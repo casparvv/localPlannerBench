@@ -138,10 +138,10 @@ class FabricPlanner(Planner):
 
     def concretize(self):
         self._planner.set_components(
-            self._collision_links,
-            self._self_collision_dict,
-            self._goal,
-            limits=self._limits,
+            collision_links=self._collision_links,
+            #self._self_collision_dict,
+            goal=self._goal,
+            #limits=self._limits,
             number_obstacles=self._number_static_obstacles,
             #number_dynamic_obstacles=self._number_dynamic_obstacles,
         )
