@@ -159,7 +159,7 @@ class FabricPlanner(Planner):
         else:
             self._runtime_arguments['x_goal_0'] = np.array(self._goal.primary_goal().position())
         for j in range(self._number_static_obstacles):
-            self._runtime_arguments[f'radius_obst_{j}'] = np.array(0.4)
+            self._runtime_arguments[f'radius_obst_{j}'] = np.array(0.5)
             self._runtime_arguments[f'x_obst_{j}'] = np.array(args[4][j])
 #        for i, obst in enumerate(self._dynamic_obsts):
 #            for j in self._collision_links:
