@@ -53,50 +53,26 @@ class Experiment(object):
         self.parseObstacles()
 
     def parseObstacles(self):
+        number_of_obstacles = 10
         self._obstacles = []
-
-        rng = np.random.default_rng()
-        xys_pos = rng.uniform(low=1.0, high=5.0, size=10)
-        xys_neg = rng.uniform(low=-5.0, high=-1.0, size=10)
-        xys = np.append(xys_pos, xys_neg)
-        rng.shuffle(xys)
-        xys = xys.tolist()
-        
-        sign = -1
-        all_splineDicts = {}
         all_dynamicObstDict = {}
         all_dynamicSphereObst = {}
-        for n_ob in range(19):
-            sign = sign*-1
-            all_splineDicts[f'splineDict_{n_ob}'] = {
-                    "degree": 2,
-                    "controlPoints": [[xys[n_ob], xys[n_ob + 1], 0.0], [xys[n_ob]*sign*2, xys[n_ob + 1]*sign*2, 0.0], [xys[n_ob]*sign*4, xys[n_ob + 1]*sign*4, 0.0]],
-                    "duration": 20,
-            }
+        
+        rng = np.random.default_rng()
+        xs = rng.uniform(low=-4.0, high=4.0, size=number_of_obstacles).tolist()
+        ys = rng.uniform(low=1.0, high=8.0, size=number_of_obstacles).tolist()
+        ms = rng.uniform(low=-0.4, high=0.4, size=number_of_obstacles).tolist()
+
+        for n_ob in range(number_of_obstacles):
             all_dynamicObstDict[f'dynamicObstDict_{n_ob}'] = {
-                    "type": "splineSphere",
-                    "geometry": {"trajectory": all_splineDicts[f'splineDict_{n_ob}'], "radius": 0.4},
+                    "type": "sphere",
+                    "geometry": {"trajectory": [f"{xs[n_ob]} + {ms[n_ob]}*t", f"{ys[n_ob]} + {ms[n_ob]}*t", "0.0"], "radius": 0.4},
             }
             all_dynamicSphereObst[f'dynamicSphereObst_{n_ob}'] = DynamicSphereObstacle(
                     name=f"simpleSphere_{n_ob}", content_dict=all_dynamicObstDict[f'dynamicObstDict_{n_ob}']
             )
             self._obstacles.append(all_dynamicSphereObst[f'dynamicSphereObst_{n_ob}'])
             
-        splineDict = {
-            "degree": 2,
-            "controlPoints": [[xys[0], xys[1], 0.0], [xys[0] + 2, xys[1] + 2, 0.0], [xys[0] + 4, xys[1] + 4, 0.0]],
-            "duration": 10,
-        }
-        dynamicObst3Dict = {
-            "type": "splineSphere",
-            "geometry": {"trajectory": splineDict, "radius": 0.4},
-        }
-        dynamicSphereObst3 = DynamicSphereObstacle(
-            name="simpleSphere", content_dict=dynamicObst3Dict
-        )
-
-        self._obstacles.append(dynamicSphereObst3)
-
         #if self._setup["obstacles"]:
         #    for obst in self._setup["obstacles"]:
         #        obstData = self._setup["obstacles"][obst]
