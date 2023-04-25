@@ -4,8 +4,8 @@ robot_type: pointRobotUrdf
 n: 3
 m_base: 0.4
 obst:
-  exp: 2.0
-  lam: 2.0
+  exp: 1.0
+  lam: 5.0
 selfCol:
   exp: 1.0
   lam: 2.0

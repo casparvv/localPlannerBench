@@ -40,10 +40,10 @@ class FabricPlanner(Planner):
             "0.5 * sym('base_inertia') * ca.dot(xdot, xdot)"
         )
         collision_geometry: str = (
-            "-2*sym('obst_geo_lam') / (x**sym('obst_geo_exp')) * (1 - ca.heaviside(xdot)) * xdot**2"
+            "-2*sym('obst_geo_lam') / (x**sym('obst_geo_exp')) * xdot**2"
         )
         collision_finsler: str = (
-            f"1.0 / (x**2) * (1 - ca.heaviside(xdot)) * xdot**2"
+            f"1.0 / (x**5) * (1 - ca.heaviside(xdot)) * xdot**2"
         )
         limit_geometry: str = (
             "-0.1 / (x ** 1) * xdot ** 2"
@@ -66,18 +66,14 @@ class FabricPlanner(Planner):
         self._planner = ParameterizedFabricPlanner(
             self.config.n,
             self._exp.robotType(),
-        )
-        #self._planner = ParameterizedFabricPlanner(
-        #    self.config.n,
-        #    self._exp.robotType(),
         #    base_energy=base_energy,
-        #    collision_geometry=collision_geometry,
-        #    collision_finsler=collision_finsler,
+            collision_geometry=collision_geometry,
+            collision_finsler=collision_finsler,
         #    self_collision_geometry=self_collision_geometry,
         #    self_collision_finsler=self_collision_finsler,
         #    attractor_potential=attractor_potential,
         #    attractor_metric=attractor_metric,
-        #)
+        )
         self._collision_links = [i for i in range(1, self.config.n+1)]
         self._collision_links = [1]
         self._number_obstacles = 0
@@ -169,6 +165,7 @@ class FabricPlanner(Planner):
 
     def computeAction(self, *args):
         self.adapt_runtime_arguments(args)
+        #breakpoint()
         action = np.zeros(3)
         #action = np.clip(self._planner.compute_action(**self._runtime_arguments), -2.174, 2.174)
         action = self._planner.compute_action(**self._runtime_arguments)

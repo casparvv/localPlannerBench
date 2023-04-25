@@ -31,7 +31,7 @@ initState:
     - 0.0
   q0dot:
     - 0.0
-    - 0.0
+    - 2.5
     - 0.0
 limits:
   low:

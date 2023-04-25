@@ -53,16 +53,16 @@ class Experiment(object):
         self.parseObstacles()
 
     def parseObstacles(self):
-        number_of_obstacles = 10
+        number_of_obstacles = 9
         self._obstacles = []
         all_dynamicObstDict = {}
         all_dynamicSphereObst = {}
         
         rng = np.random.default_rng()
         xs = rng.uniform(low=-4.0, high=4.0, size=number_of_obstacles).tolist()
-        ys = rng.uniform(low=1.0, high=8.0, size=number_of_obstacles).tolist()
-        ms = rng.uniform(low=-1.5, high=1.5, size=number_of_obstacles).tolist()
-
+        ys = rng.uniform(low=1.5, high=8.0, size=number_of_obstacles).tolist()
+        ms = rng.uniform(low=-1.2, high=1.2, size=number_of_obstacles).tolist()
+        
         for n_ob in range(number_of_obstacles):
             all_dynamicObstDict[f'dynamicObstDict_{n_ob}'] = {
                     "type": "sphere",
@@ -72,10 +72,10 @@ class Experiment(object):
                     name=f"simpleSphere_{n_ob}", content_dict=all_dynamicObstDict[f'dynamicObstDict_{n_ob}']
             )
             self._obstacles.append(all_dynamicSphereObst[f'dynamicSphereObst_{n_ob}'])
-        
+
         dso_dict = {
                     "type": "sphere",
-                    "geometry": {"trajectory": ["0.2", "2 - 1.5*t", "0.0"], "radius": 0.5},
+                    "geometry": {"trajectory": ["0.2", "2 - 1.2*t", "0.0"], "radius": 0.5},
             }
         dso = DynamicSphereObstacle(
                 name="simpleSphere_test", content_dict=dso_dict

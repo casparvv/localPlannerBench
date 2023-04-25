@@ -45,11 +45,13 @@ class SensorFabricPlanner(Planner):
         #collision_finsler: str = (
         #    f"(20.0/{self._config.number_lidar_rays}) / (x**2) * (1 - ca.heaviside(xdot)) * xdot**2"
         #)
-
-        collision_geometry = "-0.5 / (x ** 5) * (1 - ca.heaviside(xdot)) * xdot ** 2"
-        #collision_finsler = f"(20.0/{self._config.number_lidar_rays})/(x**1) * (1 - ca.heaviside(xdot)) * xdot**2"
-        collision_finsler = f"(6.4/{self._config.number_lidar_rays})/(x**1) * xdot**2"
-
+        
+        collision_geometry: str = (
+            "-4*sym('obst_geo_lam') / (x**sym('obst_geo_exp')) * xdot**2"
+        )
+        collision_finsler: str = (
+            f"1.0 / (x**5) * (1 - ca.heaviside(xdot)) * xdot**2"
+        )
         limit_geometry: str = (
             "-0.1 / (x ** 1) * xdot ** 2"
         )
@@ -71,20 +73,14 @@ class SensorFabricPlanner(Planner):
         self._planner = ParameterizedFabricPlanner(
             self.config.n,
             self._exp.robotType(),
-            #collision_geometry=collision_geometry,
-            #collision_finsler=collision_finsler,
-        )
-        #self._planner = ParameterizedFabricPlanner(
-        #    self.config.n,
-        #    self._exp.robotType(),
         #    base_energy=base_energy,
-        #    collision_geometry=collision_geometry,
-        #    collision_finsler=collision_finsler,
+            collision_geometry=collision_geometry,
+            collision_finsler=collision_finsler,
         #    self_collision_geometry=self_collision_geometry,
         #    self_collision_finsler=self_collision_finsler,
         #    attractor_potential=attractor_potential,
         #    attractor_metric=attractor_metric,
-        #)
+        )
         self._collision_links = [i for i in range(1, self.config.n+1)]
         self._collision_links = [1]
         self._number_static_obstacles = self._config.number_lidar_rays
