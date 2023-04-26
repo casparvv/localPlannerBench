@@ -239,6 +239,7 @@ class Experiment(object):
             self.shuffleObstacles()
         if random_init:
             self.shuffleInitConfiguration()
+        self.parseObstacles()
         return
 
     def checkCompleteness(self):

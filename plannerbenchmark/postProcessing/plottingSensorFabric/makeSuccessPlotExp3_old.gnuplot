@@ -1,0 +1,56 @@
+set term postscript eps color size 7.0, 7.0 font "RomanSerif.ttf" 14
+seriesFolder=ARG1
+inFile=seriesFolder."successTableOrdered.csv"
+outFileHist=seriesFolder."/success.eps"
+
+set output outFileHist
+set datafile separator ' '
+set bmargin at screen 0.25
+set tmargin at screen 0.72
+set rmargin at screen 0.9
+
+set style fill solid 0.5 border -1
+set style data histogram
+set style histogram rowstacked
+set border 9
+set boxwidth 0.5
+#set xtics ("Regular \nfabric" 0, '16' 1, '64' 2, '256' 3, '512' 4) scale 1.0 font ',55' rotate by 90 offset 0, -7.5 nomirror
+
+#set xtics ('' 0, 'DSI fabrics\n: 16 ' 1, '64' 2, '256' 3, '512' 4) scale 1.0 font ',55' rotate by 90 offset 0, -7.5 nomirror
+unset xtics
+set label 100 "Regular\n\n\nfabric" at first 0,0 left font ',55' rotate by 90 offset -2,-15
+set label 101 "DSI\n\n\nfabric\n\n\n16 rays" at first 1,0 left font ',55' rotate by 90 offset -4,-15
+set label 102 "DSI\n\n\nfabric\n\n\n64 rays" at first 2,0 left font ',55' rotate by 90 offset -4,-15
+set label 103 "DSI\n\n\nfabric\n\n\n256 rays" at first 3,0 left font ',55' rotate by 90 offset -4,-15
+set label 104 "DSI\n\n\nfabric\n\n\n512 rays" at first 4,0 left font ',55' rotate by 90 offset -4,-15
+
+unset ytics
+#set xlabel "Method" font ",60" rotate by 180 offset 0,-17
+nbPlanner=5
+nbCases=30
+set xrange [-0.5:nbPlanner - 0.5]
+set yrange [0:2 * nbCases]
+set y2range [0:1.2 * nbCases]
+set y2tics nomirror font ',55'
+set y2tics 0,nbCases/5,nbCases rotate by 90 offset 1.5,-2.0
+set y2label '#Cases' font ',55' offset 2.5,0
+
+set key autotitle columnhead
+unset key
+
+x = -0.2
+dx = 0.1 * nbPlanner
+x2 = x + 2 * dx
+x3 = x2 + 2 * dx
+y = 1.05 * nbCases
+dy = 0.05 * nbCases
+
+set label 2 'Success' at x,y+dy rotate by 90 offset 1*nbPlanner + 1*dx - 1,13 font ',55'
+set object rect from x,y+22 to x+dx,y+dy+22 fc rgb 'white' fs transparent solid 0.5
+set label 3 'Collision' at x2 - 1,y+dy rotate by 90 offset 1*nbPlanner + 1*dx - -12,13 font ',55'
+set object rectangle from x2-0.4,y+22 to x2-0.4+dx,y+dy+22 fc rgb 'black' fs transparent solid 0.5
+set label 4 'Not Reached' at x3 - 2,y+dy rotate by 90 offset 1*nbPlanner + 1*dx - -25,13 font ',55'
+set object rectangle from x3 - 0.8,y+22 to x3 - 0.8+dx,y+dy+22 fc rgb 'gray' fs transparent solid 0.5
+plot inFile using 4 notitle lc rgbcolor 'white' axes x1y2, \
+   '' using 3 notitle lc rgb 'black' axes x1y2, \
+   '' using 2 notitle lc rgb 'gray' axes x1y2
