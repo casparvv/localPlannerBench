@@ -46,7 +46,7 @@ set label 401 "DSI\n\n\n\nfabric\n\n\n\n64 rays" at first 1,0 left font ',70' of
 
 outFileBox=seriesFolder."/results_comparison_time2goal.eps"
 set output outFileBox
-set yrange [0:10]
+set yrange [0:20]
 set ylabel "Time to goal (s)" font ",70" offset -11.0,0
-plot inFile0 using (2):4 notitle, inFile64 using (3):4 notitle
+plot inFile0 using (2):5 notitle, inFile64 using (3):5 notitle
 

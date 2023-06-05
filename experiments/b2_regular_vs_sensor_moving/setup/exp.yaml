@@ -1,4 +1,4 @@
-T: 1000
+T: 800
 dynamic: False
 dt: 0.01
 env: pointRobotUrdf-acc-v0

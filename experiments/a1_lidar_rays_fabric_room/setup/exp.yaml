@@ -1,12 +1,12 @@
 T: 500
 dynamic: False
-dt: 0.05
+dt: 0.01
 env: pointRobotUrdf-acc-v0
 robot_type: pointRobotUrdf
 n: 3
 goal:
   subgoal0:
-    prime: True
+    is_primary_goal: True
     weight: 1.0
     indices:
       - 0

@@ -38,8 +38,9 @@ fig, ax = plt.subplots()
 fig.tight_layout()
 def update(frame):
     ax.clear()
-    ax.set_xlim(-7.5, 7.5)
-    ax.set_ylim(-1, 15)
+    plt.axis('square')
+    plt.xlim(-8, 8)
+    plt.ylim(-1, 15)
     ax.set_xlabel('x')
     ax.set_ylabel('y')
     ax.set_title(f'Step {frame}')
@@ -62,7 +63,15 @@ def update(frame):
     l2 = Line2D([], [], color="white", marker='o', markersize=12, markerfacecolor="red")
     l3 = Line2D([], [], color="white", marker='o', markersize=12, markerfacecolor="blue")
     l4 = Line2D([], [], color="white", marker='o', markersize=12, markerfacecolor="purple")
-    ax.legend((l1, l2, l3, l4), ('Goal', 'Obstacles', 'Fabric', 'DSI Fabric'), numpoints=1, loc=1)
+    ax.legend((l1, l2, l3, l4), ('Goal', 'Obstacles', 'Fabric', 'DSI Fabric'), numpoints=1, loc=1, prop={'size': 22})
+
+
+class Toggle:
+    def __init__(self) -> None:
+        self.paused = False
+    def toggler(self):
+        self.paused = not self.paused
+toggle = Toggle()
 
 # Plot the movements, use save = 1 to store a gif
 plot = 1
@@ -71,10 +80,18 @@ if save == True:
     anim = animation.FuncAnimation(fig, update, frames=len(q_fabric), interval=10, blit=False)
     writergif = animation.PillowWriter(fps=50)
     anim.save(f'{experiment}{date}.gif', writer=writergif)
-    #writervid = animation.FFMpegWriter(fps=60)
+    #writervid = animation.FFMpegWriter(fps=50)
     #anim.save('anim.mp4', writer=writervid)
     plt.close()
 elif plot == True:
     anim = animation.FuncAnimation(fig, update, frames=len(q_fabric), interval=1, blit=False)
+    def pause_animation(event):
+        if toggle.paused:
+            anim.resume()
+            toggle.toggler()
+        else:
+            anim.pause()
+            toggle.toggler()
+    fig.canvas.mpl_connect('button_press_event', pause_animation)
     plt.show()
 

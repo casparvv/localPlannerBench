@@ -212,13 +212,36 @@ class Runner(object):
                     logger = Logger(self._res_folder, timeStamp)
                 logger.setSetups(self._experiment, planner)
                 t = 0.0
+               
+                record = True
+                def camera_operator(camera_position, q, qdot):
+                    """
+                    Smooth the motion of the camera.
+                    (camera_distance, camera_yaw, camera_pitch, camera_target_position)
+                    """
+                    dt =  0.1
+                    smoothing_factor = 0.2 #np.linalg.norm(qdot)/10
+                    interpolated_position = camera_position + (q - camera_position) * dt
+                    camera_position = camera_position*(1 - smoothing_factor) + interpolated_position*smoothing_factor
+                    self._env.reconfigure_camera(0.8, 0.0, -40.0, (camera_position))
+                    return camera_position
+
+                camera_position = camera_operator(camera_position=q0, q=q0, qdot=q0dot)
+                if record:
+                    red_id = self._env.start_video_recording(f"fabric_{timeStamp}.mp4")
+
                 for i in range(self._experiment.T()):
                     if self._aborted:
                         break
-                    if i % 1000 == 0:
-                        print("Timestep : %d" %i)
+                    
                     q = ob['robot_0']['joint_state']['position']
                     qdot = ob['robot_0']["joint_state"]["velocity"]
+                    
+                    camera_position = camera_operator(camera_position, q, qdot)
+
+                    if i % 1000 == 0:
+                        print("Timestep : %d" %i)
+
                     if self._experiment.dynamic():
                         envEval = self._experiment.evaluate(t)
                         if not planner.config.dynamic:
@@ -267,6 +290,8 @@ class Runner(object):
                 writer = csv.writer(csv_file)
                 for key, value in composition_time.items():
                     writer.writerow([key, value])
+            if record:
+                self._env.stop_video_recording(red_id)
             self.stopEnvironment()
 
 def newmain():

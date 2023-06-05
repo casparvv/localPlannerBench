@@ -53,40 +53,44 @@ class Experiment(object):
         self.parseObstacles()
 
     def parseObstacles(self):
-        number_of_obstacles = 9
+        number_of_obstacles = 19
         self._obstacles = []
-        all_dynamicObstDict = {}
-        all_dynamicSphereObst = {}
         
-        rng = np.random.default_rng()
-        xs = rng.uniform(low=-4.0, high=4.0, size=number_of_obstacles).tolist()
-        ys = rng.uniform(low=1.5, high=8.0, size=number_of_obstacles).tolist()
-        ms = rng.uniform(low=-1.2, high=1.2, size=number_of_obstacles).tolist()
-        
-        for n_ob in range(number_of_obstacles):
-            all_dynamicObstDict[f'dynamicObstDict_{n_ob}'] = {
-                    "type": "sphere",
-                    "geometry": {"trajectory": [f"{xs[n_ob]} + {ms[n_ob]}*t", f"{ys[n_ob]} + {ms[n_ob]}*t", "0.0"], "radius": 0.5},
-            }
-            all_dynamicSphereObst[f'dynamicSphereObst_{n_ob}'] = DynamicSphereObstacle(
-                    name=f"simpleSphere_{n_ob}", content_dict=all_dynamicObstDict[f'dynamicObstDict_{n_ob}']
-            )
-            self._obstacles.append(all_dynamicSphereObst[f'dynamicSphereObst_{n_ob}'])
+        if number_of_obstacles > 0:
+            all_dynamicObstDict = {}
+            all_dynamicSphereObst = {}
+            
+            rng = np.random.default_rng()
+            xs = rng.uniform(low=-4.0, high=4.0, size=number_of_obstacles).tolist()
+            ys = rng.uniform(low=1.5, high=8.0, size=number_of_obstacles).tolist()
+            ms = rng.uniform(low=-1.2, high=1.2, size=number_of_obstacles).tolist()
+            
+            for n_ob in range(number_of_obstacles):
+                all_dynamicObstDict[f'dynamicObstDict_{n_ob}'] = {
+                        "type": "sphere",
+                        "geometry": {"trajectory": [f"{xs[n_ob]} + {ms[n_ob]}*t", f"{ys[n_ob]} + {ms[n_ob]}*t", "0.0"], "radius": 0.5},
+                }
+                all_dynamicSphereObst[f'dynamicSphereObst_{n_ob}'] = DynamicSphereObstacle(
+                        name=f"simpleSphere_{n_ob}", content_dict=all_dynamicObstDict[f'dynamicObstDict_{n_ob}']
+                )
+                self._obstacles.append(all_dynamicSphereObst[f'dynamicSphereObst_{n_ob}'])
 
-        dso_dict = {
-                    "type": "sphere",
-                    "geometry": {"trajectory": ["0.2", "2 - 1.2*t", "0.0"], "radius": 0.5},
-            }
-        dso = DynamicSphereObstacle(
-                name="simpleSphere_test", content_dict=dso_dict
-        )
-        self._obstacles.append(dso)
-        #if self._setup["obstacles"]:
-        #    for obst in self._setup["obstacles"]:
-        #        obstData = self._setup["obstacles"][obst]
-        #        obstType = obstData['type']
-        #        obstName = obst
-        #        self._obstacles.append(self._obstacleCreator.create_obstacle(obstType, obstName, obstData))
+            dso_dict = {
+                        "type": "sphere",
+                        "geometry": {"trajectory": ["0.2", "2 - 1.2*t", "0.0"], "radius": 0.5},
+                }
+            dso = DynamicSphereObstacle(
+                    name="simpleSphere_test", content_dict=dso_dict
+            )
+            self._obstacles.append(dso)
+        else:
+            if self._setup["obstacles"]:
+                self._obstacleCreator = ObstacleCreator()
+                for obst in self._setup["obstacles"]:
+                    obstData = self._setup["obstacles"][obst]
+                    obstType = obstData['type']
+                    obstName = obst
+                    self._obstacles.append(self._obstacleCreator.create_obstacle(obstType, obstName, obstData))
 
     def dynamic(self):
         return self._setup['dynamic']
